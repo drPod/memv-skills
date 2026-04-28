@@ -1,6 +1,6 @@
 ---
 name: memv-video-ingest
-description: Use when ingesting video into mem[v] or building video-aware features — video is mem[v]'s headline capability (multimodal extraction across audio, visual, on-screen text, and temporal dynamics)
+description: This skill should be used when the user asks to 'upload a video to memv', 'ingest video', 'extract memories from video', 'process a video file', or when calling client.videos.upload. Covers multimodal extraction (audio + visual + on-screen text + temporal dynamics), upload size considerations, and why pre-transcribing loses information.
 ---
 
 # memv-video-ingest

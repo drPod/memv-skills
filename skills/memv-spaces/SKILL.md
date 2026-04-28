@@ -1,6 +1,6 @@
 ---
 name: memv-spaces
-description: Use when creating, listing, or deleting mem[v] spaces, or when designing tenancy boundaries (per-user, per-feature, per-environment) — spaces are the only isolation primitive mem[v] offers
+description: This skill should be used when the user asks to 'create a memv space', 'list workspaces', 'delete a space', 'design memv tenancy', 'isolate memories per user', or when calling client.spaces.* methods. Covers per-user / per-feature / per-environment partitioning patterns and the no-global-write rule.
 ---
 
 # memv-spaces

@@ -1,6 +1,6 @@
 ---
 name: memv-add-memory
-description: Use when writing or modifying code that creates, updates, or deletes mem[v] memories via the SDK — covers required space_id, metadata patterns, multimodal payloads, and the error-handling envelope that must wrap every call
+description: This skill should be used when the user asks to 'add a memory', 'write to mem[v]', 'store in the knowledge graph', 'update a memory', or when writing or modifying code that calls client.memories.add/update/delete. Covers required space_id, metadata patterns, multimodal payload routing, and the error-handling envelope every call needs.
 ---
 
 # memv-add-memory

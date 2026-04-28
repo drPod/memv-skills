@@ -1,6 +1,6 @@
 ---
 name: memv-search
-description: Use when implementing semantic search, retrieval, or query features against mem[v] memories — covers graph-aware ranking, when retrieval will surprise you, and the difference between text search and graph traversal
+description: This skill should be used when the user asks to 'search memv memories', 'retrieve from the knowledge graph', 'find memories about X', 'implement semantic search on memv', or when calling client.memories.search. Covers graph-aware ranking, when retrieval will surprise you, and the difference from explicit graph traversal.
 ---
 
 # memv-search

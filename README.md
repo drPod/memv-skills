@@ -4,6 +4,8 @@ Drop-in [Claude Code](https://docs.claude.com/claude-code) skills + mirrored doc
 
 10 skills auto-fire on relevant tasks. The mirrored docs sit on disk so agents can `Read` them lossless instead of fetching over the network. Refresh script keeps the mirror current.
 
+For the design rationale and research citations behind every choice, see [DESIGN.md](./DESIGN.md). For the version history and bundled-doc snapshot dates, see [CHANGELOG.md](./CHANGELOG.md).
+
 ## What you get
 
 ```
@@ -32,11 +34,14 @@ AGENTS.md.template             paste-in routing block for downstream projects
 
 ### Option A — Claude Code plugin (recommended)
 
-```bash
-claude plugin install github:drPod/memv-skills
+In any Claude Code session:
+
+```
+/plugin marketplace add drPod/memv-skills
+/plugin install memv-skills@memv-skills
 ```
 
-Skills auto-discover. Restart Claude Code if running.
+Skills auto-discover. The 10 `memv-*` skills will fire on relevant tasks. The bundled docs sit in the plugin cache and are referenced from skill bodies.
 
 ### Option B — Manual copy
 

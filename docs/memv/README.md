@@ -3,6 +3,8 @@
 > Fat catalog of `docs/memv/`. Every entry: summary, when to consult, related files, key symbols.
 > Read this **once** per task to pick which page(s) to actually `Read` in full.
 
+**Snapshot:** synced from `https://docs.memv.ai/` on **2026-04-28**. Refresh: `./scripts/sync-memv-docs.sh`. See `CHANGELOG.md` for previous snapshot dates.
+
 ## Standing orders (always true on this project)
 
 These rules apply to every line of code that touches mem[v]. Violations = bugs.

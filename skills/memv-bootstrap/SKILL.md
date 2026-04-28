@@ -1,6 +1,6 @@
 ---
 name: memv-bootstrap
-description: Use BEFORE writing the first mem[v] SDK code in this repo, OR when `import memvai` / `from memvai import` fails, OR when setting up a fresh dev env — handles language detection, SDK install (Python pip / TypeScript npm), MEMV_API_KEY env var, and smoke-tests auth via the live MCP connection
+description: This skill should be used when the user asks to 'install memv', 'set up the memv SDK', 'memvai not found', 'fresh memv setup', or when 'import memvai' or 'from memvai import' fails. Handles language detection (Python pip / TypeScript npm), MEMV_API_KEY env var, and smoke-tests auth via the MCP connection.
 ---
 
 # memv-bootstrap

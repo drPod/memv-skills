@@ -1,6 +1,6 @@
 ---
 name: memv-graph
-description: Use when querying or building features on top of the mem[v] knowledge graph — entity extraction, relationship traversal, or anything beyond plain semantic memory search
+description: This skill should be used when the user asks to 'query the memv knowledge graph', 'list entities', 'traverse relationships', 'find connections between', or when calling client.graph.* methods. Covers entity/relationship extraction, when to use explicit graph queries vs the graph-aware client.memories.search, and per-space traversal.
 ---
 
 # memv-graph

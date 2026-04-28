@@ -1,6 +1,6 @@
 ---
 name: memv-mcp-setup
-description: Use when wiring this app to expose its own MCP server, or when configuring a client (Claude Code, Claude Desktop, Cursor, ChatGPT, VS Code, Windsurf) to consume mem[v]'s MCP — covers OAuth flow, endpoint conventions, and the limits of the 4-tool surface
+description: This skill should be used when the user asks to 'install memv MCP', 'wire memv to Claude Code/Cursor/ChatGPT/Claude Desktop', 'add MCP server', 'expose our app via MCP', or 'build an MCP server'. Covers per-client install commands, OAuth flow, endpoint conventions, and the limits of the 4-tool surface.
 ---
 
 # memv-mcp-setup

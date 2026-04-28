@@ -1,6 +1,6 @@
 ---
 name: memv-debug
-description: Use when mem[v] returns errors, unexpected behavior, missing memories, failed writes, slow responses, or auth issues — covers the error hierarchy, common failure modes, and the dev-time MCP probes for sanity-checking
+description: This skill should be used when the user reports a mem[v] error, mentions 'memv 401', 'memory not found', 'search returns nothing', 'add_memory failed', 'rate limited', or when troubleshooting unexpected mem[v] behavior. Covers the SDK exception hierarchy, common failure modes, and the dev-time MCP probes for sanity-checking writes and auth.
 ---
 
 # memv-debug

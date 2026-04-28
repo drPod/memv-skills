@@ -1,6 +1,6 @@
 ---
 name: memv-files
-description: Use when ingesting files (PDF, docs, images, audio) into mem[v] — uploads create file-backed memories with auto-extraction; for video specifically use memv-video-ingest instead
+description: This skill should be used when the user asks to 'upload a PDF to memv', 'ingest a document', 'add an image to memv', 'process audio with memv', or when calling client.files.upload. Covers multimodal-first ingestion and when to use files.upload vs videos.upload vs memories.add. For video specifically, use memv-video-ingest instead.
 ---
 
 # memv-files

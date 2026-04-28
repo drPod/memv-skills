@@ -1,6 +1,6 @@
 ---
 name: memv-mcp-vs-sdk
-description: Use when deciding whether to call mcp__memv__* tools or write SDK code for any mem[v] operation — covers the agent-vs-app boundary, the workspaceId/space_id terminology mismatch, and the limited 4-tool MCP surface
+description: This skill should be used when the user is deciding between mcp__memv__* tools and SDK code, asks 'should I use MCP or SDK', mixes mcp__memv__ calls with memvai imports in app code, or hits the workspaceId/space_id terminology mismatch. Covers the agent-vs-app boundary and the 4-tool MCP surface limits.
 ---
 
 # memv-mcp-vs-sdk

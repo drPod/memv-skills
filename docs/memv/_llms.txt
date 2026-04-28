@@ -1,0 +1,47 @@
+# Mem[v] Documentation
+
+## Docs
+
+- [Experiment Notes](https://docs.memv.ai/changelog/experiment-notes.md): Research progress and experimental features
+- [Product Updates](https://docs.memv.ai/changelog/product-updates.md): Latest features, improvements, and updates to Mem[v]
+- [Box Connector](https://docs.memv.ai/connectors/box.md): Connect Box to Mem[v] for enterprise storage-based memory
+- [Custom Sources](https://docs.memv.ai/connectors/custom-sources.md): Build custom connectors for Mem[v]
+- [Gmail Connector](https://docs.memv.ai/connectors/gmail-connector.md): Connect Gmail to Mem[v] for email-based memory
+- [Google Drive Connector](https://docs.memv.ai/connectors/google-drive.md): Connect Google Drive to Mem[v] for document-based memory
+- [Notion Connector](https://docs.memv.ai/connectors/notion.md): Connect Notion to Mem[v] for workspace-based memory
+- [OneDrive Connector](https://docs.memv.ai/connectors/onedrive.md): Connect OneDrive to Mem[v] for Microsoft cloud storage-based memory
+- [S3 Connector](https://docs.memv.ai/connectors/s3.md): Connect Amazon S3 to Mem[v] for cloud storage-based memory
+- [How it works](https://docs.memv.ai/core-concepts/how-it-works.md): Understanding Mem[v]'s core concepts and workflow
+- [Knowledge Graphs](https://docs.memv.ai/core-concepts/knowledge-graphs.md): Automatic entity extraction and relationship discovery
+- [Memories](https://docs.memv.ai/core-concepts/memories.md): Understanding memories and their lifecycle
+- [Semantic search](https://docs.memv.ai/core-concepts/search.md): Graph-aware semantic search for AI agents
+- [Spaces](https://docs.memv.ai/core-concepts/spaces.md): Organize and isolate memories with Spaces
+- [Introduction: What is Mem[v]?](https://docs.memv.ai/index.md): Context and memory layer for multimodal AI agents
+- [MCP Overview](https://docs.memv.ai/mcp/overview.md): Connect AI assistants to your mem[v] knowledge graph via the Model Context Protocol
+- [Client Setup](https://docs.memv.ai/mcp/setup.md): Connect your AI assistant to mem[v] via MCP
+- [Quickstart](https://docs.memv.ai/quickstart.md): Get started with Mem[v] in minutes
+- [Advanced usage](https://docs.memv.ai/sdk/advanced.md): Advanced features and patterns
+- [Error handling](https://docs.memv.ai/sdk/error-handling.md): Handle errors and exceptions
+- [Files](https://docs.memv.ai/sdk/files.md): Upload and manage files
+- [Knowledge graphs](https://docs.memv.ai/sdk/graph.md): Build and query knowledge graphs from memories
+- [Installation](https://docs.memv.ai/sdk/installation.md): Install and configure the Mem[v] SDK
+- [Memories](https://docs.memv.ai/sdk/memories.md): Add and search memories
+- [SDK Overview](https://docs.memv.ai/sdk/overview.md): Official SDKs for integrating Mem[v] into your applications
+- [Spaces](https://docs.memv.ai/sdk/spaces.md): Create and manage memory spaces
+- [Videos](https://docs.memv.ai/sdk/videos.md): Work with video files and extract multimodal memories
+- [Security](https://docs.memv.ai/support/security.md): Comprehensive overview of Mem[v]'s security architecture, practices, and compliance framework
+- [Support & Troubleshooting](https://docs.memv.ai/support/troubleshooting.md): Get help and troubleshoot common issues with Mem[v]
+- [Education](https://docs.memv.ai/use-cases/education.md): Multimodal memory for AI tutors that actually know their students.
+- [Enterprise & Knowledge Work](https://docs.memv.ai/use-cases/enterprise.md): Personal intelligence for enterprise agents that learn your team's expertise, culture, and workflows.
+- [Gaming & Synthetic Characters](https://docs.memv.ai/use-cases/gaming.md): Personal intelligence for NPCs that remember players, adapt behavior, and create unique stories across every interaction.
+- [Healthcare](https://docs.memv.ai/use-cases/healthcare.md): Multimodal memory for AI agents that care for patients across every encounter.
+- [Spatial Intelligence & Robotics](https://docs.memv.ai/use-cases/robotics.md): Persistent multimodal memory for robots that understand people, spaces, and context across every interaction.
+- [AI Wearables & Ambient Devices](https://docs.memv.ai/use-cases/wearables.md): Persistent memory for smart glasses, pendants, and ambient AI that understand your life context.
+
+## OpenAPI Specs
+
+- [openapi](https://docs.memv.ai/api-reference/openapi.json)
+
+## Optional
+
+- [Blog](https://memv.ai/blog)

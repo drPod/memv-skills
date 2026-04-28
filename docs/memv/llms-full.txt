@@ -1,0 +1,5513 @@
+# Experiment Notes
+Source: https://docs.memv.ai/changelog/experiment-notes
+
+Research progress and experimental features
+
+# Research Progress
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for research notes and experimental feature updates.
+</Info>
+
+## Stay Updated
+
+Follow our progress as we continue to develop and improve Mem\[v].
+
+
+# Product Updates
+Source: https://docs.memv.ai/changelog/product-updates
+
+Latest features, improvements, and updates to Mem[v]
+
+Stay up to date with the latest features, improvements, and changes to Mem\[v].
+
+<Tabs>
+  <Tab title="Python">
+    ## Python SDK Updates
+
+    <Info>
+      Updates coming soon. Check back for the latest Python SDK releases and improvements.
+    </Info>
+  </Tab>
+
+  <Tab title="TypeScript">
+    ## TypeScript SDK Updates
+
+    <Info>
+      Updates coming soon. Check back for the latest TypeScript SDK releases and improvements.
+    </Info>
+  </Tab>
+
+  <Tab title="Platform">
+    ## Platform Updates
+
+    <Info>
+      Updates coming soon. Check back for the latest platform releases and improvements.
+    </Info>
+  </Tab>
+</Tabs>
+
+
+# Box Connector
+Source: https://docs.memv.ai/connectors/box
+
+Connect Box to Mem[v] for enterprise storage-based memory
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for detailed information about the Box connector.
+</Info>
+
+
+# Custom Sources
+Source: https://docs.memv.ai/connectors/custom-sources
+
+Build custom connectors for Mem[v]
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for detailed information about building custom connectors.
+</Info>
+
+
+# Gmail Connector
+Source: https://docs.memv.ai/connectors/gmail-connector
+
+Connect Gmail to Mem[v] for email-based memory
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for detailed information about the Gmail connector.
+</Info>
+
+
+# Google Drive Connector
+Source: https://docs.memv.ai/connectors/google-drive
+
+Connect Google Drive to Mem[v] for document-based memory
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for detailed information about the Google Drive connector.
+</Info>
+
+
+# Notion Connector
+Source: https://docs.memv.ai/connectors/notion
+
+Connect Notion to Mem[v] for workspace-based memory
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for detailed information about the Notion connector.
+</Info>
+
+
+# OneDrive Connector
+Source: https://docs.memv.ai/connectors/onedrive
+
+Connect OneDrive to Mem[v] for Microsoft cloud storage-based memory
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for detailed information about the OneDrive connector.
+</Info>
+
+
+# S3 Connector
+Source: https://docs.memv.ai/connectors/s3
+
+Connect Amazon S3 to Mem[v] for cloud storage-based memory
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for detailed information about the S3 connector.
+</Info>
+
+
+# How it works
+Source: https://docs.memv.ai/core-concepts/how-it-works
+
+Understanding Mem[v]'s core concepts and workflow
+
+Mem\[v] provides graph-based memory infrastructure for AI agents, automatically extracting entities, building knowledge graphs, and enabling semantic retrieval across all content types.
+
+## The workflow
+
+<Steps>
+  <Step title="Connect your content">
+    Upload files or send data through the API:
+
+    * Documents (PDFs, Word, text)
+    * Videos (MP4, MOV, WebM)
+    * Audio (MP3, WAV)
+    * Images and screenshots
+    * Conversations
+  </Step>
+
+  <Step title="Automatic extraction">
+    Mem\[v] processes content and extracts:
+
+    * Entities (people, companies, technologies, topics)
+    * Relationships between entities
+    * Semantic embeddings for search
+    * Temporal context and metadata
+  </Step>
+
+  <Step title="Graph construction">
+    Information is organized into knowledge graphs:
+
+    * Entities become nodes
+    * Relationships become edges
+    * Triplets form: Subject → Predicate → Object
+    * Isolated within Spaces for privacy
+  </Step>
+
+  <Step title="Semantic retrieval">
+    Query by meaning to retrieve relevant context:
+
+    * Graph-aware search returns connected information
+    * Results ranked by relevance
+    * Include entity relationships and metadata
+  </Step>
+</Steps>
+
+## Key concepts
+
+### Spaces
+
+Isolated containers for memories and knowledge graphs. Each space has complete data separation, enabling per-user, per-feature, or per-tenant organization.
+
+### Memories
+
+Structured information extracted from your content. Each memory contains content, metadata, and extracted entities that feed into the knowledge graph.
+
+### Knowledge graphs
+
+Automatically built networks connecting entities through relationships. Enable discovery of indirect connections and richer context for AI agents.
+
+### Semantic search
+
+Graph-aware retrieval that finds information by meaning and returns connected entities and relationships.
+
+## Data flow
+
+```
+Content → Processing → Memories → Knowledge Graph
+                          ↓
+AI Agent ← Semantic Search ← Query
+```
+
+## Next steps
+
+<CardGroup>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Build your first memory-enabled app
+  </Card>
+
+  <Card title="Spaces" icon="folder" href="/core-concepts/spaces">
+    Organize memories with Spaces
+  </Card>
+
+  <Card title="Knowledge Graphs" icon="diagram-project" href="/core-concepts/knowledge-graphs">
+    Understand graph-based memory
+  </Card>
+
+  <Card title="SDK Documentation" icon="code" href="/sdk/installation">
+    Explore the SDKs
+  </Card>
+</CardGroup>
+
+
+# Knowledge Graphs
+Source: https://docs.memv.ai/core-concepts/knowledge-graphs
+
+Automatic entity extraction and relationship discovery
+
+Mem\[v] automatically builds knowledge graphs from your content, connecting entities through relationships and enabling graph-aware semantic search for AI agents.
+
+## What is a Knowledge Graph?
+
+A knowledge graph is a network of entities and relationships automatically extracted from memories:
+
+**From memories**:
+
+* "Sarah Chen is the CTO at Acme Corp"
+* "Acme Corp uses Kubernetes for deployments"
+
+**Graph representation**:
+
+```
+Sarah Chen → role → CTO
+Sarah Chen → works_at → Acme Corp
+Acme Corp → uses → Kubernetes
+```
+
+## Triplet structure
+
+Knowledge is stored as Subject → Predicate → Object:
+
+```
+User → prefers → Dark mode
+Database → runs_on → PostgreSQL
+API → authenticates_via → JWT tokens
+Team → uses → GitHub Actions
+```
+
+## Automatic entity extraction
+
+Mem\[v] identifies and extracts:
+
+* **People**: Names, roles, relationships
+* **Organizations**: Companies, teams, departments
+* **Technologies**: Tools, frameworks, platforms
+* **Locations**: Cities, offices, regions
+* **Topics**: Concepts, subjects, categories
+
+## Graph-aware search
+
+When you search, results include connected entities:
+
+**Query**: "Sarah Chen"
+
+**Returns**:
+
+* Direct memories about Sarah
+* Her role (CTO)
+* Company (Acme Corp)
+* Technologies she uses (Kubernetes)
+* Teams she manages
+* Projects she leads
+
+## Common use cases
+
+### Team knowledge
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Find who knows about a technology
+  results = client.graph.query(
+      space_id="company",
+      entity="Kubernetes",
+      relationship="expert_in"
+  )
+
+  for triplet in results.triplets:
+      print(f"{triplet.subject} → {triplet.predicate} → {triplet.object}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Find who knows about a technology
+  const results = await client.graph.query({
+    space_id: 'company',
+    entity: 'Kubernetes',
+    relationship: 'expert_in',
+  });
+
+  for (const triplet of results.triplets) {
+    console.log(`${triplet.subject} → ${triplet.predicate} → ${triplet.object}`);
+  }
+  ```
+</CodeGroup>
+
+### Product dependencies
+
+Map system architecture:
+
+```
+Frontend App
+├── depends_on → Backend API
+│   ├── depends_on → PostgreSQL
+│   └── depends_on → Redis
+└── uses → React
+    └── requires → Node.js
+```
+
+### Customer insights
+
+Understand customer relationships:
+
+```
+Acme Corp
+├── uses → Enterprise Plan
+├── located_in → San Francisco
+├── contact → Sarah Chen
+│   └── role → VP Engineering
+└── industry → Technology
+```
+
+## Automatic graph building
+
+Graphs build automatically as you add memories:
+
+<CodeGroup>
+  ```python Python theme={null}
+  client.memories.add(
+      space_id="space_123",
+      content="Sarah Chen is the CTO at Acme Corp and specializes in cloud architecture"
+  )
+
+  # Graph automatically contains:
+  # Sarah Chen → works_at → Acme Corp
+  # Sarah Chen → role → CTO
+  # Sarah Chen → specializes_in → Cloud Architecture
+  ```
+
+  ```typescript TypeScript theme={null}
+  await client.memories.add({
+    space_id: 'space_123',
+    content: 'Sarah Chen is the CTO at Acme Corp and specializes in cloud architecture',
+  });
+
+  // Graph automatically contains:
+  // Sarah Chen → works_at → Acme Corp
+  // Sarah Chen → role → CTO
+  // Sarah Chen → specializes_in → Cloud Architecture
+  ```
+</CodeGroup>
+
+## Query the graph
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Get all relationships for an entity
+  results = client.graph.query(
+      space_id="space_123",
+      entity="Sarah Chen"
+  )
+
+  for triplet in results.triplets:
+      print(f"{triplet.subject} {triplet.predicate} {triplet.object}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Get all relationships for an entity
+  const results = await client.graph.query({
+    space_id: 'space_123',
+    entity: 'Sarah Chen',
+  });
+
+  for (const triplet of results.triplets) {
+    console.log(`${triplet.subject} ${triplet.predicate} ${triplet.object}`);
+  }
+  ```
+</CodeGroup>
+
+## Cross-content graphs
+
+Graphs connect information across all content types:
+
+**Video**: "Sarah is leading the Kubernetes migration"
+→ Sarah Chen → leads → Kubernetes Migration
+
+**PDF**: "Kubernetes migration depends on new infrastructure"
+→ Kubernetes Migration → depends\_on → New Infrastructure
+
+**Chat**: "New infrastructure will use AWS EKS"
+→ New Infrastructure → uses → AWS EKS
+
+**Combined graph**:
+
+```
+Sarah Chen
+└── leads → Kubernetes Migration
+    └── depends_on → New Infrastructure
+        └── uses → AWS EKS
+```
+
+## Relationship types
+
+Automatically detected relationships:
+
+* **Professional**: works\_at, reports\_to, manages, collaborates\_with
+* **Technical**: uses, depends\_on, integrates\_with, built\_with
+* **Conceptual**: related\_to, part\_of, category\_of, type\_of
+* **Temporal**: preceded\_by, followed\_by, during, after
+* **Preference**: prefers, likes, requires
+
+## Best practices
+
+* Include rich context in memories for better entity extraction
+* Use consistent entity names across content
+* Add structured metadata for clearer relationships
+* Leverage graph queries to enrich AI context
+
+## Privacy and isolation
+
+Knowledge graphs respect Space boundaries:
+
+* Each Space has an independent graph
+* Entities never connect across spaces
+* Ensures data privacy and separation
+
+## Next steps
+
+<CardGroup>
+  <Card title="Memories" icon="brain" href="/core-concepts/memories">
+    Add memories to build graphs
+  </Card>
+
+  <Card title="Search" icon="magnifying-glass" href="/core-concepts/search">
+    Graph-aware semantic search
+  </Card>
+
+  <Card title="SDK: Graph" icon="code" href="/sdk/graph">
+    Query knowledge graphs
+  </Card>
+</CardGroup>
+
+
+# Memories
+Source: https://docs.memv.ai/core-concepts/memories
+
+Understanding memories and their lifecycle
+
+Memories are structured pieces of information extracted from content. They feed into knowledge graphs and enable semantic retrieval for AI agents.
+
+## What is a Memory?
+
+A memory contains:
+
+* Content: the extracted information
+* Metadata: additional context and tags
+* Entities: extracted people, places, technologies
+* Embeddings: semantic representations for search
+
+## Creating memories
+
+### From text
+
+<CodeGroup>
+  ```python Python theme={null}
+  client.memories.add(
+      space_id="space_123",
+      content="User prefers dark mode and concise responses"
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  await client.memories.add({
+    space_id: 'space_123',
+    content: 'User prefers dark mode and concise responses',
+  });
+  ```
+</CodeGroup>
+
+### From files
+
+<CodeGroup>
+  ```python Python theme={null}
+  with open("meeting_notes.pdf", "rb") as file:
+      client.upload.batch.create(
+          space_id="space_123",
+          files=[file]
+      )
+  ```
+
+  ```typescript TypeScript theme={null}
+  const file = fs.createReadStream('meeting_notes.pdf');
+  await client.upload.batch.create({
+    space_id: 'space_123',
+    files: [file],
+  });
+  ```
+</CodeGroup>
+
+### From videos
+
+<CodeGroup>
+  ```python Python theme={null}
+  with open("team_meeting.mp4", "rb") as video:
+      client.upload.batch.create(
+          space_id="space_123",
+          files=[video]
+      )
+  ```
+
+  ```typescript TypeScript theme={null}
+  const video = fs.createReadStream('team_meeting.mp4');
+  await client.upload.batch.create({
+    space_id: 'space_123',
+    files: [video],
+  });
+  ```
+</CodeGroup>
+
+Extracts:
+
+* Spoken dialogue (transcription)
+* Visual context (on-screen content)
+* Text (slides, captions)
+* Temporal information
+
+## Memory lifecycle
+
+1. **Creation**: Add via API or upload files
+2. **Indexing**: Entities extracted, graph built, embeddings created
+3. **Retrieval**: Search by semantic meaning and graph connections
+4. **Updates**: New content extends the knowledge graph
+5. **Deletion**: Remove when no longer needed
+
+## Use cases
+
+### User preferences
+
+```python theme={null}
+client.memories.add(
+    space_id=f"user_{user_id}",
+    content="User prefers technical explanations",
+    metadata={"type": "preference"}
+)
+```
+
+### Conversation history
+
+```python theme={null}
+client.memories.add(
+    space_id="conversation_123",
+    content=f"User: {user_message}\nAssistant: {assistant_response}"
+)
+```
+
+### Knowledge bases
+
+```python theme={null}
+# Upload documentation
+with open("api_docs.pdf", "rb") as file:
+    client.upload.batch.create(space_id="docs", files=[file])
+
+# Search later
+results = client.memories.search(
+    space_id="docs",
+    query="How do I authenticate API requests?"
+)
+```
+
+## Best practices
+
+* Add rich metadata for better filtering
+* Use clear, self-contained content
+* Organize related memories in the same space
+* Include entity relationships in content
+* Update when information changes
+
+## Next steps
+
+<CardGroup>
+  <Card title="Search" icon="magnifying-glass" href="/core-concepts/search">
+    Search memories semantically
+  </Card>
+
+  <Card title="Knowledge Graphs" icon="diagram-project" href="/core-concepts/knowledge-graphs">
+    Understand entity connections
+  </Card>
+
+  <Card title="SDK: Memories" icon="code" href="/sdk/memories">
+    SDK documentation
+  </Card>
+</CardGroup>
+
+
+# Semantic search
+Source: https://docs.memv.ai/core-concepts/search
+
+Graph-aware semantic search for AI agents
+
+Mem\[v] provides graph-aware semantic search that finds information by meaning and automatically includes connected entities and relationships.
+
+## How it works
+
+Semantic search uses:
+
+* Embedding-based similarity for meaning
+* Knowledge graph traversal for connected information
+* Entity recognition for precise matches
+* Metadata filtering for refined results
+
+## Basic search
+
+<CodeGroup>
+  ```python Python theme={null}
+  results = client.memories.search(
+      space_id="space_123",
+      query="What are the user's communication preferences?",
+      limit=10
+  )
+
+  for memory in results.memories:
+      print(f"Score: {memory.score}")
+      print(f"Content: {memory.content}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  const results = await client.memories.search({
+    space_id: 'space_123',
+    query: 'What are the user\'s communication preferences?',
+    limit: 10,
+  });
+
+  for (const memory of results.memories) {
+    console.log(`Score: ${memory.score}`);
+    console.log(`Content: ${memory.content}`);
+  }
+  ```
+</CodeGroup>
+
+## Search results
+
+Each result includes:
+
+* **Relevance score** (0-1): Semantic similarity to query
+* **Content**: The extracted information
+* **Metadata**: Context and tags
+* **Entities**: Extracted people, places, technologies
+* **Source**: Original file, timestamp, page number
+
+## Query patterns
+
+### Natural questions
+
+```python theme={null}
+"What does the user like for breakfast?"
+"Who works in the engineering team?"
+"How do I authenticate API requests?"
+```
+
+### Entity searches
+
+```python theme={null}
+"Sarah Chen"
+"Acme Corp"
+"Kubernetes deployment"
+```
+
+### Conceptual queries
+
+```python theme={null}
+"user preferences"
+"team structure"
+"authentication methods"
+```
+
+## Search with filters
+
+Combine semantic search with metadata filters:
+
+<CodeGroup>
+  ```python Python theme={null}
+  results = client.memories.search(
+      space_id="space_123",
+      query="bug reports",
+      filters={
+          "type": "bug_report",
+          "severity": "high"
+      },
+      limit=20
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  const results = await client.memories.search({
+    space_id: 'space_123',
+    query: 'bug reports',
+    filters: {
+      type: 'bug_report',
+      severity: 'high',
+    },
+    limit: 20,
+  });
+  ```
+</CodeGroup>
+
+## Building AI context
+
+Get relevant context for AI responses:
+
+<CodeGroup>
+  ```python Python theme={null}
+  def get_context_for_query(user_query: str, space_id: str) -> str:
+      results = client.memories.search(
+          space_id=space_id,
+          query=user_query,
+          limit=5
+      )
+      return "\n\n".join([m.content for m in results.memories])
+
+  # Use in AI prompt
+  context = get_context_for_query("How should I configure the database?", "docs_space")
+  prompt = f"Context: {context}\n\nQuestion: {user_query}"
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function getContextForQuery(userQuery: string, spaceId: string) {
+    const results = await client.memories.search({
+      space_id: spaceId,
+      query: userQuery,
+      limit: 5,
+    });
+    return results.memories.map(m => m.content).join('\n\n');
+  }
+
+  // Use in AI prompt
+  const context = await getContextForQuery('How should I configure the database?', 'docs_space');
+  const prompt = `Context: ${context}\n\nQuestion: ${userQuery}`;
+  ```
+</CodeGroup>
+
+## Best practices
+
+* **Be specific**: "What is the user's preferred auth method?" vs "auth"
+* **Use natural language**: Ask complete questions
+* **Adjust limit**: 5-10 for AI context, 20-50 for comprehensive search
+* **Combine with filters**: Use metadata to narrow results
+* **Check scores**: Filter by relevance threshold if needed
+
+## Next steps
+
+<CardGroup>
+  <Card title="Knowledge Graphs" icon="diagram-project" href="/core-concepts/knowledge-graphs">
+    Discover connected information
+  </Card>
+
+  <Card title="SDK: Memories" icon="code" href="/sdk/memories">
+    SDK search documentation
+  </Card>
+</CardGroup>
+
+
+# Spaces
+Source: https://docs.memv.ai/core-concepts/spaces
+
+Organize and isolate memories with Spaces
+
+Spaces are isolated containers for organizing memories. Each space maintains its own knowledge graph, ensuring complete data separation.
+
+## What is a Space?
+
+A Space provides:
+
+* Complete isolation: memories never cross space boundaries
+* Independent knowledge graphs per space
+* Flexible organization for any use case
+
+## Organization patterns
+
+### By user
+
+```
+Space: user_alice_123
+├── Preferences and settings
+├── Conversation history
+└── Personal knowledge
+
+Space: user_bob_456
+├── Preferences and settings
+├── Conversation history
+└── Personal knowledge
+```
+
+### By feature
+
+```
+Space: chat_history
+└── All conversation turns
+
+Space: user_preferences
+└── Settings and configurations
+
+Space: knowledge_base
+└── Product documentation
+```
+
+### By environment
+
+```
+Space: prod_app
+└── Production data
+
+Space: dev_testing
+└── Test data
+
+Space: staging
+└── Staging data
+```
+
+## Create and manage spaces
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Create
+  response = client.spaces.create(
+      name="My Application",
+      description="Main memory space"
+  )
+  space_id = response.space.id
+
+  # List
+  response = client.spaces.list()
+  for space in response.spaces:
+      print(f"{space.name}: {space.id}")
+
+  # Delete
+  client.spaces.delete(space_id=space_id)
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Create
+  const response = await client.spaces.create({
+    name: 'My Application',
+    description: 'Main memory space',
+  });
+  const spaceId = response.space.id;
+
+  // List
+  const response = await client.spaces.list();
+  for (const space of response.spaces) {
+    console.log(`${space.name}: ${space.id}`);
+  }
+
+  // Delete
+  await client.spaces.delete({ space_id: spaceId });
+  ```
+</CodeGroup>
+
+<Warning>
+  Deleting a space permanently removes all memories, files, and knowledge graphs. This cannot be undone.
+</Warning>
+
+## Best practices
+
+* Use descriptive names
+* Plan your isolation strategy early
+* One space per user for privacy
+* Don't over-partition (avoid one space per conversation)
+* Clean up unused spaces regularly
+
+## Next steps
+
+<CardGroup>
+  <Card title="Memories" icon="brain" href="/core-concepts/memories">
+    Add and manage memories
+  </Card>
+
+  <Card title="Knowledge Graphs" icon="diagram-project" href="/core-concepts/knowledge-graphs">
+    Build connected knowledge
+  </Card>
+
+  <Card title="SDK: Spaces" icon="code" href="/sdk/spaces">
+    SDK documentation
+  </Card>
+</CardGroup>
+
+
+# Introduction: What is Mem[v]?
+Source: https://docs.memv.ai/index
+
+Context and memory layer for multimodal AI agents
+
+**Mem\[v]** (memory + video) gives your AI agents long-term memory across all content types. We assemble personalized context from text, documents, conversations, videos, audio, and voice notes - delivering structured memories that reduce hallucinations and improve accuracy.
+
+## Video is the superset of all multimedia
+
+If you solve memory for video, you've solved it for everything else.
+
+Video contains:
+
+* Spoken language (audio/transcripts)
+* Visual information (images, scenes, motion)
+* Text (captions, on-screen text, slides)
+* Temporal dynamics (how information unfolds over time)
+
+When you master the form, function, and dynamics of video memory, every other format - documents, images, conversations, audio - becomes simpler.
+
+## How does it work?
+
+<Steps>
+  <Step title="Connect your data sources">
+    Link Google Drive, Gmail, Notion, S3, Box, OneDrive, or custom sources. Mem\[v] automatically handles extraction.
+
+    <Tip>
+      Works with both structured data (databases, spreadsheets) and unstructured content (documents, emails, videos).
+    </Tip>
+  </Step>
+
+  <Step title="Automatic memory creation">
+    Mem\[v] extracts structured memories - facts, preferences, entities - and builds knowledge graphs that show how everything connects.
+
+    * Extract entities, relationships, and facts from all content types
+    * Build graphs linking related information
+    * Create user profiles with preferences and behavioral patterns
+    * Update memories in real-time as new information arrives
+  </Step>
+
+  <Step title="Intelligent retrieval">
+    When your AI needs information, Mem\[v] retrieves relevant memories, ranks by relevance and recency, and includes connected information for complete context.
+
+    <Check>
+      Grounded in verified facts to reduce hallucinations.
+    </Check>
+  </Step>
+</Steps>
+
+## Why it matters?
+
+Your users interact with information everywhere - emails, documents, Slack threads, video calls, tutorials, presentations. But AI agents can't remember any of it beyond the current session.
+
+Without long-term memory:
+
+* Every conversation starts from zero
+* Users repeat themselves constantly
+* Context from last week is lost
+* Information across different formats stays disconnected
+* AI hallucinates due to lack of grounded facts
+
+**Mem\[v] creates a persistent memory layer** that connects information across all your data sources, assembling the right context at the right time.
+
+## What you can do with Mem\[v]?
+
+<CardGroup>
+  <Card title="Connect any data source" icon="plug">
+    Integrate Google Drive, Gmail, Notion, S3, Box, OneDrive. Automatic extraction for all formats.
+  </Card>
+
+  <Card title="Persistent memories" icon="brain">
+    Real-time, evolving memories that update as users interact with new content.
+  </Card>
+
+  <Card title="Multimodal understanding" icon="layer-group">
+    Unified memory connecting text, conversations, files, images, videos, and audio.
+  </Card>
+
+  <Card title="Knowledge graphs" icon="diagram-project">
+    Build semantic graphs showing how people, topics, and events relate across all content.
+  </Card>
+</CardGroup>
+
+## Next steps
+
+<Card title="How it works" icon="gears" href="/core-concepts/how-it-works">
+  Understand how Mem\[v] handles context engineering and creates memories for your apps and multimodal agents.
+</Card>
+
+***
+
+<Tip>
+  Explore more at [https://docs.memv.ai](https://docs.memv.ai)
+</Tip>
+
+
+# MCP Overview
+Source: https://docs.memv.ai/mcp/overview
+
+Connect AI assistants to your mem[v] knowledge graph via the Model Context Protocol
+
+The mem\[v] MCP server lets AI assistants like Claude, ChatGPT, Cursor, and VS Code Copilot read and write to your knowledge graph directly.
+
+## What is MCP?
+
+The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) is an open standard that lets AI assistants connect to external data sources and tools. Instead of copy-pasting context into your AI chat, MCP gives the assistant direct access to your mem\[v] memories.
+
+## Endpoint
+
+```
+https://mcp.memv.ai/mcp
+```
+
+## Authentication
+
+The MCP server uses **OAuth authentication** via Clerk. When you connect a client for the first time, you'll be prompted to sign in with your mem\[v] account. No API keys needed.
+
+## Available Tools
+
+The MCP server exposes three tools:
+
+### `list_workspaces`
+
+List your mem\[v] workspaces. Returns each workspace with its ID and name.
+
+### `add_memory`
+
+Add one or more memories to a workspace's knowledge graph.
+
+| Parameter     | Type   | Required | Description                                         |
+| ------------- | ------ | -------- | --------------------------------------------------- |
+| `workspaceId` | string | Yes      | The workspace ID (use `list_workspaces` to find it) |
+| `memories`    | array  | Yes      | Array of `{ content, name? }` objects               |
+
+### `search_memory`
+
+Search memories in your knowledge graph.
+
+| Parameter     | Type   | Required | Description                                            |
+| ------------- | ------ | -------- | ------------------------------------------------------ |
+| `query`       | string | Yes      | The search query                                       |
+| `workspaceId` | string | No       | Limit to a specific workspace. Searches all if omitted |
+| `maxResults`  | number | No       | Max results to return (default 10, max 50)             |
+
+## Example Workflow
+
+Once connected, you can interact with your memories naturally:
+
+```
+You: What do I know about the Q4 product roadmap?
+AI:  [calls search_memory with query "Q4 product roadmap"]
+     Based on your memories, the Q4 roadmap includes...
+
+You: Remember that we decided to postpone the mobile app to Q1.
+AI:  [calls add_memory with content "Mobile app postponed to Q1"]
+     Done, I've added that to your knowledge graph.
+```
+
+<CardGroup>
+  <Card title="Setup Guide" icon="wrench" href="/mcp/setup">
+    Connect your AI client to mem\[v]
+  </Card>
+
+  <Card title="Quickstart" icon="bolt" href="/quickstart">
+    New to mem\[v]? Start here
+  </Card>
+</CardGroup>
+
+
+# Client Setup
+Source: https://docs.memv.ai/mcp/setup
+
+Connect your AI assistant to mem[v] via MCP
+
+Choose your AI client below and follow the setup steps. All clients use the same MCP endpoint and OAuth authentication, no API keys required.
+
+<Info>
+  You'll need a mem\[v] account. [Sign up at chat.memv.ai](https://chat.memv.ai) if you haven't already.
+</Info>
+
+## Claude Code
+
+Run this command in your terminal:
+
+```bash theme={null}
+claude mcp add --transport http memv https://mcp.memv.ai/mcp
+```
+
+Claude Code will prompt you to authenticate via OAuth when you first use a mem\[v] tool.
+
+## Claude Desktop
+
+<Steps>
+  <Step title="Open Connectors">
+    Go to **Settings** → **Connectors**.
+  </Step>
+
+  <Step title="Add the MCP server">
+    Click **Add** and enter the endpoint URL:
+
+    ```
+    https://mcp.memv.ai/mcp
+    ```
+  </Step>
+
+  <Step title="Authenticate">
+    Follow the OAuth prompt to sign in to your mem\[v] account.
+  </Step>
+</Steps>
+
+<Warning>
+  Remote MCP servers must be added via **Settings → Connectors**. Claude Desktop does not connect to remote servers configured directly in `claude_desktop_config.json`.
+</Warning>
+
+## ChatGPT
+
+<Steps>
+  <Step title="Open Settings">
+    Click your profile icon → **Settings** → **Apps & Connectors**.
+  </Step>
+
+  <Step title="Add MCP server">
+    Click **Add** and enter the endpoint URL:
+
+    ```
+    https://mcp.memv.ai/mcp
+    ```
+  </Step>
+
+  <Step title="Authenticate">
+    Follow the OAuth prompt to sign in to your mem\[v] account.
+  </Step>
+</Steps>
+
+<Warning>
+  Requires a ChatGPT Plus, Pro, Team, Enterprise, or Edu plan.
+</Warning>
+
+## Cursor
+
+<Steps>
+  <Step title="Open MCP settings">
+    Go to **Cursor Settings** → **Features** → **MCP** → **Add new MCP Server**.
+  </Step>
+
+  <Step title="Add the server">
+    Select **SSE** as the type and enter the endpoint URL:
+
+    ```
+    https://mcp.memv.ai/sse
+    ```
+  </Step>
+
+  <Step title="Authenticate">
+    Cursor will prompt you to sign in via OAuth on first use.
+  </Step>
+</Steps>
+
+<Warning>
+  Requires a Cursor Pro plan or higher. MCP servers only work in Agent mode, which is not available on the free tier.
+</Warning>
+
+## VS Code (Copilot)
+
+Run this command in your terminal:
+
+```bash theme={null}
+code --add-mcp '{"name":"memv","type":"http","url":"https://mcp.memv.ai/mcp"}'
+```
+
+Or add it manually to `.vscode/mcp.json` in your workspace:
+
+```json theme={null}
+{
+  "servers": {
+    "memv": {
+      "type": "http",
+      "url": "https://mcp.memv.ai/mcp"
+    }
+  }
+}
+```
+
+## Windsurf
+
+Add the following to `~/.codeium/windsurf/mcp_config.json`:
+
+```json theme={null}
+{
+  "mcpServers": {
+    "memv": {
+      "serverUrl": "https://mcp.memv.ai/mcp"
+    }
+  }
+}
+```
+
+Restart Windsurf to load the new configuration. You'll be prompted to sign in via OAuth on first use.
+
+## Verify the Connection
+
+After setup, ask your AI assistant:
+
+```
+List my mem[v] workspaces.
+```
+
+You should see your workspaces returned, confirming the connection is working.
+
+<Tip>
+  Try `search_memory` next to search your knowledge graph directly from your AI assistant.
+</Tip>
+
+
+# Quickstart
+Source: https://docs.memv.ai/quickstart
+
+Get started with Mem[v] in minutes
+
+Add long-term memory to your AI agents in three simple steps.
+
+## Get your API key
+
+Sign up and get your API key from the [Mem\[v\] Dashboard](https://app.memv.ai/).
+
+```bash theme={null}
+export MEMV_API_KEY="your-api-key-here"
+```
+
+## Install the SDK
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install memvai
+  ```
+
+  ```bash npm theme={null}
+  npm install memvai
+  ```
+
+  ```bash pnpm theme={null}
+  pnpm add memvai
+  ```
+
+  ```bash yarn theme={null}
+  yarn add memvai
+  ```
+</CodeGroup>
+
+## Build your first memory-enabled app
+
+<Steps>
+  <Step title="Create a space">
+    Spaces organize memories for different contexts or users.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      from memvai import Memv
+
+      client = Memv()
+
+      # Create a space
+      response = client.spaces.create(
+          name="My AI Assistant",
+          description="Personal assistant memories"
+      )
+      space_id = response.space.id
+
+      print(f"Created space: {space_id}")
+      ```
+
+      ```typescript TypeScript theme={null}
+      import Memv from 'memvai';
+
+      const client = new Memv();
+
+      // Create a space
+      const response = await client.spaces.create({
+        name: 'My AI Assistant',
+        description: 'Personal assistant memories',
+      });
+      const spaceId = response.space.id;
+
+      console.log(`Created space: ${spaceId}`);
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Add memories">
+    Add text, upload files, or import from connectors.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      # Add a text memory
+      memory = client.memories.add(
+          space_id=space_id,
+          content="User prefers concise responses without small talk"
+      )
+
+      # Upload a file
+      with open("meeting_notes.pdf", "rb") as file:
+          batch = client.upload.batch.create(
+              space_id=space_id,
+              files=[file]
+          )
+      ```
+
+      ```typescript TypeScript theme={null}
+      // Add a text memory
+      await client.memories.add({
+        space_id: spaceId,
+        content: 'User prefers concise responses without small talk',
+      });
+
+      // Upload a file (Node.js)
+      import fs from 'fs';
+
+      const file = fs.createReadStream('meeting_notes.pdf');
+      await client.upload.batch.create({
+        space_id: spaceId,
+        files: [file],
+      });
+      ```
+    </CodeGroup>
+  </Step>
+
+  <Step title="Search memories">
+    Query memories using natural language.
+
+    <CodeGroup>
+      ```python Python theme={null}
+      # Search for relevant memories
+      results = client.memories.search(
+          space_id=space_id,
+          query="What are the user's communication preferences?"
+      )
+
+      for memory in results.memories:
+          print(f"- {memory.content}")
+      ```
+
+      ```typescript TypeScript theme={null}
+      // Search for relevant memories
+      const results = await client.memories.search({
+        space_id: spaceId,
+        query: "What are the user's communication preferences?",
+      });
+
+      for (const memory of results.memories) {
+        console.log(`- ${memory.content}`);
+      }
+      ```
+    </CodeGroup>
+  </Step>
+</Steps>
+
+## Complete example
+
+Here's a complete example of a memory-enabled chatbot:
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  # Initialize client
+  client = Memv()
+
+  # Create or get space
+  response = client.spaces.create(name="Chatbot Memory")
+  space_id = response.space.id
+
+  def chat_with_memory(user_message: str) -> str:
+      """Process user message with memory context."""
+
+      # 1. Search for relevant memories
+      memories = client.memories.search(
+          space_id=space_id,
+          query=user_message,
+          limit=5
+      )
+
+      # 2. Build context from memories
+      context = "\n".join([m.content for m in memories.memories])
+
+      # 3. Generate response (using your LLM of choice)
+      # response = your_llm.generate(
+      #     prompt=f"Context: {context}\n\nUser: {user_message}",
+      # )
+
+      # 4. Store the conversation as a new memory
+      client.memories.add(
+          space_id=space_id,
+          content=f"User: {user_message}\nAssistant: {response}"
+      )
+
+      return response
+
+  # Use it
+  response = chat_with_memory("What features should we prioritize?")
+  print(response)
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  // Initialize client
+  const client = new Memv();
+
+  // Create or get space
+  const response = await client.spaces.create({ name: 'Chatbot Memory' });
+  const spaceId = response.space.id;
+
+  async function chatWithMemory(userMessage: string): Promise<string> {
+    // 1. Search for relevant memories
+    const memories = await client.memories.search({
+      space_id: spaceId,
+      query: userMessage,
+      limit: 5,
+    });
+
+    // 2. Build context from memories
+    const context = memories.memories
+      .map(m => m.content)
+      .join('\n');
+
+    // 3. Generate response (using your LLM of choice)
+    // const response = await yourLLM.generate({
+    //   prompt: `Context: ${context}\n\nUser: ${userMessage}`,
+    // });
+
+    // 4. Store the conversation as a new memory
+    await client.memories.add({
+      space_id: spaceId,
+      content: `User: ${userMessage}\nAssistant: ${response}`,
+    });
+
+    return response;
+  }
+
+  // Use it
+  const response = await chatWithMemory('What features should we prioritize?');
+  console.log(response);
+  ```
+</CodeGroup>
+
+## What's next?
+
+<CardGroup>
+  <Card title="SDK Documentation" icon="code" href="/sdk/installation">
+    Explore all SDK features
+  </Card>
+
+  <Card title="Core Concepts" icon="lightbulb" href="/core-concepts/how-it-works">
+    Understand how Mem\[v] works under the hood
+  </Card>
+
+  <Card title="Use Cases" icon="sparkles" href="/use-cases/healthcare">
+    Explore real-world applications
+  </Card>
+
+  <Card title="Connectors" icon="plug" href="/connectors/gmail-connector">
+    Connect your data sources
+  </Card>
+</CardGroup>
+
+## Need help?
+
+<CardGroup>
+  <Card title="Join Discord" icon="discord" href="https://discord.gg/memv">
+    Chat with the community
+  </Card>
+
+  <Card title="GitHub" icon="github" href="https://github.com/mem-v">
+    View source code and examples
+  </Card>
+</CardGroup>
+
+
+# Advanced usage
+Source: https://docs.memv.ai/sdk/advanced
+
+Advanced features and patterns
+
+Explore advanced features of the Mem\[v] SDK including custom HTTP clients, raw responses, proxies, and more.
+
+## Raw response access
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  client = Memv()
+
+  # Get raw response with headers
+  response = client.spaces.with_raw_response().list()
+
+  # Access headers
+  print(response.headers.get('X-Request-ID'))
+  print(response.headers.get('X-RateLimit-Remaining'))
+
+  # Parse the response
+  spaces = response.parse()
+  print(spaces.spaces)
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  // Get raw response
+  const response = await client.spaces.list().asResponse();
+  console.log(response.headers.get('X-Request-ID'));
+
+  // Get both parsed data and raw response
+  const { data, response: raw } = await client.spaces.list().withResponse();
+  console.log(raw.headers.get('X-RateLimit-Remaining'));
+  console.log(data.spaces);
+  ```
+</CodeGroup>
+
+## Custom HTTP client
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import httpx
+    from memvai import Memv, DefaultHttpxClient
+
+    # Custom HTTP client with proxy
+    client = Memv(
+        http_client=DefaultHttpxClient(
+            proxy="http://proxy.example.com:8080"
+        )
+    )
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    ```typescript theme={null}
+    import Memv from 'memvai';
+    import fetch from 'node-fetch';
+
+    const client = new Memv({
+      fetch: fetch as any,
+    });
+    ```
+  </Tab>
+</Tabs>
+
+## Configure proxies
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import httpx
+    from memvai import Memv, DefaultHttpxClient
+
+    client = Memv(
+        http_client=DefaultHttpxClient(
+            proxy="http://localhost:8888"
+        )
+    )
+    ```
+  </Tab>
+
+  <Tab title="Node.js">
+    ```typescript theme={null}
+    import Memv from 'memvai';
+    import * as undici from 'undici';
+
+    const proxyAgent = new undici.ProxyAgent('http://localhost:8888');
+
+    const client = new Memv({
+      fetchOptions: {
+        dispatcher: proxyAgent,
+      },
+    });
+    ```
+  </Tab>
+
+  <Tab title="Bun">
+    ```typescript theme={null}
+    import Memv from 'memvai';
+
+    const client = new Memv({
+      fetchOptions: {
+        proxy: 'http://localhost:8888',
+      },
+    });
+    ```
+  </Tab>
+
+  <Tab title="Deno">
+    ```typescript theme={null}
+    import Memv from 'npm:memvai';
+
+    const httpClient = Deno.createHttpClient({
+      proxy: { url: 'http://localhost:8888' },
+    });
+
+    const client = new Memv({
+      fetchOptions: {
+        client: httpClient,
+      },
+    });
+    ```
+  </Tab>
+</Tabs>
+
+## Concurrent operations
+
+### Parallel requests
+
+<CodeGroup>
+  ```python Python theme={null}
+  import asyncio
+  from memvai import AsyncMemv
+
+  async def main():
+      client = AsyncMemv()
+
+      # Execute multiple requests in parallel
+      spaces_task = client.spaces.list()
+      stats_task = client.spaces.get_stats()
+
+      spaces, stats = await asyncio.gather(spaces_task, stats_task)
+
+      print(f"Spaces: {len(spaces.spaces)}")
+      print(f"Total memories: {stats.total_memories}")
+
+  asyncio.run(main())
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  // Execute multiple requests in parallel
+  const [spaces, stats] = await Promise.all([
+    client.spaces.list(),
+    client.spaces.getStats(),
+  ]);
+
+  console.log(`Spaces: ${spaces.spaces.length}`);
+  console.log(`Total memories: ${stats.total_memories}`);
+  ```
+</CodeGroup>
+
+### Batch uploads
+
+<CodeGroup>
+  ```python Python theme={null}
+  async def upload_files_parallel(space_id: str, file_paths: list[str]):
+      """Upload multiple files concurrently."""
+      client = AsyncMemv()
+
+      async def upload_file(file_path: str):
+          with open(file_path, 'rb') as f:
+              return await client.upload.batch.create(
+                  space_id=space_id,
+                  files=[f]
+              )
+
+      # Upload all files concurrently
+      tasks = [upload_file(path) for path in file_paths]
+      results = await asyncio.gather(*tasks)
+
+      return [r.batch_id for r in results]
+
+  # Usage
+  files = ["doc1.pdf", "doc2.pdf", "doc3.pdf"]
+  batch_ids = asyncio.run(upload_files_parallel("space_abc123", files))
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function uploadFilesParallel(
+    spaceId: string,
+    filePaths: string[]
+  ): Promise<string[]> {
+    const uploadPromises = filePaths.map(async filePath => {
+      const file = fs.createReadStream(filePath);
+      const response = await client.upload.batch.create({
+        space_id: spaceId,
+        files: [file],
+      });
+      return response.batch_id;
+    });
+
+    return await Promise.all(uploadPromises);
+  }
+
+  // Usage
+  const files = ['doc1.pdf', 'doc2.pdf', 'doc3.pdf'];
+  const batchIds = await uploadFilesParallel('space_abc123', files);
+  ```
+</CodeGroup>
+
+## Custom logging
+
+<CodeGroup>
+  ```python Python theme={null}
+  import logging
+  from memvai import Memv
+
+  # Configure logging
+  logging.basicConfig(level=logging.INFO)
+  logger = logging.getLogger(__name__)
+
+  client = Memv()
+
+  # Logging is automatic with MEMV_LOG environment variable
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+  import pino from 'pino';
+
+  const logger = pino();
+
+  const client = new Memv({
+    logger: logger.child({ name: 'Memv' }),
+    logLevel: 'debug',
+  });
+  ```
+</CodeGroup>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Reuse client instances">
+    Create one client instance and reuse it throughout your application.
+  </Accordion>
+
+  <Accordion title="Use async for I/O-bound operations">
+    Async is more efficient for multiple concurrent requests.
+  </Accordion>
+
+  <Accordion title="Monitor rate limits">
+    Track rate limit headers to avoid throttling.
+  </Accordion>
+
+  <Accordion title="Implement proper error handling">
+    Always handle potential errors gracefully.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Error handling" icon="triangle-exclamation" href="/sdk/error-handling">
+    Comprehensive error handling
+  </Card>
+
+  <Card title="API Reference" icon="code" href="https://github.com/mem-v/memv-python/blob/main/api.md">
+    Complete API documentation
+  </Card>
+</CardGroup>
+
+
+# Error handling
+Source: https://docs.memv.ai/sdk/error-handling
+
+Handle errors and exceptions
+
+The Mem\[v] SDK provides comprehensive error handling with specific exception types for different error scenarios.
+
+## Exception types
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    import memvai
+
+    # Base exception
+    memvai.APIError
+
+    # Connection errors
+    memvai.APIConnectionError
+    memvai.APITimeoutError
+
+    # Status code errors
+    memvai.BadRequestError        # 400
+    memvai.AuthenticationError    # 401
+    memvai.PermissionDeniedError  # 403
+    memvai.NotFoundError          # 404
+    memvai.UnprocessableEntityError  # 422
+    memvai.RateLimitError         # 429
+    memvai.InternalServerError    # 500+
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    ```typescript theme={null}
+    import Memv from 'memvai';
+
+    // Base exception
+    Memv.APIError
+
+    // Connection errors
+    Memv.APIConnectionError
+    Memv.APIConnectionTimeoutError
+
+    // Status code errors
+    Memv.BadRequestError        // 400
+    Memv.AuthenticationError    // 401
+    Memv.PermissionDeniedError  // 403
+    Memv.NotFoundError          // 404
+    Memv.UnprocessableEntityError  // 422
+    Memv.RateLimitError         // 429
+    Memv.InternalServerError    // 500+
+    ```
+  </Tab>
+</Tabs>
+
+## Basic error handling
+
+<CodeGroup>
+  ```python Python theme={null}
+  import memvai
+  from memvai import Memv
+
+  client = Memv()
+
+  try:
+      spaces = client.spaces.list()
+  except memvai.APIError as e:
+      print(f"API Error: {e.message}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  try {
+    const spaces = await client.spaces.list();
+  } catch (error) {
+    if (error instanceof Memv.APIError) {
+      console.error(`API Error: ${error.message}`);
+    }
+  }
+  ```
+</CodeGroup>
+
+## Handle specific errors
+
+### Authentication errors
+
+<CodeGroup>
+  ```python Python theme={null}
+  try:
+      client = Memv(api_key="invalid_key")
+      spaces = client.spaces.list()
+  except memvai.AuthenticationError:
+      print("Invalid API key - check your credentials")
+  ```
+
+  ```typescript TypeScript theme={null}
+  try {
+    const client = new Memv({ apiKey: 'invalid_key' });
+    const spaces = await client.spaces.list();
+  } catch (error) {
+    if (error instanceof Memv.AuthenticationError) {
+      console.error('Invalid API key - check your credentials');
+    }
+  }
+  ```
+</CodeGroup>
+
+### Not found errors
+
+<CodeGroup>
+  ```python Python theme={null}
+  try:
+      space = client.spaces.retrieve(space_id="non_existent")
+  except memvai.NotFoundError:
+      print("Space not found")
+      # Create the space or handle missing resource
+  ```
+
+  ```typescript TypeScript theme={null}
+  try {
+    const space = await client.spaces.retrieve('non_existent');
+  } catch (error) {
+    if (error instanceof Memv.NotFoundError) {
+      console.error('Space not found');
+      // Create the space or handle missing resource
+    }
+  }
+  ```
+</CodeGroup>
+
+### Rate limiting
+
+<CodeGroup>
+  ```python Python theme={null}
+  import time
+
+  try:
+      for i in range(1000):
+          client.memories.add(
+              space_id="space_abc123",
+              content=f"Memory {i}"
+          )
+  except memvai.RateLimitError as e:
+      print("Rate limit exceeded")
+      retry_after = e.response.headers.get('Retry-After', 60)
+      print(f"Waiting {retry_after} seconds...")
+      time.sleep(int(retry_after))
+  ```
+
+  ```typescript TypeScript theme={null}
+  try {
+    for (let i = 0; i < 1000; i++) {
+      await client.memories.add({
+        space_id: 'space_abc123',
+        content: `Memory ${i}`,
+      });
+    }
+  } catch (error) {
+    if (error instanceof Memv.RateLimitError) {
+      console.error('Rate limit exceeded');
+      const retryAfter = error.headers?.['retry-after'] || 60;
+      console.log(`Waiting ${retryAfter} seconds...`);
+      await new Promise(r => setTimeout(r, retryAfter * 1000));
+    }
+  }
+  ```
+</CodeGroup>
+
+## Access error details
+
+<CodeGroup>
+  ```python Python theme={null}
+  try:
+      client.spaces.create(name="")
+  except memvai.APIStatusError as e:
+      print(f"Status: {e.status_code}")
+      print(f"Message: {e.message}")
+      print(f"Headers: {e.response.headers}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  try {
+    await client.spaces.create({ name: '' });
+  } catch (error) {
+    if (error instanceof Memv.APIError) {
+      console.error(`Status: ${error.status}`);
+      console.error(`Message: ${error.message}`);
+      console.error(`Headers:`, error.headers);
+    }
+  }
+  ```
+</CodeGroup>
+
+## Retry logic
+
+### Custom retry with backoff
+
+<CodeGroup>
+  ```python Python theme={null}
+  import time
+
+  def retry_with_backoff(func, max_attempts=3, base_delay=1):
+      """Retry with exponential backoff."""
+      for attempt in range(max_attempts):
+          try:
+              return func()
+          except memvai.RateLimitError:
+              if attempt == max_attempts - 1:
+                  raise
+              delay = base_delay * (2 ** attempt)
+              print(f"Rate limited. Retrying in {delay}s...")
+              time.sleep(delay)
+          except memvai.APIError as e:
+              if attempt == max_attempts - 1:
+                  raise
+              print(f"Error: {e}. Retrying...")
+              time.sleep(base_delay)
+
+  # Usage
+  result = retry_with_backoff(lambda: client.spaces.list())
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function retryWithBackoff<T>(
+    fn: () => Promise<T>,
+    maxAttempts: number = 3,
+    baseDelay: number = 1000
+  ): Promise<T> {
+    for (let attempt = 0; attempt < maxAttempts; attempt++) {
+      try {
+        return await fn();
+      } catch (error) {
+        if (error instanceof Memv.RateLimitError) {
+          if (attempt === maxAttempts - 1) throw error;
+          const delay = baseDelay * Math.pow(2, attempt);
+          console.log(`Rate limited. Retrying in ${delay}ms...`);
+          await new Promise(r => setTimeout(r, delay));
+        } else if (error instanceof Memv.APIError) {
+          if (attempt === maxAttempts - 1) throw error;
+          console.log(`Error: ${error.message}. Retrying...`);
+          await new Promise(r => setTimeout(r, baseDelay));
+        } else {
+          throw error;
+        }
+      }
+    }
+    throw new Error('Max retries exceeded');
+  }
+
+  // Usage
+  const result = await retryWithBackoff(() => client.spaces.list());
+  ```
+</CodeGroup>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Always handle exceptions">
+    Never let exceptions propagate unchecked.
+  </Accordion>
+
+  <Accordion title="Be specific with exception handling">
+    Catch specific exceptions before general ones.
+  </Accordion>
+
+  <Accordion title="Log errors with context">
+    Always log errors with relevant context for debugging.
+  </Accordion>
+
+  <Accordion title="Implement retry logic for transient errors">
+    Retry operations that might fail temporarily.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Advanced usage" icon="code" href="/sdk/advanced">
+    Advanced SDK features
+  </Card>
+
+  <Card title="Installation" icon="download" href="/sdk/installation">
+    SDK installation and setup
+  </Card>
+</CardGroup>
+
+
+# Files
+Source: https://docs.memv.ai/sdk/files
+
+Upload and manage files
+
+Upload documents, images, videos, audio, and other content to Mem\[v] for automatic memory extraction.
+
+## Upload files
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  client = Memv()
+
+  # Upload a file
+  with open("document.pdf", "rb") as file:
+      response = client.upload.batch.create(
+          space_id="space_abc123",
+          files=[file]
+      )
+
+  print(f"Batch ID: {response.batch_id}")
+  ```
+
+  ```typescript TypeScript (Node.js) theme={null}
+  import Memv from 'memvai';
+  import fs from 'fs';
+
+  const client = new Memv();
+
+  // Upload a file
+  const file = fs.createReadStream('document.pdf');
+
+  const response = await client.upload.batch.create({
+    space_id: 'space_abc123',
+    files: [file],
+  });
+
+  console.log(`Batch ID: ${response.batch_id}`);
+  ```
+</CodeGroup>
+
+## Upload multiple files
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Upload multiple files
+  file_paths = ["doc1.pdf", "doc2.txt", "image.png"]
+
+  files = [open(path, "rb") for path in file_paths]
+
+  try:
+      response = client.upload.batch.create(
+          space_id="space_abc123",
+          files=files
+      )
+      print(f"Uploaded {len(files)} files - Batch ID: {response.batch_id}")
+  finally:
+      for file in files:
+          file.close()
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Upload multiple files
+  const files = [
+    fs.createReadStream('doc1.pdf'),
+    fs.createReadStream('doc2.txt'),
+    fs.createReadStream('image.png'),
+  ];
+
+  const response = await client.upload.batch.create({
+    space_id: 'space_abc123',
+    files,
+  });
+
+  console.log(`Uploaded ${files.length} files - Batch ID: ${response.batch_id}`);
+  ```
+</CodeGroup>
+
+## Supported file types
+
+<AccordionGroup>
+  <Accordion title="Documents">
+    PDF, Word, Text, Markdown, Rich Text
+  </Accordion>
+
+  <Accordion title="Spreadsheets">
+    Excel, CSV, Google Sheets
+  </Accordion>
+
+  <Accordion title="Presentations">
+    PowerPoint, Google Slides
+  </Accordion>
+
+  <Accordion title="Images">
+    JPEG, PNG, GIF, WebP
+  </Accordion>
+
+  <Accordion title="Videos">
+    MP4, WebM, MOV, AVI
+  </Accordion>
+
+  <Accordion title="Audio">
+    MP3, WAV, OGG, M4A
+  </Accordion>
+</AccordionGroup>
+
+## Monitor upload progress
+
+<CodeGroup>
+  ```python Python theme={null}
+  import time
+
+  # Upload file
+  with open("large_video.mp4", "rb") as file:
+      response = client.upload.batch.create(
+          space_id="space_abc123",
+          files=[file]
+      )
+
+  batch_id = response.batch_id
+
+  # Poll for completion
+  while True:
+      status = client.upload.batch.get_status(batch_id=batch_id)
+
+      print(f"Status: {status.status}")
+      print(f"Progress: {status.processed_files}/{status.total_files}")
+
+      if status.status == "completed":
+          print("Processing complete!")
+          break
+      elif status.status == "failed":
+          print("Processing failed")
+          break
+
+      time.sleep(2)  # Check every 2 seconds
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Upload file
+  const file = fs.createReadStream('large_video.mp4');
+  const { batch_id } = await client.upload.batch.create({
+    space_id: 'space_abc123',
+    files: [file],
+  });
+
+  // Poll for completion
+  while (true) {
+    const status = await client.upload.batch.getStatus(batch_id);
+
+    console.log(`Status: ${status.status}`);
+    console.log(`Progress: ${status.processed_files}/${status.total_files}`);
+
+    if (status.status === 'completed') {
+      console.log('Processing complete!');
+      break;
+    } else if (status.status === 'failed') {
+      throw new Error('Processing failed');
+    }
+
+    await new Promise(r => setTimeout(r, 2000)); // Check every 2 seconds
+  }
+  ```
+</CodeGroup>
+
+## List files
+
+<CodeGroup>
+  ```python Python theme={null}
+  # List all files in a space
+  response = client.files.list(space_id="space_abc123")
+
+  for file in response.files:
+      print(f"{file.name} - {file.size} bytes")
+      print(f"  Type: {file.mime_type}")
+      print(f"  Status: {file.processing_status}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // List all files in a space
+  const response = await client.files.list({
+    space_id: 'space_abc123',
+  });
+
+  for (const file of response.files) {
+    console.log(`${file.name} - ${file.size} bytes`);
+    console.log(`  Type: ${file.mime_type}`);
+    console.log(`  Status: ${file.processing_status}`);
+  }
+  ```
+</CodeGroup>
+
+## Download files
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Download a file
+  response = client.files.download(
+      file_id="file_xyz789",
+      space_id="space_abc123"
+  )
+
+  # Save to disk
+  with open("downloaded_file.pdf", "wb") as f:
+      f.write(response.content)
+  ```
+
+  ```typescript TypeScript (Node.js) theme={null}
+  // Download a file
+  const response = await client.files.download('file_xyz789', {
+    space_id: 'space_abc123',
+  });
+
+  // Save to disk
+  import fs from 'fs/promises';
+  await fs.writeFile('downloaded_file.pdf', response.content);
+  ```
+</CodeGroup>
+
+## Delete files
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Delete a file
+  response = client.files.delete(
+      file_id="file_xyz789",
+      space_id="space_abc123"
+  )
+
+  if response.success:
+      print("File deleted successfully")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Delete a file
+  const response = await client.files.delete({
+    file_id: 'file_xyz789',
+    space_id: 'space_abc123',
+  });
+
+  if (response.success) {
+    console.log('File deleted successfully');
+  }
+  ```
+</CodeGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Videos" icon="video" href="/sdk/videos">
+    Work with video files
+  </Card>
+
+  <Card title="Memories" icon="brain" href="/sdk/memories">
+    Search extracted memories
+  </Card>
+</CardGroup>
+
+
+# Knowledge graphs
+Source: https://docs.memv.ai/sdk/graph
+
+Build and query knowledge graphs from memories
+
+Knowledge graphs connect related entities, facts, and concepts. Mem\[v] automatically builds semantic graphs showing how people, topics, and events relate.
+
+## What are knowledge graphs?
+
+Knowledge graphs represent information as interconnected triplets:
+
+**Subject → Predicate → Object**
+
+Examples:
+
+* `Sarah Chen` → `works_at` → `Acme Corp`
+* `User` → `prefers` → `Dark mode`
+* `FastAPI` → `is_used_for` → `Building APIs`
+
+## Retrieve triplets
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  client = Memv()
+
+  # Retrieve triplets for a memory
+  triplets = client.graph.retrieve_triplets(
+      type="memory",
+      id="mem_xyz789"
+  )
+
+  # Print relationships
+  for triplet in triplets:
+      print(f"{triplet['subject']} → {triplet['predicate']} → {triplet['object']}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  // Retrieve triplets for a memory
+  const triplets = await client.graph.retrieveTriplets('mem_xyz789', {
+    type: 'memory',
+  });
+
+  // Print relationships
+  for (const triplet of triplets) {
+    console.log(`${triplet.subject} → ${triplet.predicate} → ${triplet.object}`);
+  }
+  ```
+</CodeGroup>
+
+## Building knowledge graphs
+
+Knowledge graphs are automatically built from your memories:
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Add memories with entities
+  client.memories.add(
+      space_id="space_abc123",
+      content="Alice Johnson is the CTO at TechCorp. She specializes in distributed systems."
+  )
+
+  client.memories.add(
+      space_id="space_abc123",
+      content="Alice Johnson uses Kubernetes for container orchestration."
+  )
+
+  # Mem[v] automatically creates triplets:
+  # - Alice Johnson → works_at → TechCorp
+  # - Alice Johnson → role → CTO
+  # - Alice Johnson → specializes_in → distributed systems
+  # - Alice Johnson → uses → Kubernetes
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Add memories with entities
+  await client.memories.add({
+    space_id: 'space_abc123',
+    content: 'Alice Johnson is the CTO at TechCorp. She specializes in distributed systems.',
+  });
+
+  await client.memories.add({
+    space_id: 'space_abc123',
+    content: 'Alice Johnson uses Kubernetes for container orchestration.',
+  });
+
+  // Mem[v] automatically creates triplets:
+  // - Alice Johnson → works_at → TechCorp
+  // - Alice Johnson → role → CTO
+  // - Alice Johnson → specializes_in → distributed systems
+  // - Alice Johnson → uses → Kubernetes
+  ```
+</CodeGroup>
+
+## Use cases
+
+<AccordionGroup>
+  <Accordion title="Build user profiles">
+    Create comprehensive user profiles from their interactions and preferences.
+  </Accordion>
+
+  <Accordion title="Map organizational knowledge">
+    Build company knowledge graphs with people, teams, and technologies.
+  </Accordion>
+
+  <Accordion title="Connect research findings">
+    Link research papers, concepts, and discoveries.
+  </Accordion>
+
+  <Accordion title="Track product features">
+    Map product requirements, dependencies, and technologies.
+  </Accordion>
+</AccordionGroup>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Use clear, factual statements">
+    Write memories as clear subject-predicate-object statements.
+
+    **Good:** `"Sarah Chen is the VP of Engineering at Acme Corp"`
+
+    **Less good:** `"Sarah is pretty high up in engineering I think"`
+  </Accordion>
+
+  <Accordion title="Be specific with relationships">
+    Use precise language for relationships.
+
+    **Good:** `"The API uses PostgreSQL for data storage"`
+
+    **Less good:** `"We have PostgreSQL"`
+  </Accordion>
+
+  <Accordion title="Avoid ambiguity">
+    Use full names and clear references.
+
+    **Good:** `"John Smith manages the DevOps team"`
+
+    **Less good:** `"John manages it"` (ambiguous)
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Memories" icon="brain" href="/sdk/memories">
+    Add more memories to build graphs
+  </Card>
+
+  <Card title="Advanced usage" icon="code" href="/sdk/advanced">
+    Advanced SDK features
+  </Card>
+</CardGroup>
+
+
+# Installation
+Source: https://docs.memv.ai/sdk/installation
+
+Install and configure the Mem[v] SDK
+
+The Mem\[v] SDK provides convenient access to the Mem\[v] REST API from Python and TypeScript/JavaScript applications.
+
+## Installation
+
+<CodeGroup>
+  ```bash Python theme={null}
+  pip install memvai
+  ```
+
+  ```bash npm theme={null}
+  npm install memvai
+  ```
+
+  ```bash pnpm theme={null}
+  pnpm add memvai
+  ```
+
+  ```bash yarn theme={null}
+  yarn add memvai
+  ```
+
+  ```bash bun theme={null}
+  bun add memvai
+  ```
+</CodeGroup>
+
+## Requirements
+
+<Tabs>
+  <Tab title="Python">
+    * Python 3.9 or higher
+    * Works with standard Python and async/await
+  </Tab>
+
+  <Tab title="TypeScript/JavaScript">
+    * TypeScript 4.9+ (optional, but recommended)
+    * Node.js 20 LTS or later
+    * Also supports: Deno, Bun, Cloudflare Workers, Vercel Edge Runtime
+  </Tab>
+</Tabs>
+
+## Authentication
+
+Get your API key from the [Mem\[v\] Dashboard](https://app.memv.ai/).
+
+### Set up your API key
+
+<CodeGroup>
+  ```bash Python theme={null}
+  export MEMV_API_KEY="your-api-key-here"
+  ```
+
+  ```bash TypeScript theme={null}
+  export MEMV_API_KEY="your-api-key-here"
+  ```
+</CodeGroup>
+
+Or use a `.env` file:
+
+```bash theme={null}
+MEMV_API_KEY=your-api-key-here
+```
+
+<Warning>
+  Never commit your API key to source control. Always use environment variables.
+</Warning>
+
+## Quick start
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  from memvai import Memv
+
+  # Initialize the client
+  client = Memv(
+      api_key=os.environ.get("MEMV_API_KEY"),
+  )
+
+  # List all spaces
+  response = client.spaces.list()
+  for space in response.spaces:
+      print(f"{space.name} ({space.id})")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  // Initialize the client
+  const client = new Memv({
+    apiKey: process.env.MEMV_API_KEY,
+  });
+
+  // List all spaces
+  const response = await client.spaces.list();
+  for (const space of response.spaces) {
+    console.log(`${space.name} (${space.id})`);
+  }
+  ```
+
+  ```javascript JavaScript (CommonJS) theme={null}
+  const Memv = require('memvai');
+
+  const client = new Memv({
+    apiKey: process.env.MEMV_API_KEY,
+  });
+
+  async function main() {
+    const response = await client.spaces.list();
+    for (const space of response.spaces) {
+      console.log(`${space.name} (${space.id})`);
+    }
+  }
+
+  main();
+  ```
+</CodeGroup>
+
+## Async usage
+
+<CodeGroup>
+  ```python Python theme={null}
+  import os
+  import asyncio
+  from memvai import AsyncMemv
+
+  client = AsyncMemv(
+      api_key=os.environ.get("MEMV_API_KEY"),
+  )
+
+  async def main():
+      response = await client.spaces.list()
+      for space in response.spaces:
+          print(f"{space.name} ({space.id})")
+
+  asyncio.run(main())
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  // All methods are async by default
+  const response = await client.spaces.list();
+  console.log(response.spaces);
+  ```
+</CodeGroup>
+
+## Type support
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+  from memvai.types import SpaceListResponse
+
+  client = Memv()
+
+  # Full type hints with Pydantic models
+  response: SpaceListResponse = client.spaces.list()
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv, { SpaceListResponse } from 'memvai';
+
+  const client = new Memv();
+
+  // Full TypeScript type definitions
+  const response: SpaceListResponse = await client.spaces.list();
+  ```
+</CodeGroup>
+
+## Configuration options
+
+### Timeouts
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  # Set default timeout (20 seconds)
+  client = Memv(timeout=20.0)
+
+  # Override per-request
+  client.with_options(timeout=5.0).spaces.list()
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  // Set default timeout (20 seconds)
+  const client = new Memv({
+    timeout: 20 * 1000, // milliseconds
+  });
+
+  // Override per-request
+  await client.spaces.list({
+    timeout: 5 * 1000,
+  });
+  ```
+</CodeGroup>
+
+Default timeout is 60 seconds.
+
+### Retries
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Configure retries (default is 2)
+  client = Memv(max_retries=5)
+
+  # Disable retries
+  client = Memv(max_retries=0)
+
+  # Override per-request
+  client.with_options(max_retries=3).spaces.list()
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Configure retries (default is 2)
+  const client = new Memv({
+    maxRetries: 5,
+  });
+
+  // Disable retries
+  const client = new Memv({
+    maxRetries: 0,
+  });
+
+  // Override per-request
+  await client.spaces.list({
+    maxRetries: 3,
+  });
+  ```
+</CodeGroup>
+
+Automatically retried errors:
+
+* Connection errors
+* 408 Request Timeout
+* 409 Conflict
+* 429 Rate Limit
+* 500+ Server errors
+
+### Logging
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Set via environment variable
+  import os
+  os.environ['MEMV_LOG'] = 'debug'  # or 'info'
+
+  # Or via client option
+  client = Memv(log_level='debug')
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Set via environment variable
+  process.env.MEMV_LOG = 'debug';  // or 'info' | 'warn' | 'error' | 'off'
+
+  // Or via client option
+  const client = new Memv({
+    logLevel: 'debug',
+  });
+  ```
+</CodeGroup>
+
+## Runtime-specific usage
+
+### Deno
+
+```typescript theme={null}
+import Memv from 'npm:memvai';
+
+const client = new Memv({
+  apiKey: Deno.env.get('MEMV_API_KEY'),
+});
+```
+
+### Bun
+
+```typescript theme={null}
+import Memv from 'memvai';
+
+const client = new Memv({
+  apiKey: process.env.MEMV_API_KEY,
+});
+```
+
+### Cloudflare Workers
+
+```typescript theme={null}
+import Memv from 'memvai';
+
+export default {
+  async fetch(request: Request, env: Env): Promise<Response> {
+    const client = new Memv({
+      apiKey: env.MEMV_API_KEY,
+    });
+
+    const spaces = await client.spaces.list();
+    return Response.json(spaces.spaces);
+  },
+};
+```
+
+## Working with response objects
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Extract the data you need
+  response = client.spaces.create(name="My Space")
+  space_id = response.space.id
+
+  # Or unpack the object
+  space = response.space
+  print(space.id, space.name)
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Extract the data you need
+  const response = await client.spaces.create({ name: 'My Space' });
+  const spaceId = response.space.id;
+
+  // Or destructure
+  const { space } = await client.spaces.create({ name: 'My Space' });
+  console.log(space.id, space.name);
+  ```
+</CodeGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Spaces" icon="folder" href="/sdk/spaces">
+    Create and manage memory spaces
+  </Card>
+
+  <Card title="Memories" icon="brain" href="/sdk/memories">
+    Add and search memories
+  </Card>
+
+  <Card title="Files" icon="file" href="/sdk/files">
+    Upload and manage files
+  </Card>
+
+  <Card title="Error handling" icon="triangle-exclamation" href="/sdk/error-handling">
+    Handle errors and exceptions
+  </Card>
+</CardGroup>
+
+
+# Memories
+Source: https://docs.memv.ai/sdk/memories
+
+Add and search memories
+
+Memories are structured pieces of information extracted from your content. Mem\[v] automatically processes text, files, videos, and other content to create searchable memories.
+
+## Add a memory
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  client = Memv()
+
+  # Add a simple memory
+  response = client.memories.add(
+      space_id="space_abc123",
+      content="The user prefers dark mode and uses Python for development",
+      metadata={
+          "source": "preferences",
+          "user_id": "user_123"
+      }
+  )
+
+  print(f"Memory ID: {response.memory_id}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  // Add a simple memory
+  const response = await client.memories.add({
+    space_id: 'space_abc123',
+    content: 'The user prefers dark mode and uses TypeScript for development',
+    metadata: {
+      source: 'preferences',
+      user_id: 'user_123',
+    },
+  });
+
+  console.log(`Memory ID: ${response.memory_id}`);
+  ```
+</CodeGroup>
+
+### Add conversation memories
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Add conversation memory
+  response = client.memories.add(
+      space_id="space_abc123",
+      content="User asked about implementing authentication in FastAPI. Prefers JWT tokens.",
+      metadata={
+          "type": "conversation",
+          "topic": "authentication",
+          "timestamp": "2026-02-14T10:30:00Z"
+      }
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Add conversation memory
+  const response = await client.memories.add({
+    space_id: 'space_abc123',
+    content: 'User asked about implementing authentication in Next.js. Prefers NextAuth.js.',
+    metadata: {
+      type: 'conversation',
+      topic: 'authentication',
+      timestamp: new Date().toISOString(),
+    },
+  });
+  ```
+</CodeGroup>
+
+### Add structured data
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Add structured memory with entities
+  client.memories.add(
+      space_id="space_abc123",
+      content="Sarah Chen is the VP of Engineering at Acme Corp. She uses React and TypeScript.",
+      metadata={
+          "entities": ["Sarah Chen", "Acme Corp", "React", "TypeScript"],
+          "type": "profile"
+      }
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Add structured memory with entities
+  await client.memories.add({
+    space_id: 'space_abc123',
+    content: 'Sarah Chen is the VP of Engineering at Acme Corp. She uses React and TypeScript.',
+    metadata: {
+      entities: ['Sarah Chen', 'Acme Corp', 'React', 'TypeScript'],
+      type: 'profile',
+    },
+  });
+  ```
+</CodeGroup>
+
+## Search memories
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Search for memories
+  results = client.memories.search(
+      space_id="space_abc123",
+      query="What programming languages does the user prefer?",
+      limit=10
+  )
+
+  # Process results
+  for memory in results.memories:
+      print(f"Score: {memory.score}")
+      print(f"Content: {memory.content}")
+      print(f"Metadata: {memory.metadata}")
+      print("---")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Search for memories
+  const results = await client.memories.search({
+    space_id: 'space_abc123',
+    query: 'What technologies does the user prefer?',
+    limit: 10,
+  });
+
+  // Process results
+  for (const memory of results.memories) {
+    console.log(`Score: ${memory.score}`);
+    console.log(`Content: ${memory.content}`);
+    console.log(`Metadata:`, memory.metadata);
+    console.log('---');
+  }
+  ```
+</CodeGroup>
+
+### Search with filters
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Search with metadata filters
+  results = client.memories.search(
+      space_id="space_abc123",
+      query="authentication",
+      filters={
+          "type": "conversation",
+          "topic": "authentication"
+      },
+      limit=5
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Search with metadata filters
+  const results = await client.memories.search({
+    space_id: 'space_abc123',
+    query: 'authentication',
+    filters: {
+      type: 'conversation',
+      topic: 'authentication',
+    },
+    limit: 5,
+  });
+  ```
+</CodeGroup>
+
+## Semantic search
+
+Mem\[v] uses semantic search to find relevant memories even when exact keywords don't match:
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Query: "How does the user like their UI?"
+  # Will match: "The user prefers dark mode"
+  results = client.memories.search(
+      space_id="space_abc123",
+      query="How does the user like their UI?"
+  )
+
+  for memory in results.memories:
+      print(memory.content)
+      # Output: "The user prefers dark mode and uses Python for development"
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Query: "How does the user like their UI?"
+  // Will match: "The user prefers dark mode"
+  const results = await client.memories.search({
+    space_id: 'space_abc123',
+    query: 'How does the user like their UI?',
+  });
+
+  for (const memory of results.memories) {
+    console.log(memory.content);
+    // Output: "The user prefers dark mode and uses TypeScript for development"
+  }
+  ```
+</CodeGroup>
+
+## Common patterns
+
+### Store user preferences
+
+<CodeGroup>
+  ```python Python theme={null}
+  def save_user_preference(user_id: str, preference: str):
+      return client.memories.add(
+          space_id=f"user_{user_id}_prefs",
+          content=preference,
+          metadata={
+              "user_id": user_id,
+              "type": "preference",
+              "timestamp": datetime.now().isoformat()
+          }
+      )
+
+  # Usage
+  save_user_preference("user_123", "Prefers concise responses")
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function saveUserPreference(
+    userId: string,
+    preference: string
+  ): Promise<void> {
+    await client.memories.add({
+      space_id: `user_${userId}_prefs`,
+      content: preference,
+      metadata: {
+        user_id: userId,
+        type: 'preference',
+        timestamp: new Date().toISOString(),
+      },
+    });
+  }
+
+  // Usage
+  await saveUserPreference('user_123', 'Prefers concise responses');
+  ```
+</CodeGroup>
+
+### Build conversation history
+
+<CodeGroup>
+  ```python Python theme={null}
+  def add_conversation_turn(space_id: str, role: str, message: str):
+      return client.memories.add(
+          space_id=space_id,
+          content=f"{role}: {message}",
+          metadata={
+              "role": role,
+              "timestamp": datetime.now().isoformat()
+          }
+      )
+
+  # Usage
+  add_conversation_turn("conv_123", "user", "How do I deploy a FastAPI app?")
+  add_conversation_turn("conv_123", "assistant", "You can deploy FastAPI using...")
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function addConversationTurn(
+    spaceId: string,
+    role: 'user' | 'assistant',
+    message: string
+  ): Promise<void> {
+    await client.memories.add({
+      space_id: spaceId,
+      content: `${role}: ${message}`,
+      metadata: {
+        role,
+        timestamp: new Date().toISOString(),
+      },
+    });
+  }
+
+  // Usage
+  await addConversationTurn('conv_123', 'user', 'How do I deploy a Next.js app?');
+  await addConversationTurn('conv_123', 'assistant', 'You can deploy Next.js using...');
+  ```
+</CodeGroup>
+
+### Get relevant context for AI
+
+<CodeGroup>
+  ```python Python theme={null}
+  def get_relevant_context(space_id: str, query: str, limit: int = 5) -> str:
+      """Get relevant memories as context string."""
+      results = client.memories.search(
+          space_id=space_id,
+          query=query,
+          limit=limit
+      )
+
+      return "\n\n".join([m.content for m in results.memories])
+
+  # Usage in a chatbot
+  user_query = "What are the user's preferences?"
+  context = get_relevant_context("user_space", user_query)
+
+  # Pass context to your LLM
+  response = llm.generate(
+      prompt=f"Context: {context}\n\nUser: {user_query}"
+  )
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function getRelevantContext(
+    spaceId: string,
+    query: string,
+    limit: number = 5
+  ): Promise<string> {
+    const results = await client.memories.search({
+      space_id: spaceId,
+      query,
+      limit,
+    });
+
+    return results.memories
+      .map(m => m.content)
+      .join('\n\n');
+  }
+
+  // Usage in a chatbot
+  const userQuery = "What are the user's preferences?";
+  const context = await getRelevantContext('user_space', userQuery);
+
+  // Pass context to your LLM
+  const response = await llm.generate({
+    prompt: `Context: ${context}\n\nUser: ${userQuery}`,
+  });
+  ```
+</CodeGroup>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Add context with metadata">
+    Include relevant metadata to make memories more searchable:
+
+    <CodeGroup>
+      ```python Python theme={null}
+      client.memories.add(
+          space_id="space_abc123",
+          content="User reported bug in login flow",
+          metadata={
+              "type": "bug_report",
+              "severity": "high",
+              "feature": "authentication",
+              "reported_by": "user_123",
+              "timestamp": datetime.now().isoformat()
+          }
+      )
+      ```
+
+      ```typescript TypeScript theme={null}
+      await client.memories.add({
+        space_id: 'space_abc123',
+        content: 'User reported bug in login flow',
+        metadata: {
+          type: 'bug_report',
+          severity: 'high',
+          feature: 'authentication',
+          reported_by: 'user_123',
+          timestamp: new Date().toISOString(),
+        },
+      });
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Use clear, descriptive content">
+    Write memory content that is self-contained and easy to understand.
+
+    **Good:** `"User prefers email notifications for important updates only"`
+
+    **Less good:** `"email - important only"`
+  </Accordion>
+
+  <Accordion title="Search with specific queries">
+    More specific queries return more relevant results.
+
+    **Specific:** `"What is the user's preferred framework for backend development?"`
+
+    **Vague:** `"framework"`
+  </Accordion>
+</AccordionGroup>
+
+## Error handling
+
+<CodeGroup>
+  ```python Python theme={null}
+  import memvai
+
+  try:
+      response = client.memories.add(
+          space_id="space_abc123",
+          content="Important user preference"
+      )
+      print(f"Created memory: {response.memory_id}")
+  except memvai.NotFoundError:
+      print("Space not found")
+  except memvai.UnprocessableEntityError as e:
+      print(f"Invalid content: {e.message}")
+  except memvai.APIError as e:
+      print(f"API error: {e}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  try {
+    const response = await client.memories.add({
+      space_id: 'space_abc123',
+      content: 'Important user preference',
+    });
+    console.log(`Created memory: ${response.memory_id}`);
+  } catch (error) {
+    if (error instanceof Memv.NotFoundError) {
+      console.error('Space not found');
+    } else if (error instanceof Memv.UnprocessableEntityError) {
+      console.error('Invalid content:', error.message);
+    } else if (error instanceof Memv.APIError) {
+      console.error('API error:', error.status, error.message);
+    }
+  }
+  ```
+</CodeGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Files" icon="file" href="/sdk/files">
+    Upload files to extract memories
+  </Card>
+
+  <Card title="Knowledge graphs" icon="diagram-project" href="/sdk/graph">
+    Build knowledge graphs from memories
+  </Card>
+</CardGroup>
+
+
+# SDK Overview
+Source: https://docs.memv.ai/sdk/overview
+
+Official SDKs for integrating Mem[v] into your applications
+
+Mem\[v] provides official SDKs for Python and TypeScript/JavaScript to integrate long-term memory capabilities into your AI applications.
+
+## Available SDKs
+
+<CardGroup>
+  <Card title="Python SDK" icon="python" href="/sdk/installation">
+    Official Python SDK (v0.4.1) - Production ready
+  </Card>
+
+  <Card title="TypeScript/JavaScript SDK" icon="js" href="/sdk/installation">
+    Official TypeScript/JS SDK (v0.4.0) - Production ready
+  </Card>
+
+  <Card title="Go" icon="golang">
+    Coming soon - Join the waitlist
+  </Card>
+
+  <Card title="Rust" icon="rust">
+    Planned - Request early access
+  </Card>
+</CardGroup>
+
+## Why use an SDK?
+
+<AccordionGroup>
+  <Accordion title="Type-safe development">
+    Get full type definitions and IDE autocomplete for all API methods, parameters, and responses.
+  </Accordion>
+
+  <Accordion title="Built-in error handling">
+    Comprehensive exception types for different error scenarios with automatic retries for transient failures.
+  </Accordion>
+
+  <Accordion title="Async support">
+    Native async/await support for efficient concurrent operations in both Python and TypeScript.
+  </Accordion>
+
+  <Accordion title="Simplified authentication">
+    Easy API key management with environment variable support.
+  </Accordion>
+
+  <Accordion title="Advanced features">
+    Streaming responses, custom HTTP clients, middleware support, and more.
+  </Accordion>
+</AccordionGroup>
+
+## Quick examples
+
+<Tabs>
+  <Tab title="Python">
+    ```python theme={null}
+    from memvai import Memv
+
+    client = Memv()
+
+    # Create a space
+    response = client.spaces.create(name="AI Assistant")
+    space_id = response.space.id
+
+    # Add a memory
+    client.memories.add(
+        space_id=space_id,
+        content="User prefers technical explanations"
+    )
+
+    # Search memories
+    results = client.memories.search(
+        space_id=space_id,
+        query="How does the user like explanations?"
+    )
+
+    for memory in results.memories:
+        print(memory.content)
+    ```
+  </Tab>
+
+  <Tab title="TypeScript">
+    ```typescript theme={null}
+    import Memv from 'memvai';
+
+    const client = new Memv();
+
+    // Create a space
+    const response = await client.spaces.create({ name: 'AI Assistant' });
+    const spaceId = response.space.id;
+
+    // Add a memory
+    await client.memories.add({
+      space_id: spaceId,
+      content: 'User prefers technical explanations',
+    });
+
+    // Search memories
+    const results = await client.memories.search({
+      space_id: spaceId,
+      query: 'How does the user like explanations?',
+    });
+
+    for (const memory of results.memories) {
+      console.log(memory.content);
+    }
+    ```
+  </Tab>
+</Tabs>
+
+## Key features
+
+* **Python 3.9+** and **TypeScript 4.9+** support
+* **Multiple runtimes**: Node.js, Deno, Bun, Cloudflare Workers, Vercel Edge
+* **Full type safety**: Type annotations with Pydantic (Python) and TypeScript
+* **Async support**: Async/await in both languages
+* **Automatic retries**: Built-in retry logic with exponential backoff
+* **Error handling**: Comprehensive exception types
+* **File uploads**: Support for all file types
+
+<Card title="View SDK documentation" icon="arrow-right" href="/sdk/installation">
+  Complete SDK documentation with language tabs
+</Card>
+
+## REST API
+
+Prefer to use the REST API directly? View the API reference:
+
+<Card title="REST API Reference" icon="code" href="/api-reference/introduction">
+  Complete REST API documentation with OpenAPI spec
+</Card>
+
+## Community SDKs
+
+Building an SDK for Mem\[v]? Let us know! We'd love to feature community-built SDKs here.
+
+## SDK Support
+
+<CardGroup>
+  <Card title="GitHub (Python)" icon="github" href="https://github.com/mem-v/memv-python">
+    Python SDK repository
+  </Card>
+
+  <Card title="GitHub (TypeScript)" icon="github" href="https://github.com/mem-v/memv-typescript">
+    TypeScript SDK repository
+  </Card>
+
+  <Card title="Discord Community" icon="discord" href="https://discord.gg/memv">
+    Get help from the community
+  </Card>
+
+  <Card title="Email Support" icon="envelope" href="mailto:support@memv.ai">
+    Contact the support team
+  </Card>
+</CardGroup>
+
+## Contributing
+
+Want to contribute to the SDKs? We welcome contributions!
+
+* [Python SDK Contributing Guide](https://github.com/mem-v/memv-python/blob/main/CONTRIBUTING.md)
+* [TypeScript SDK Contributing Guide](https://github.com/mem-v/memv-typescript/blob/main/CONTRIBUTING.md)
+
+## Next steps
+
+<CardGroup>
+  <Card title="Quickstart" icon="rocket" href="/quickstart">
+    Get started in minutes
+  </Card>
+
+  <Card title="Installation" icon="download" href="/sdk/installation">
+    Install the SDK
+  </Card>
+
+  <Card title="Core Concepts" icon="lightbulb" href="/core-concepts/how-it-works">
+    Learn how Mem\[v] works
+  </Card>
+</CardGroup>
+
+
+# Spaces
+Source: https://docs.memv.ai/sdk/spaces
+
+Create and manage memory spaces
+
+Spaces are isolated containers for organizing memories. Each space has its own set of memories, files, and configuration.
+
+## Create a space
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  client = Memv()
+
+  # Create a new space
+  response = client.spaces.create(
+      name="Personal Assistant",
+      description="Memories for my AI assistant"
+  )
+
+  space = response.space
+  print(f"Created space: {space.id}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  // Create a new space
+  const response = await client.spaces.create({
+    name: 'Personal Assistant',
+    description: 'Memories for my AI assistant',
+  });
+
+  const { space } = response;
+  console.log(`Created space: ${space.id}`);
+  ```
+</CodeGroup>
+
+### Response structure
+
+The response contains a `space` object with the following fields:
+
+* `id` - Unique space identifier
+* `name` - Space name
+* `description` - Space description
+* `created_at` - Creation timestamp
+* `updated_at` - Last update timestamp
+
+## List spaces
+
+<CodeGroup>
+  ```python Python theme={null}
+  # List all spaces
+  response = client.spaces.list()
+
+  for space in response.spaces:
+      print(f"{space.name} ({space.id})")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // List all spaces
+  const response = await client.spaces.list();
+
+  for (const space of response.spaces) {
+    console.log(`${space.name} (${space.id})`);
+  }
+  ```
+</CodeGroup>
+
+## Retrieve a space
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Get space by ID
+  response = client.spaces.retrieve(space_id="space_abc123")
+
+  space = response.space
+  print(f"Name: {space.name}")
+  print(f"Description: {space.description}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Get space by ID
+  const response = await client.spaces.retrieve('space_abc123');
+
+  const { space } = response;
+  console.log(`Name: ${space.name}`);
+  console.log(`Description: ${space.description}`);
+  ```
+</CodeGroup>
+
+## Update a space
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Update space details
+  response = client.spaces.update(
+      space_id="space_abc123",
+      name="Updated Name",
+      description="Updated description"
+  )
+
+  space = response.space
+  print(f"Updated: {space.name}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Update space details
+  const response = await client.spaces.update({
+    space_id: 'space_abc123',
+    name: 'Updated Name',
+    description: 'Updated description',
+  });
+
+  console.log(`Updated: ${response.space.name}`);
+  ```
+</CodeGroup>
+
+## Delete a space
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Delete a space
+  response = client.spaces.delete(space_id="space_abc123")
+
+  if response.success:
+      print("Space deleted successfully")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Delete a space
+  const response = await client.spaces.delete({
+    space_id: 'space_abc123',
+  });
+
+  if (response.success) {
+    console.log('Space deleted successfully');
+  }
+  ```
+</CodeGroup>
+
+<Warning>
+  Deleting a space permanently removes all memories, files, and data associated with it. This action cannot be undone.
+</Warning>
+
+## Get space statistics
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Get space stats
+  stats = client.spaces.get_stats()
+
+  print(f"Total memories: {stats.total_memories}")
+  print(f"Total files: {stats.total_files}")
+  print(f"Storage used: {stats.storage_bytes} bytes")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Get space stats
+  const stats = await client.spaces.getStats();
+
+  console.log(`Total memories: ${stats.total_memories}`);
+  console.log(`Total files: ${stats.total_files}`);
+  console.log(`Storage used: ${stats.storage_bytes} bytes`);
+  ```
+</CodeGroup>
+
+## Common patterns
+
+### Create space if not exists
+
+<CodeGroup>
+  ```python Python theme={null}
+  def get_or_create_space(client: Memv, name: str) -> str:
+      """Get existing space by name or create new one."""
+      # List existing spaces
+      response = client.spaces.list()
+
+      # Find by name
+      for space in response.spaces:
+          if space.name == name:
+              return space.id
+
+      # Create new space
+      response = client.spaces.create(name=name)
+      return response.space.id
+
+  # Usage
+  space_id = get_or_create_space(client, "My App")
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function getOrCreateSpace(
+    client: Memv,
+    name: string
+  ): Promise<string> {
+    // List existing spaces
+    const { spaces } = await client.spaces.list();
+
+    // Find by name
+    const existing = spaces.find(s => s.name === name);
+    if (existing) {
+      return existing.id;
+    }
+
+    // Create new space
+    const { space } = await client.spaces.create({ name });
+    return space.id;
+  }
+
+  // Usage
+  const spaceId = await getOrCreateSpace(client, 'My App');
+  ```
+</CodeGroup>
+
+### Batch operations
+
+<CodeGroup>
+  ```python Python theme={null}
+  def create_multiple_spaces(names: list[str]) -> list[str]:
+      """Create multiple spaces."""
+      space_ids = []
+
+      for name in names:
+          response = client.spaces.create(name=name)
+          space_ids.append(response.space.id)
+
+      return space_ids
+
+  # Usage
+  space_ids = create_multiple_spaces([
+      "User Preferences",
+      "Chat History",
+      "Knowledge Base"
+  ])
+  ```
+
+  ```typescript TypeScript theme={null}
+  async function createMultipleSpaces(
+    names: string[]
+  ): Promise<string[]> {
+    const promises = names.map(name =>
+      client.spaces.create({ name })
+    );
+
+    const responses = await Promise.all(promises);
+    return responses.map(r => r.space.id);
+  }
+
+  // Usage
+  const spaceIds = await createMultipleSpaces([
+    'User Preferences',
+    'Chat History',
+    'Knowledge Base',
+  ]);
+  ```
+</CodeGroup>
+
+## Best practices
+
+<AccordionGroup>
+  <Accordion title="Organize by use case">
+    Create separate spaces for different use cases or users:
+
+    <CodeGroup>
+      ```python Python theme={null}
+      # User-specific spaces
+      user_space = client.spaces.create(
+          name=f"User {user_id} - Preferences",
+          description="User preferences and settings"
+      )
+
+      # Feature-specific spaces
+      chat_space = client.spaces.create(
+          name="Chat History",
+          description="Conversation memories"
+      )
+      ```
+
+      ```typescript TypeScript theme={null}
+      // User-specific spaces
+      const userSpace = await client.spaces.create({
+        name: `User ${userId} - Preferences`,
+        description: 'User preferences and settings',
+      });
+
+      // Feature-specific spaces
+      const chatSpace = await client.spaces.create({
+        name: 'Chat History',
+        description: 'Conversation memories',
+      });
+      ```
+    </CodeGroup>
+  </Accordion>
+
+  <Accordion title="Use descriptive names">
+    Give spaces clear, descriptive names that indicate their purpose.
+  </Accordion>
+
+  <Accordion title="Clean up unused spaces">
+    Regularly delete spaces that are no longer needed to manage costs.
+  </Accordion>
+</AccordionGroup>
+
+## Error handling
+
+<CodeGroup>
+  ```python Python theme={null}
+  import memvai
+  from memvai import Memv
+
+  client = Memv()
+
+  try:
+      response = client.spaces.create(name="My Space")
+      space_id = response.space.id
+      print(f"Created: {space_id}")
+  except memvai.AuthenticationError:
+      print("Invalid API key")
+  except memvai.BadRequestError as e:
+      print(f"Invalid request: {e.message}")
+  except memvai.APIError as e:
+      print(f"API error: {e}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+
+  const client = new Memv();
+
+  try {
+    const response = await client.spaces.create({
+      name: 'My Space',
+    });
+    console.log(`Created: ${response.space.id}`);
+  } catch (error) {
+    if (error instanceof Memv.AuthenticationError) {
+      console.error('Invalid API key');
+    } else if (error instanceof Memv.BadRequestError) {
+      console.error('Invalid request:', error.message);
+    } else if (error instanceof Memv.APIError) {
+      console.error('API error:', error.status, error.message);
+    }
+  }
+  ```
+</CodeGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Memories" icon="brain" href="/sdk/memories">
+    Add memories to your space
+  </Card>
+
+  <Card title="Files" icon="file" href="/sdk/files">
+    Upload files to your space
+  </Card>
+</CardGroup>
+
+
+# Videos
+Source: https://docs.memv.ai/sdk/videos
+
+Work with video files and extract multimodal memories
+
+Videos are a core focus of Mem\[v]. Upload video files to extract memories from spoken dialogue, visual content, on-screen text, and temporal context.
+
+## Why videos matter
+
+Video is the superset of all multimedia:
+
+* **Audio/Transcripts**: Spoken language and dialogue
+* **Visual Information**: Scenes, objects, actions, people
+* **Text**: Captions, subtitles, on-screen text
+* **Temporal Dynamics**: How information unfolds over time
+
+## Upload videos
+
+<CodeGroup>
+  ```python Python theme={null}
+  from memvai import Memv
+
+  client = Memv()
+
+  # Upload a video file
+  with open("meeting_recording.mp4", "rb") as video:
+      response = client.upload.batch.create(
+          space_id="space_abc123",
+          files=[video]
+      )
+
+  print(f"Batch ID: {response.batch_id}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  import Memv from 'memvai';
+  import fs from 'fs';
+
+  const client = new Memv();
+
+  // Upload a video file
+  const video = fs.createReadStream('meeting_recording.mp4');
+
+  const response = await client.upload.batch.create({
+    space_id: 'space_abc123',
+    files: [video],
+  });
+
+  console.log(`Batch ID: ${response.batch_id}`);
+  ```
+</CodeGroup>
+
+## Monitor processing
+
+<CodeGroup>
+  ```python Python theme={null}
+  import time
+
+  # Upload video
+  with open("lecture.mp4", "rb") as video:
+      response = client.upload.batch.create(
+          space_id="space_abc123",
+          files=[video]
+      )
+
+  batch_id = response.batch_id
+
+  # Poll for completion
+  while True:
+      status = client.upload.batch.get_status(batch_id=batch_id)
+
+      if status.status == "completed":
+          print("Video processing complete!")
+          break
+
+      time.sleep(10)  # Check every 10 seconds
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Upload video
+  const video = fs.createReadStream('lecture.mp4');
+  const { batch_id } = await client.upload.batch.create({
+    space_id: 'space_abc123',
+    files: [video],
+  });
+
+  // Poll for completion
+  while (true) {
+    const status = await client.upload.batch.getStatus(batch_id);
+
+    if (status.status === 'completed') {
+      console.log('Video processing complete!');
+      break;
+    }
+
+    await new Promise(r => setTimeout(r, 10000)); // Check every 10 seconds
+  }
+  ```
+</CodeGroup>
+
+## List videos
+
+<CodeGroup>
+  ```python Python theme={null}
+  # List all videos
+  response = client.videos.list(space_id="space_abc123")
+
+  for video in response.videos:
+      print(f"{video.name}")
+      print(f"  Duration: {video.duration_seconds}s")
+      print(f"  Size: {video.size_bytes / 1024 / 1024:.2f} MB")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // List all videos
+  const response = await client.videos.list({
+    space_id: 'space_abc123',
+  });
+
+  for (const video of response.videos) {
+    console.log(`${video.name}`);
+    console.log(`  Duration: ${video.duration_seconds}s`);
+    console.log(`  Size: ${(video.size_bytes / 1024 / 1024).toFixed(2)} MB`);
+  }
+  ```
+</CodeGroup>
+
+## Search video memories
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Search for content in videos
+  results = client.memories.search(
+      space_id="space_abc123",
+      query="What did they say about the product roadmap?"
+  )
+
+  for memory in results.memories:
+      print(f"Content: {memory.content}")
+      print(f"Timestamp: {memory.metadata.get('timestamp')}")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Search for content in videos
+  const results = await client.memories.search({
+    space_id: 'space_abc123',
+    query: 'What did they say about the product roadmap?',
+  });
+
+  for (const memory of results.memories) {
+    console.log(`Content: ${memory.content}`);
+    console.log(`Timestamp: ${memory.metadata?.timestamp}`);
+  }
+  ```
+</CodeGroup>
+
+## Delete videos
+
+<CodeGroup>
+  ```python Python theme={null}
+  # Delete a video
+  response = client.videos.delete(
+      video_id="video_xyz789",
+      space_id="space_abc123"
+  )
+
+  if response.success:
+      print("Video deleted successfully")
+  ```
+
+  ```typescript TypeScript theme={null}
+  // Delete a video
+  const response = await client.videos.delete({
+    video_id: 'video_xyz789',
+    space_id: 'space_abc123',
+  });
+
+  if (response.success) {
+    console.log('Video deleted successfully');
+  }
+  ```
+</CodeGroup>
+
+<Warning>
+  Deleting a video also removes all memories extracted from it.
+</Warning>
+
+## Use cases
+
+<AccordionGroup>
+  <Accordion title="Meeting recordings">
+    Extract action items, decisions, and key discussions from team meetings.
+  </Accordion>
+
+  <Accordion title="Educational content">
+    Extract knowledge from lectures and tutorials for searchable learning materials.
+  </Accordion>
+
+  <Accordion title="Customer support">
+    Analyze support interactions to identify common issues and solutions.
+  </Accordion>
+
+  <Accordion title="Video tutorials">
+    Build searchable knowledge bases from how-to videos.
+  </Accordion>
+</AccordionGroup>
+
+## Next steps
+
+<CardGroup>
+  <Card title="Memories" icon="brain" href="/sdk/memories">
+    Search video memories
+  </Card>
+
+  <Card title="Knowledge graphs" icon="diagram-project" href="/sdk/graph">
+    Build graphs from video content
+  </Card>
+</CardGroup>
+
+
+# Security
+Source: https://docs.memv.ai/support/security
+
+Comprehensive overview of Mem[v]'s security architecture, practices, and compliance framework
+
+Mem\[v] implements enterprise-grade security controls across infrastructure, operations, and data handling to protect your sensitive information and maintain the highest standards of security and privacy.
+
+***
+
+## Governance Framework
+
+Mem\[v] establishes comprehensive security policies, implements technical and administrative controls, continuously monitors compliance, and provides transparent evidence to third-party auditors.
+
+Our security governance is built on four foundational principles:
+
+<CardGroup>
+  <Card title="Least Privilege Access" icon="key">
+    System and data access is restricted exclusively to authorized personnel with documented business requirements. Role-based access control ensures users receive only the minimum permissions necessary for their responsibilities.
+  </Card>
+
+  <Card title="Consistent Controls" icon="shield-halved">
+    Security measures are uniformly applied across all systems, environments, and organizational units. No exceptions are granted without documented risk assessment and executive approval.
+  </Card>
+
+  <Card title="Defense in Depth" icon="layer-group">
+    Multiple overlapping security layers protect against threats at every level. If one control fails, additional safeguards prevent compromise and contain potential damage.
+  </Card>
+
+  <Card title="Continuous Improvement" icon="arrows-spin">
+    Security controls evolve iteratively through regular assessments, threat modeling, and incident analysis. Effectiveness increases while operational friction decreases over time.
+  </Card>
+</CardGroup>
+
+***
+
+## Data Protection
+
+### Encryption at Rest
+
+All data stored within Mem\[v] infrastructure is encrypted using industry-standard algorithms:
+
+* **Database encryption**: AES-256 encryption applied to all production datastores
+* **Row-level encryption**: Additional encryption layer for tables containing sensitive personal information
+* **Key management**: Encryption keys are rotated regularly and stored in dedicated key management services with strict access controls
+
+### Encryption in Transit
+
+Network communications are secured end-to-end:
+
+* **TLS 1.3+**: All data transmitted over networks uses TLS 1.3 or higher protocols
+* **Certificate management**: Automated certificate provisioning and renewal with industry-standard certificate authorities
+* **Perfect forward secrecy**: Session keys are ephemeral and cannot be compromised retroactively
+
+### Data Backup and Recovery
+
+Comprehensive backup strategy ensures business continuity:
+
+* **Point-in-time backups**: Continuous backup with granular recovery capabilities
+* **30-day retention**: All production data backed up and retained for 30 days
+* **Geographic replication**: Backups replicated across multiple regions for disaster recovery resilience
+* **Tested recovery procedures**: Regular disaster recovery drills validate backup integrity and restoration processes
+
+***
+
+## Operational Security
+
+### Security Education and Awareness
+
+Security is embedded in organizational culture through comprehensive training:
+
+* **Onboarding training**: All new employees complete security fundamentals training before system access
+* **Annual refreshers**: Mandatory yearly security training covering emerging threats and updated policies
+* **Threat briefings**: Timely communication of critical security incidents, vulnerabilities, and required actions
+* **Phishing simulations**: Regular testing and training to improve recognition of social engineering attacks
+
+### Identity and Access Management
+
+Rigorous controls govern system access throughout the employee lifecycle:
+
+* **Role-based provisioning**: Access granted based on job function with automated approval workflows
+* **Automatic deprovisioning**: Immediate revocation of all access upon employment termination
+* **Multi-factor authentication**: Required for all employees across all company applications without exception
+* **Regular access reviews**: Quarterly audits ensure access remains appropriate and necessary
+* **Privileged access management**: Administrative access requires additional approval and is time-limited with full audit logging
+
+### Infrastructure Security
+
+Production systems are hardened and monitored:
+
+* **Network segmentation**: Isolated networks for production, staging, and corporate environments
+* **Intrusion detection**: Real-time monitoring for suspicious activity with automated alerting
+* **Vulnerability management**: Regular scanning and patching of all systems with defined SLAs
+* **Security logging**: Comprehensive audit logs retained and monitored for anomalies
+
+***
+
+## Compliance and Certifications
+
+Mem\[v] maintains compliance with industry standards and regulations:
+
+<CardGroup>
+  <Card title="HIPAA Compliance" icon="hospital">
+    Built for healthcare deployments with full HIPAA compliance controls, including Business Associate Agreements (BAA) and comprehensive audit trails.
+  </Card>
+
+  <Card title="Enterprise-Grade Security" icon="building-shield">
+    Role-based access control, full audit trails, and enterprise security features meet the requirements of Fortune 500 organizations.
+  </Card>
+
+  <Card title="Data Residency" icon="globe">
+    Deploy Mem\[v] infrastructure in your required geographic regions and cloud environments to meet data sovereignty requirements.
+  </Card>
+
+  <Card title="Audit Trails" icon="file-shield">
+    Every memory operation is logged with user, timestamp, and purpose for comprehensive compliance and forensic analysis.
+  </Card>
+</CardGroup>
+
+***
+
+## Responsible Disclosure
+
+Mem\[v] values the security research community and welcomes responsible disclosure of potential vulnerabilities.
+
+### Reporting a Security Vulnerability
+
+If you discover a security vulnerability in Mem\[v] systems or services:
+
+<Steps>
+  <Step title="Contact Us">
+    Email security details to **[hello@memv.ai](mailto:hello@memv.ai)** with "Security Vulnerability" in the subject line
+  </Step>
+
+  <Step title="Provide Details">
+    Include steps to reproduce, potential impact, and any proof-of-concept code or screenshots
+  </Step>
+
+  <Step title="Allow Response Time">
+    Give us reasonable time to investigate and address the issue before public disclosure
+  </Step>
+
+  <Step title="Coordinated Disclosure">
+    Work with our security team on responsible disclosure timing that protects users
+  </Step>
+</Steps>
+
+**What to expect:**
+
+* Acknowledgment of your report within 48 hours
+* Regular updates on investigation and remediation progress
+* Recognition for responsible disclosure (if desired)
+* No legal action against good-faith security researchers
+
+**Out of scope:**
+
+* Denial of service attacks
+* Social engineering of Mem\[v] employees
+* Physical attacks against Mem\[v] facilities
+* Third-party systems or services not controlled by Mem\[v]
+
+***
+
+## Security Contact
+
+For security-related inquiries, vulnerability reports, or compliance questions:
+
+**Email**: [hello@memv.ai](mailto:hello@memv.ai)
+**Subject**: Security / Responsible Disclosure / Compliance Inquiry
+
+For general support inquiries, please see our [troubleshooting guide](/support/troubleshooting).
+
+
+# Support & Troubleshooting
+Source: https://docs.memv.ai/support/troubleshooting
+
+Get help and troubleshoot common issues with Mem[v]
+
+<Info>
+  **Updates to be released soon**
+
+  This section is currently under development. Check back soon for troubleshooting guides and support information.
+</Info>
+
+## Need help now?
+
+If you need immediate assistance, please reach out to our support team.
+
+
+# Education
+Source: https://docs.memv.ai/use-cases/education
+
+Multimodal memory for AI tutors that actually know their students.
+
+Today's AI tutors have amnesia. Every session starts over. Every student is a stranger.
+
+mem\[v] gives educational AI agents persistent, multimodal memory - so they remember what a student struggles with, how they learn best, and what clicked last Tuesday.
+
+<Info>
+  Works with text, diagrams, handwritten work, audio explanations, and video content.
+</Info>
+
+***
+
+## What's Broken in EdTech
+
+<CardGroup>
+  <Card title="Every Session Starts Fresh" icon="eraser">
+    The AI taught long division yesterday. Today it has no idea.
+  </Card>
+
+  <Card title="One Pace Fits Nobody" icon="users">
+    Fast learners get bored. Struggling students get left behind. The AI can't tell the difference.
+  </Card>
+
+  <Card title="Feedback Without Context" icon="comment-slash">
+    "Try again" isn't helpful when the AI doesn't know this is the fifth time.
+  </Card>
+
+  <Card title="Visuals Get Ignored" icon="image-slash">
+    Students draw diagrams, upload photos of homework, sketch graphs - AI tutors can't use any of it.
+  </Card>
+</CardGroup>
+
+***
+
+## Use Cases
+
+### 1. Adaptive K-12 Tutoring
+
+A 4th grader struggles with fractions but flies through geometry. Your AI tutor knows this - because it remembers three weeks of sessions, not just the last question.
+
+When she uploads a photo of her worksheet, the tutor sees the specific problem she circled and connects it to similar mistakes from last week.
+
+**What mem\[v] delivers:**
+
+* Learning pattern recognition across sessions
+* Strength/weakness mapping by topic and subtopic
+* Visual understanding of handwritten work and diagrams
+* Teaching style adaptation (examples vs. rules vs. practice)
+
+<Tip>
+  **Impact:** Adaptive tutoring platforms report **40% faster concept mastery** when AI remembers student history versus stateless interactions.
+</Tip>
+
+***
+
+### 2. University Study Companions
+
+Midterms are next week. Your student has been working through organic chemistry for a month - lecture recordings, textbook PDFs, practice problems, and sketched reaction mechanisms.
+
+A stateless AI can't connect today's question about electrophilic addition to last week's confusion about carbocation stability. mem\[v] remembers both - and knows exactly where the gap is.
+
+**What mem\[v] delivers:**
+
+* Cross-format memory (video lectures, PDFs, notes, sketches)
+* Exam prep focused on documented weak areas
+* Spaced repetition based on actual forgetting patterns
+* Connection-making across topics studied weeks apart
+
+<Tip>
+  **Impact:** Students using memory-enabled study tools show **25-35% improvement in exam scores** compared to generic AI assistance.
+</Tip>
+
+***
+
+### 3. Language Learning That Compounds
+
+> "¿Cómo se dice 'I went to the store' en español?"
+
+Your learner asked this three weeks ago. They got it wrong. Then right. Then wrong again with a different verb tense. The AI tutor remembers all of it - and knows exactly which conjugation pattern needs reinforcement.
+
+It also remembers they learn better through conversation than grammar drills.
+
+**What mem\[v] delivers:**
+
+* Vocabulary and grammar mastery tracking over months
+* Pronunciation feedback connected to past attempts (audio memory)
+* Learning style adaptation (visual, conversational, written)
+* Native language interference patterns identified and addressed
+
+<Tip>
+  **Impact:** Language apps with persistent memory see **2.5x higher 90-day retention** versus session-based learning.
+</Tip>
+
+***
+
+### 4. Professional Upskilling at Scale
+
+Your enterprise has 10,000 employees learning new software, compliance requirements, and technical skills. Each learner has different backgrounds, different gaps, different pace.
+
+mem\[v] gives every AI training assistant individualized memory - without blowing up your token costs or latency.
+
+**What mem\[v] delivers:**
+
+* Role-specific learning paths that adapt to demonstrated competency
+* Compliance training that skips what's already mastered
+* Visual learning from screenshots, screen recordings, and workflow diagrams
+* Progress tracking that HR and L\&D can actually use
+
+<Tip>
+  **Impact:** Enterprises report **50% reduction in time-to-competency** and **30% lower training costs** with adaptive, memory-enabled learning systems.
+</Tip>
+
+***
+
+## The Multimodal Difference
+
+Students don't just type. They sketch, photograph, record, and upload. mem\[v] remembers all of it.
+
+| Input Type    | What mem\[v] Remembers                                          |
+| ------------- | --------------------------------------------------------------- |
+| **Text**      | Chat history, written answers, notes                            |
+| **Images**    | Handwritten work, diagrams, photographed homework               |
+| **Audio**     | Pronunciation attempts, verbal explanations, recorded questions |
+| **Video**     | Lecture segments watched, tutorials completed, time spent       |
+| **Documents** | PDFs read, textbook sections highlighted, slides reviewed       |
+
+***
+
+## Why This Matters
+
+<CardGroup>
+  <Card title="Learning Compounds" icon="layer-group">
+    Each session builds on the last. Progress actually accumulates.
+  </Card>
+
+  <Card title="Teachers Get Leverage" icon="chalkboard-user">
+    AI handles personalization. Humans focus on connection and creativity.
+  </Card>
+
+  <Card title="Students Feel Seen" icon="eye">
+    "It remembers me" changes everything about engagement.
+  </Card>
+</CardGroup>
+
+***
+
+## Getting Started
+
+<Steps>
+  <Step title="Discovery Call">
+    We learn your platform, your learners, and your learning objectives.
+  </Step>
+
+  <Step title="Pilot">
+    Deploy with a cohort. Measure engagement, mastery, and retention.
+  </Step>
+
+  <Step title="Scale">
+    Roll out across your platform with proven results.
+  </Step>
+</Steps>
+
+<Card title="Talk to Founders" icon="calendar" href="mailto:founders@memv.ai">
+  See how mem\[v] transforms your AI tutors into teachers that remember.
+</Card>
+
+
+# Enterprise & Knowledge Work
+Source: https://docs.memv.ai/use-cases/enterprise
+
+Personal intelligence for enterprise agents that learn your team's expertise, culture, and workflows.
+
+Enterprise AI agents fail not because they lack capability, but because they lack context. They don't know how *your* team works, how *your* experts think, or what *your* standards are.
+
+mem\[v] gives enterprise agents personal and organizational intelligence - so they learn team culture, capture expert knowledge, and adapt to real workflows instead of generic templates.
+
+<Info>
+  Built for enterprise deployment with role-based access control, full audit trails, and enterprise-grade security.
+</Info>
+
+***
+
+## Why Enterprise Agents Fall Short
+
+<CardGroup>
+  <Card title="Expert Knowledge Walks Out" icon="door-open">
+    Your top strategist leaves. Their expertise, decision-making patterns, and institutional knowledge disappear with them.
+  </Card>
+
+  <Card title="Generic Agent Responses" icon="robot">
+    The AI doesn't know your brand voice, approval workflows, or team-specific terminology. Every output needs heavy editing.
+  </Card>
+
+  <Card title="Context Fragmentation" icon="puzzle-piece">
+    Expertise is scattered across Slack, Google Docs, email threads, and tribal knowledge. No agent can access it all.
+  </Card>
+
+  <Card title="One-Size-Fits-Nobody" icon="users">
+    Your legal team, marketing team, and ops team work completely differently. One agent configuration serves none well.
+  </Card>
+</CardGroup>
+
+***
+
+## Use Cases
+
+### 1. Capturing Expert Knowledge Before It Walks
+
+Your VP of Product Strategy, Maria, is leaving for a competitor. She's made the last 8 successful product launch decisions. She knows which customer segments to prioritize, which metrics actually matter, and how to position against competitors.
+
+Standard approach: Exit interview, maybe some documentation. Most of her expertise evaporates.
+
+mem\[v] approach: For 6 months, mem\[v] has captured how Maria evaluates launch opportunities - her comments in docs, her questions in strategy reviews, her edits to positioning decks, her Slack reactions to campaign ideas. This becomes an "Maria expert model."
+
+When your new PM asks, "Should we prioritize SMB or enterprise for this launch?" - the agent can reason through the decision *using Maria's captured patterns*, referencing the 3 launches where she made similar calls and explaining her reasoning framework.
+
+**What mem\[v] delivers:**
+
+* Expert decision pattern extraction from documents, edits, and comments
+* Reasoning framework capture (not just facts, but *how* experts think)
+* Historical precedent linking (this situation resembles Case X where Expert Y decided Z)
+* Cross-format knowledge synthesis (Slack + Docs + Meetings + Presentations)
+
+<Tip>
+  **Impact:** Organizations preserving expert knowledge report **40% faster time-to-competency** for replacement hires and **\$1.2M average value retention** per departing senior expert.
+</Tip>
+
+***
+
+### 2. Team-Specific Agent Personalization
+
+Your company has 4 regional marketing teams. EMEA team uses formal tone, prioritizes compliance, and runs 6-week campaign cycles. APAC team is experimental, ships weekly, and optimizes for viral reach. LATAM team focuses on influencer partnerships. North America team is data-driven, A/B tests everything.
+
+A generic "marketing agent" serves nobody well. Each team needs an agent that understands *their* workflow, *their* metrics, and *their* voice.
+
+**What mem\[v] delivers:**
+
+* Team-specific language model adaptation (formal vs. experimental tone)
+* Workflow-aware suggestions (6-week EMEA cycles vs. weekly APAC sprints)
+* Metric prioritization matching team KPIs (compliance score vs. viral coefficient)
+* Tool integration reflecting actual team stack (different dashboards, approval systems)
+
+**Example in action:**
+
+EMEA team asks: "Draft campaign brief for Q2 product launch"
+
+* Agent uses formal tone, includes compliance checklist, structures for 6-week timeline, references past EMEA successes
+
+APAC team asks the same question:
+
+* Agent uses conversational tone, suggests 3 fast-test variations, optimizes for shareable moments, references recent viral wins
+
+<Tip>
+  **Impact:** Teams with personalized agents show **58% higher agent adoption rates** and **3.2x more outputs used without heavy editing** versus generic enterprise AI.
+</Tip>
+
+***
+
+### 3. Strategy Memos That Sound Like Your Best Strategist
+
+Your CEO needs a strategic analysis: "Should we expand into the healthcare vertical?"
+
+A generic LLM produces surface-level analysis with standard frameworks (TAM, competition, SWOT). It reads like a consultant deck, not your company's voice.
+
+mem\[v] has learned from 40 strategy memos written by your Chief Strategy Officer over 3 years. It knows:
+
+* She always starts with customer pain validation before market size
+* She references specific competitive moves, not just "Porter's Five Forces"
+* She ties recommendations to your company's actual capabilities, not theoretical strengths
+* She includes a "Why Now?" section citing market timing signals
+* She uses first-person plural ("we") and company-specific terminology
+
+The agent-drafted memo reads like *her* work. It's 80% usable with light edits instead of a blank-page rewrite.
+
+**What mem\[v] delivers:**
+
+* Writing style transfer from top performers to agent outputs
+* Company-specific reasoning patterns and frameworks
+* Internal terminology and acronym usage accuracy
+* Structural templates learned from best-performing documents
+* Contextual decision criteria matching organizational priorities
+
+<Tip>
+  **Impact:** Strategy teams report **70% reduction in memo drafting time** and **5x higher CEO approval rates on first draft** when using expert-trained agents versus generic LLMs.
+</Tip>
+
+***
+
+### 4. Omnichannel Support Memory
+
+Your customer, Acme Corp, has contacted support 14 times in the past 6 months. They've talked to 6 different agents across email, chat, and phone. Each time, they repeat their setup, explain their use case, and re-describe their integration challenges.
+
+Agent 7 opens the ticket. Without memory: "How can I help you today?"
+
+With mem\[v]: The agent sees Acme's complete history - not just ticket text, but the *context*. They're a \$400K/year enterprise customer. They're using a legacy API version. Their technical contact, James, prefers detailed documentation over video calls. They've escalated twice when given surface-level troubleshooting. They're in renewal discussions next quarter.
+
+The agent's first message: "Hi James - I see this is related to the webhook timeout issues you mentioned last week. I've pulled the logs from your production environment and identified three potential causes. Given your setup, I'd recommend..."
+
+**What mem\[v] delivers:**
+
+* Cross-channel conversation memory (email → chat → phone continuity)
+* Customer context beyond tickets (contract value, renewal timing, escalation history)
+* Contact-specific preferences (communication style, technical depth)
+* Historical issue patterns (recurring problems, past solutions that worked/failed)
+* Early warning signals (satisfaction trends, repeat escalations)
+
+<Tip>
+  **Impact:** Support teams with memory-enabled systems see **35% reduction in resolution time**, **48% higher CSAT scores**, and \*\*62% decrease in "I already explained this" escalations.
+</Tip>
+
+***
+
+## Cross-Platform Intelligence
+
+mem\[v] builds unified knowledge graphs across your entire tool stack:
+
+| Source                  | What mem\[v] Captures                                      |
+| ----------------------- | ---------------------------------------------------------- |
+| **Slack**               | Questions asked, decisions debated, implicit team norms    |
+| **Google Docs**         | Writing patterns, strategic frameworks, comment feedback   |
+| **Email**               | Stakeholder communication styles, approval workflows       |
+| **Jira/Linear**         | Decision-making on technical tradeoffs, priority rationale |
+| **Confluence/Notion**   | Codified processes, template structures, best practices    |
+| **Meeting Transcripts** | How experts explain complex topics, Q\&A patterns          |
+
+***
+
+## Context Graphs: Organizational Memory That Compounds
+
+Traditional knowledge bases are filing cabinets. mem\[v] builds living context graphs where organizational memory grows exponentially over time through semantic connections, not linear storage.
+
+**How Context Graphs Differ:**
+
+Standard wiki or doc repository: Search returns individual documents. You read them one by one, making connections manually.
+
+mem\[v] context graphs: Search returns interconnected knowledge clusters. Maria's strategy memo automatically surfaces the 3 customer interviews that informed it, the Slack debate where the team challenged her assumptions, the prior quarter's competitive analysis she referenced, and the subsequent product decisions that validated her thesis.
+
+**Memory Compounding in Action:**
+
+Month 1: Your product team discusses entering the healthcare vertical. mem\[v] captures the conversation, links to participants, and indexes key concerns raised.
+
+Month 4: Sales team has a healthcare prospect call. The agent surfaces the product team's earlier analysis without anyone manually connecting them.
+
+Month 7: A healthcare competitor announces a feature. mem\[v] links this to both prior discussions, identifies gaps in your original analysis, and surfaces relevant team members to consult.
+
+Month 12: New PM asks "Should we build for healthcare?" The agent provides a complete decision context built from 12 months of compounding organizational memory - not just isolated documents, but the full reasoning chain, evolving perspectives, and updated market signals.
+
+**What makes context graphs compound:**
+
+<CardGroup>
+  <Card title="Semantic Entity Resolution" icon="diagram-project">
+    mem\[v] knows "healthcare vertical," "medical market," and "clinical segment" refer to the same concept. Knowledge clusters automatically, not through manual tagging.
+  </Card>
+
+  <Card title="Temporal Pattern Recognition" icon="clock">
+    The system detects when concepts evolve. "Our pricing strategy" from Q1 is linked to but distinguished from Q3's updated approach.
+  </Card>
+
+  <Card title="Implicit Relationship Mapping" icon="network-wired">
+    When Maria references a metric in a memo, mem\[v] connects to every conversation where that metric was debated, measured, or questioned.
+  </Card>
+
+  <Card title="Cross-Team Knowledge Bridges" icon="bridge">
+    Product's technical feasibility analysis automatically connects to marketing's positioning work and finance's margin calculations, even if teams never explicitly linked them.
+  </Card>
+</CardGroup>
+
+**The Compounding Effect:**
+
+* **Year 1**: 1,000 conversations captured → 3,500 semantic connections formed
+* **Year 2**: 2,400 conversations captured → 12,000 semantic connections formed (includes connections to Year 1)
+* **Year 3**: 3,800 conversations captured → 34,000 semantic connections formed
+
+Knowledge value grows exponentially. New information connects to existing context, enriching both. Every strategic discussion benefits from the full history of related thinking, not just what people remember to search for.
+
+<Tip>
+  **Impact:** Organizations using context graphs report **3.2x faster strategic decision-making** in Year 2 versus Year 1, and **89% of decisions reference insights that would have been missed** with traditional keyword search.
+</Tip>
+
+***
+
+## Enterprise-Grade Security & Governance
+
+<CardGroup>
+  <Card title="Role-Based Memory Access" icon="user-lock">
+    Memory respects your existing permissions. Finance team memories aren't accessible to marketing agents.
+  </Card>
+
+  <Card title="Audit Trail Compliance" icon="file-shield">
+    Every memory retrieval logged with user, timestamp, and purpose for SOC 2 and regulatory requirements.
+  </Card>
+
+  <Card title="Data Residency Control" icon="earth-americas">
+    Deploy memory infrastructure in your required geographic regions and cloud environments.
+  </Card>
+
+  <Card title="Time-Sensitive Forgetting" icon="clock">
+    Automatic expiration of sensitive information (M\&A discussions, HR data) per retention policies.
+  </Card>
+</CardGroup>
+
+***
+
+## Business Impact
+
+<CardGroup>
+  <Card title="Knowledge Multiplier" icon="users-gear">
+    Junior employees operate with senior-level context. Expertise scales beyond individual capacity.
+  </Card>
+
+  <Card title="Faster Onboarding" icon="rocket">
+    New hires access institutional knowledge immediately instead of 6-month ramp period.
+  </Card>
+
+  <Card title="Reduced Churn Risk" icon="shield-check">
+    Expert departure no longer means knowledge loss. Competitive advantage persists.
+  </Card>
+</CardGroup>
+
+***
+
+## Getting Started
+
+<Steps>
+  <Step title="Knowledge Audit">
+    Identify top performers and critical knowledge domains. Map where expertise currently lives.
+  </Step>
+
+  <Step title="Pilot Deployment">
+    Deploy with 1-2 high-value teams. Capture expert patterns over 30-60 days.
+  </Step>
+
+  <Step title="Agent Integration">
+    Connect memory layer to existing enterprise agents, chatbots, or custom workflows.
+  </Step>
+
+  <Step title="Measure Impact">
+    Track time savings, output quality, and knowledge retention metrics versus baseline.
+  </Step>
+
+  <Step title="Scale Organization-Wide">
+    Roll out to additional teams with proven ROI and change management framework.
+  </Step>
+</Steps>
+
+<Card title="Talk to Founders" icon="calendar" href="mailto:founders@memv.ai">
+  Build enterprise agents that actually understand how your organization works.
+</Card>
+
+
+# Gaming & Synthetic Characters
+Source: https://docs.memv.ai/use-cases/gaming
+
+Personal intelligence for NPCs that remember players, adapt behavior, and create unique stories across every interaction.
+
+NPCs follow scripts. They repeat dialogue. They forget you saved them yesterday. Every player gets the same experience.
+
+mem\[v] gives synthetic characters persistent personal intelligence - so they remember your playstyle, adapt to your choices, and build relationships that feel genuinely unique to you.
+
+<Info>
+  Integrates with existing character behavior systems without replacing your core game engine.
+</Info>
+
+***
+
+## What's Missing in Current NPCs
+
+<CardGroup>
+  <Card title="Script-Bound Personalities" icon="file-lines">
+    NPCs say the same lines to everyone. No memory of who you are or what you've done together.
+  </Card>
+
+  <Card title="Zero Social Awareness" icon="users-slash">
+    Characters can't tell if you're playing with friends, rivals, or strangers. Every party composition gets identical treatment.
+  </Card>
+
+  <Card title="Forgotten Choices" icon="clock-rotate-left">
+    You betrayed an NPC in Act 1. Act 3 arrives - they've completely forgotten. No consequences, no continuity.
+  </Card>
+
+  <Card title="Environment Reset" icon="arrows-rotate">
+    Move to a new map or game mode? Your companion character forgets everything. The relationship starts over.
+  </Card>
+</CardGroup>
+
+***
+
+## Use Cases
+
+### 1. Combat Companions That Learn Your Style
+
+You play a stealth archer. Your AI companion, Kara, has fought beside you for 40 hours. She's learned you *never* engage before scouting, you prioritize high-ground positioning, and you get frustrated when she triggers traps.
+
+A scripted companion charges in regardless. mem\[v]-powered Kara hangs back, covers your flank angles, and waits for your signal - because she's learned *your* tactics, not generic aggro patterns.
+
+**What mem\[v] delivers:**
+
+* Player combat style recognition (stealth, aggressive, defensive, hybrid)
+* Adaptive companion tactics that complement detected patterns
+* Frustration detection from repeated reloads or chat sentiment
+* Skill progression memory ("Player struggled with this enemy type last time")
+
+<Tip>
+  **Impact:** Games with adaptive companion AI see **41% higher companion satisfaction scores** and **23% increase in players keeping companions active** versus scripted behavior.
+</Tip>
+
+***
+
+### 2. Faction NPCs with Political Memory
+
+You're playing a politics-heavy RPG. Three sessions ago, you sided with the Merchant Guild against the Crown. You secretly passed intel to both sides. Last session, you refused to help the Duke's advisor when she asked.
+
+This week, you walk into the Duke's court. Without memory, the Duke treats you neutrally. With mem\[v], he's cold - his advisor briefed him. The Merchant Guild envoy nods subtly. Other nobles watch your interaction, updating their own stance toward you.
+
+**What mem\[v] delivers:**
+
+* Cross-NPC information sharing (rumors, alliances, betrayals)
+* Faction reputation that updates based on witnessed and reported actions
+* NPC dialogue tone shifting based on accumulated relationship history
+* Emergent social dynamics from interconnected character memories
+
+<Tip>
+  **Impact:** Players report **65% stronger sense of agency** and **2.8x higher replay rates** when faction NPCs remember and react to player history.
+</Tip>
+
+***
+
+### 3. Romance Arcs That Feel Personal
+
+Standard romance system: Complete 5 quests, choose 3 dialogue options, unlock romance cutscene. Every player sees the same arc.
+
+mem\[v]-powered romance: Your character, Marcus, remembers you saved villagers instead of chasing the artifact (you're compassionate). You frequently check on him after combat (you're attentive). You made a joke about his cooking that he laughed at (shared humor established).
+
+His romance dialogue references *these specific moments*. When he confesses feelings, he mentions "the way you always make sure I'm okay after fights" - because you actually did that, repeatedly. It's not a script. It's your unique relationship.
+
+**What mem\[v] delivers:**
+
+* Action-based personality inference (compassionate, pragmatic, reckless)
+* Callback generation from actual player behavior patterns
+* Relationship milestone tracking beyond quest completion checkboxes
+* Dialogue adaptation based on interaction history tone and frequency
+
+<Tip>
+  **Impact:** Romance systems with personal memory achieve **89% completion rates** versus **34% for scripted systems**, and generate **6x more social media sharing** of relationship moments.
+</Tip>
+
+***
+
+### 4. Cross-Game Character Continuity
+
+You befriended an AI merchant named Zara in Game 1. She remembers you're generous with tips but shrewd in negotiation. You helped her find a rare item in the final act.
+
+Game 2 launches - set years later, different region. You encounter an older Zara running a larger shop. Without memory: "Welcome, stranger."
+
+With mem\[v]: "Well, if it isn't my favorite customer. I never forgot that ruby you found for me. I saved something special for you."
+
+She offers better prices (you tipped well). She tries harder negotiation tactics (you beat her before). The relationship *persisted across titles*.
+
+**What mem\[v] delivers:**
+
+* Cross-game character memory export/import via secure player profiles
+* Relationship state transfer (trust levels, shared history, inside jokes)
+* Adaptive pricing, inventory, and dialogue based on prior-game behavior
+* Easter egg opportunities ("Remember when you accidentally burned down my shop?")
+
+<Tip>
+  **Impact:** Players who encounter persistent cross-game NPCs show **52% higher franchise loyalty** and **37% higher pre-order rates** for sequels.
+</Tip>
+
+***
+
+## How Personal Intelligence Works at Runtime
+
+mem\[v] runs alongside your character AI, providing context for every interaction:
+
+**Personal Intelligence Flow:**
+
+Player approaches NPC
+
+↓ mem\[v] retrieves:
+
+* Player's combat style profile
+* Past 47 interactions with this NPC
+* Recent choices affecting this faction
+* Current party composition & their relationships
+* Environmental context (location, prior events here)
+
+↓ Character behavior model receives enriched context:
+
+* Dialogue options filtered by relationship history
+* Tone adapted to cumulative sentiment
+* Actions informed by learned player patterns
+* Social awareness of nearby NPCs/players
+
+Your game engine makes decisions. mem\[v] makes them **personal**.
+
+***
+
+## The Multimodal Advantage
+
+Players don't just talk. They fight, explore, trade, emote, and interact with environments.
+
+| Signal Type     | What mem\[v] Captures                                             |
+| --------------- | ----------------------------------------------------------------- |
+| **Combat**      | Playstyle, risk tolerance, preferred tactics, win/loss patterns   |
+| **Dialogue**    | Tone choices, humor style, diplomatic vs. aggressive tendencies   |
+| **Economy**     | Spending habits, generosity, negotiation patterns                 |
+| **Social**      | Party composition preferences, NPC interaction frequency          |
+| **Exploration** | Thorough vs. speedrun, curiosity signals, preferred biomes        |
+| **Emotes**      | Celebration patterns, frustration indicators, roleplay engagement |
+
+***
+
+## Integration with Game Engines
+
+mem\[v] plugs into your existing architecture without engine rewrites.
+
+<CardGroup>
+  <Card title="Behavior Tree Enhancement" icon="sitemap">
+    Add memory-based conditions to existing behavior trees for context-aware decision nodes.
+  </Card>
+
+  <Card title="Dialogue System Hooks" icon="comment">
+    Inject personalized variables and callback references into your dialogue engine.
+  </Card>
+
+  <Card title="Cloud-Synced Profiles" icon="cloud">
+    Player profiles sync across sessions and titles for persistent character relationships.
+  </Card>
+
+  <Card title="Analytics Pipeline" icon="chart-line">
+    Export relationship metrics and player pattern data to inform content design.
+  </Card>
+</CardGroup>
+
+***
+
+## Why This Changes Player Experience
+
+<CardGroup>
+  <Card title="'They Remember Me'" icon="brain">
+    Players form genuine attachment when characters demonstrate continuity and adaptation.
+  </Card>
+
+  <Card title="Higher Replayability" icon="repeat">
+    Different playstyles generate different NPC relationships - genuine variety, not just dialogue branches.
+  </Card>
+
+  <Card title="Emergent Stories" icon="book-open">
+    Memory-driven characters create unexpected narrative moments that weren't explicitly scripted.
+  </Card>
+</CardGroup>
+
+***
+
+## Getting Started
+
+<Steps>
+  <Step title="Behavior Model Audit">
+    Review your character AI systems, dialogue engines, and player data infrastructure.
+  </Step>
+
+  <Step title="Prototype Integration">
+    Deploy mem\[v] with 2-3 key NPCs in a test environment. Measure player interaction patterns.
+  </Step>
+
+  <Step title="Relationship Metrics">
+    Track completion rates, interaction frequency, and sentiment versus control group NPCs.
+  </Step>
+
+  <Step title="Production Rollout">
+    Scale to main cast characters, then expand to faction-wide social dynamics.
+  </Step>
+</Steps>
+
+<Card title="Talk to Founders" icon="calendar" href="mailto:founders@memv.ai">
+  Build characters that players actually remember - because the characters remember them first.
+</Card>
+
+
+# Healthcare
+Source: https://docs.memv.ai/use-cases/healthcare
+
+Multimodal memory for AI agents that care for patients across every encounter.
+
+Your AI agents see patients once and forget them forever. Ours remember.
+
+mem\[v] gives healthcare AI agents persistent, multimodal memory - connecting notes, images, labs, and conversations into a single patient story that evolves with every interaction.
+
+<Info>
+  Built for HIPAA-compliant deployments with full audit trails and source linking.
+</Info>
+
+***
+
+## Why Memory Matters in Healthcare
+
+<CardGroup>
+  <Card title="Patients Repeat Themselves" icon="rotate">
+    Every visit starts from zero. History, context, preferences - all lost.
+  </Card>
+
+  <Card title="Critical Context Gets Buried" icon="file-medical">
+    That CT scan from 8 months ago? The med change last week? Invisible when it matters most.
+  </Card>
+
+  <Card title="Care Doesn't Compound" icon="chart-line-down">
+    Therapy sessions, chronic disease management, recovery plans - none of it builds.
+  </Card>
+
+  <Card title="Clinicians Burn Out" icon="clock">
+    Hours spent on chart review instead of patient care.
+  </Card>
+</CardGroup>
+
+***
+
+## Use Cases
+
+### 1. Emergency Triage with Full Patient Context
+
+A patient arrives with chest pain. Your AI agent instantly surfaces their cardiac history, recent medication changes, last stress test results, and that allergy buried in a scanned PDF from 2019.
+
+**What mem\[v] delivers:**
+
+* Visit-specific summary tuned to the chief complaint
+* Longitudinal view across imaging, labs, meds, and notes
+* "What's changed since last visit" highlights
+* Direct links to source documents
+
+<Tip>
+  **ROI Impact:** Emergency departments serving 500K patients annually can reduce costs by over \$4M through improved throughput, elimination of duplicate testing, and better diagnostic accuracy.
+</Tip>
+
+***
+
+### 2. Multimodal Chronic Care Coordination
+
+Diabetes. Hypertension. CKD. Three specialists. Twelve medications. One patient who shouldn't have to repeat their story.
+
+mem\[v] connects the cardiologist's echo, the nephrologist's notes, the PCP's med changes, and the patient's own voice - so every clinician sees the full trajectory, not just their slice.
+
+**What mem\[v] delivers:**
+
+* Cross-specialty medication reconciliation
+* Lab trends across care settings (A1c, eGFR, lipids)
+* Patient-reported symptoms from portal messages and calls
+* Imaging findings surfaced at the right moment
+
+<Tip>
+  **Impact:** Organizations report **30-40% reduction in duplicate testing** and measurably better outcomes for complex patients.
+</Tip>
+
+***
+
+### 3. Mental Health Continuity
+
+> "The insomnia gets worse when work stress peaks. It takes me hours to fall asleep, and I wake up exhausted."
+
+Three sessions later, your agent still knows. It remembers the sleep hygiene changes that helped, tracks the correlation between stress patterns and sleep quality, and builds on previous progress week over week.
+
+**What mem\[v] delivers:**
+
+* Session-over-session emotional pattern tracking
+* Memory of what worked (and what didn't)
+* Personalized support that compounds over time
+
+<Note>
+  AI mental health agents augment licensed professionals - escalation pathways are built into every deployment.
+</Note>
+
+<Tip>
+  **Impact:** Early data shows **2x engagement rates** when patients feel remembered versus starting fresh each session.
+</Tip>
+
+***
+
+### 4. Discharge That Actually Works
+
+She's 78, lives alone, has mild cognitive impairment, and fell six months ago. Your discharge AI knows all of this - because mem\[v] surfaced it from a social work note buried three admissions deep.
+
+**What mem\[v] delivers:**
+
+* Risk factors pulled from longitudinal history
+* Care preferences documented across encounters
+* Post-discharge follow-up with full context
+* Family/caregiver information surfaced automatically
+
+<Tip>
+  **Impact:** Targeted discharge support can reduce **30-day readmissions by 10-15%** - worth **\$2-4M annually** for a mid-sized health system.
+</Tip>
+
+***
+
+## The Multimodal Difference
+
+Most memory systems only handle text. Patients generate images, audio, structured data, and documents.
+
+| Data Type             | What mem\[v] Remembers                               |
+| --------------------- | ---------------------------------------------------- |
+| **Clinical Notes**    | Progress notes, consults, discharge summaries        |
+| **Imaging**           | CT, MRI, X-ray findings and visual context           |
+| **Labs & Vitals**     | Trends, anomalies, and correlations over time        |
+| **Patient Voice**     | Portal messages, call transcripts, reported symptoms |
+| **Scanned Documents** | Outside records, historical PDFs, faxed reports      |
+
+***
+
+## Getting Started
+
+<Steps>
+  <Step title="Discovery Call">
+    30-minute conversation to understand your workflows and priority use cases.
+  </Step>
+
+  <Step title="Pilot">
+    Controlled deployment in one department with hands-on support.
+  </Step>
+
+  <Step title="Scale">
+    Expand across the organization based on measured impact.
+  </Step>
+</Steps>
+
+<Card title="Talk to Founders" icon="calendar" href="mailto:founders@memv.ai">
+  See mem\[v] in action with your own clinical scenarios. Reach out to our founders directly.
+</Card>
+
+
+# Spatial Intelligence & Robotics
+Source: https://docs.memv.ai/use-cases/robotics
+
+Persistent multimodal memory for robots that understand people, spaces, and context across every interaction.
+
+Robots see the world in snapshots. Each interaction starts from scratch. No memory of who you are, what you asked for yesterday, or how you prefer things done.
+
+mem\[v] gives robots persistent spatial and multimodal memory - so they recognize individuals, recall room-specific context, learn from corrections, and improve with every interaction.
+
+<Info>
+  Optimized for edge deployment with low-latency retrieval and efficient memory footprint.
+</Info>
+
+***
+
+## What's Missing in Robot Intelligence
+
+<CardGroup>
+  <Card title="Zero Identity Awareness" icon="user-slash">
+    The robot can't distinguish between household members. Every person is a stranger, every time.
+  </Card>
+
+  <Card title="Spatial Amnesia" icon="map-location">
+    It knows coordinates. It doesn't know "this is the room where Sarah works" or "the dog's water bowl is always here."
+  </Card>
+
+  <Card title="Corrections Don't Persist" icon="rotate">
+    You teach the robot to place cups handle-forward. Tomorrow, same mistake. The feedback evaporates.
+  </Card>
+
+  <Card title="No Task Continuity" icon="list-check">
+    Multi-day tasks restart from zero. The robot forgot it already cleaned the living room this morning.
+  </Card>
+</CardGroup>
+
+***
+
+## Use Cases
+
+### 1. Household Service Robots That Know Their Humans
+
+A family has three members. Dad needs coffee at 6 AM, handle on the right because of his shoulder injury. Mom prefers tea, steeped exactly four minutes. The teenager wants nothing before 10 AM and gets annoyed by morning check-ins.
+
+A stateless robot treats them identically. mem\[v] gives each person a persistent profile - voice signature, routine patterns, correction history, and preferences refined over weeks.
+
+**What mem\[v] delivers:**
+
+* Per-person voice recognition tied to behavioral profiles
+* Medical context (Dad's shoulder) informing task execution
+* Time-based preference patterns (teenager's schedule)
+* Correction memory that updates individual models, not global defaults
+
+<Tip>
+  **Impact:** Service robots with identity memory see **65% fewer user corrections** and **4x higher satisfaction scores** versus one-size-fits-all systems.
+</Tip>
+
+***
+
+### 2. Warehouse AMRs with Spatial Learning
+
+Your warehouse has 47 autonomous mobile robots moving pallets. Zone 3B always has a temporary staging area on Tuesdays. The loading dock gets congested between 2-4 PM. Forklift operator Rodriguez gestured three times last week that robots should yield near the northwest corner.
+
+Standard AMRs rely on static maps and predefined rules. mem\[v] captures spatial patterns, time-based congestion, operator gestures, and zone-specific exceptions - so robots adapt to the *actual* warehouse, not the blueprint.
+
+**What mem\[v] delivers:**
+
+* Dynamic zone memory (Tuesday staging, afternoon congestion)
+* Human operator gesture recognition and spatial intent
+* Path optimization based on historical success rates by time and location
+* Exception logging ("avoided collision here twice - reroute permanently")
+
+<Tip>
+  **Impact:** Warehouses report **22% throughput improvement** and **40% reduction in operator interventions** when AMRs build spatial memory versus static navigation.
+</Tip>
+
+***
+
+### 3. Surgical Robots Learning Surgeon Technique
+
+Dr. Wang performs laparoscopic procedures with the robot. She prefers instrument angles 5 degrees steeper than default. She pauses for visual confirmation before every cut. When she says "closer," she means 2mm, not 5mm.
+
+The robot should learn *her* style. Not average across all surgeons. Her tempo, her terminology, her safety margins.
+
+**What mem\[v] delivers:**
+
+* Surgeon-specific motion profiles (angle preferences, tempo)
+* Semantic command mapping ("closer" = 2mm for Dr. Wang, 5mm for Dr. Chen)
+* Safety pattern recognition (pause-before-cut becomes expected, not anomalous)
+* Cross-procedure learning (techniques from Case 47 inform Case 48)
+
+<Note>
+  All surgical robot memory operates under strict data governance with full audit trails and clinician oversight.
+</Note>
+
+<Tip>
+  **Impact:** Surgeon-specific adaptation reduces **procedure time by 12-18 minutes** and **cognitive load scores by 35%** compared to generic robot behavior.
+</Tip>
+
+***
+
+### 4. Hospitality Robots with Guest Recognition
+
+A hotel deploys robots for room service and concierge tasks. Guest 412 checked in Tuesday. She asked for extra towels Wednesday morning. Thursday she requested hypoallergenic pillows. Friday morning the robot sees her in the lobby.
+
+Without memory: "How can I help you?"
+
+With mem\[v]: "Good morning, Ms. Rodriguez. Your usual breakfast to the poolside table, or would you like to try something different today?"
+
+**What mem\[v] delivers:**
+
+* Cross-session guest recognition (face, voice, room number)
+* Preference aggregation (towel count, pillow type, breakfast routine)
+* Spatial behavior patterns (she works poolside most mornings)
+* Proactive service based on established routines
+
+<Tip>
+  **Impact:** Hotels using memory-enabled robots report **Net Promoter Scores 28 points higher** and **32% increase in robot service utilization** versus stateless systems.
+</Tip>
+
+***
+
+## The Multimodal Advantage
+
+Robots don't just process text commands. They see, hear, touch, and navigate physical space.
+
+| Sensor Type | What mem\[v] Remembers                                                 |
+| ----------- | ---------------------------------------------------------------------- |
+| **Vision**  | Faces, object placement patterns, room state changes                   |
+| **Audio**   | Voice identity, command phrasing, tone indicating urgency              |
+| **Spatial** | 3D maps with semantic meaning ("Mom's office", "the cluttered corner") |
+| **Haptic**  | Grip pressure for fragile items, force feedback from corrections       |
+| **Gesture** | Pointing, waving off, demonstrations of "do it this way"               |
+
+***
+
+## Integration with Robot Learning
+
+mem\[v] plugs into existing robotics stacks without replacing your control systems.
+
+<CardGroup>
+  <Card title="Imitation Learning" icon="clone">
+    Extract structured demonstrations from human corrections and multimodal feedback for training pipelines.
+  </Card>
+
+  <Card title="Policy Conditioning" icon="brain">
+    Provide relevant memory context to RL policies without exploding observation space.
+  </Card>
+
+  <Card title="Sim-to-Real Transfer" icon="arrows-rotate">
+    Sync memory between simulation and deployed robots for continuous improvement.
+  </Card>
+
+  <Card title="Failure Analysis" icon="triangle-exclamation">
+    Log every correction, near-miss, and operator intervention with full sensory context for post-analysis.
+  </Card>
+</CardGroup>
+
+***
+
+## Why This Creates Business Value
+
+<CardGroup>
+  <Card title="Robots Get Better Over Time" icon="chart-line">
+    Every interaction improves future performance. Value compounds, doesn't plateau.
+  </Card>
+
+  <Card title="Lower Training Costs" icon="dollar-sign">
+    Learn from corrections in production instead of expensive sim or teleoperation sessions.
+  </Card>
+
+  <Card title="Higher User Acceptance" icon="face-smile">
+    "It remembers me" changes how people feel about robots in their space.
+  </Card>
+</CardGroup>
+
+***
+
+## Getting Started
+
+<Steps>
+  <Step title="Technical Scoping">
+    Review your robot platform, sensors, and learning stack. Identify memory integration points.
+  </Step>
+
+  <Step title="Edge Deployment Pilot">
+    Deploy mem\[v] on target hardware. Benchmark latency, memory footprint, and retrieval accuracy.
+  </Step>
+
+  <Step title="Learning Loop Integration">
+    Connect memory to training pipelines for continuous improvement from real-world data.
+  </Step>
+</Steps>
+
+<Card title="Talk to Founders" icon="calendar" href="mailto:founders@memv.ai">
+  Build robots that remember - and get smarter with every interaction.
+</Card>
+
+
+# AI Wearables & Ambient Devices
+Source: https://docs.memv.ai/use-cases/wearables
+
+Persistent memory for smart glasses, pendants, and ambient AI that understand your life context.
+
+Today's AI wearables are glorified voice assistants. They answer questions but don't understand *you*. They can't recall yesterday's conversation, don't know your routines, and treat every interaction as isolated.
+
+mem\[v] provides the memory infrastructure layer for wearable AI - so your glasses remember where you parked, your pendant knows your medication schedule, and your ambient AI learns what help you actually need.
+
+<Info>
+  Memory-as-a-service for wearable manufacturers. We provide the semantic graphs, vector embeddings, key-value stores, and retrieval systems. You focus on hardware and user experience.
+</Info>
+
+***
+
+## Why Wearable AI Feels Generic
+
+<CardGroup>
+  <Card title="No Continuity Across Days" icon="calendar-xmark">
+    You tell your smart glasses about an important meeting Tuesday. Thursday arrives - they have no memory of it.
+  </Card>
+
+  <Card title="Context-Free Assistance" icon="circle-question">
+    The AI sees you're in a grocery store. It doesn't know you're allergic to shellfish or that you're hosting dinner tonight.
+  </Card>
+
+  <Card title="Routine Blindness" icon="clock">
+    You take medication at 8 AM daily for 6 months. The wearable still needs you to set manual reminders.
+  </Card>
+
+  <Card title="Relationship Amnesia" icon="user-xmark">
+    Your pendant hears you mention "Sarah" 50 times. It never learns Sarah is your daughter who lives in Seattle.
+  </Card>
+</CardGroup>
+
+***
+
+## Use Cases
+
+### 1. Smart Glasses That Remember Your Day
+
+You're wearing AI glasses. Tuesday morning, you parked in Section C4 at the airport. You had a lunch conversation where a colleague mentioned a book recommendation. You walked past a coffee shop you wanted to try.
+
+Friday, you're back at the airport. Without memory: "Where is my car?" requires you to check your phone or retrace steps.
+
+With mem\[v]: Your glasses proactively say "Your car is in Section C4, same spot as Tuesday" as you enter the parking structure. Later, you pass that coffee shop - they suggest "You mentioned wanting to try this place on Tuesday."
+
+**Memory infrastructure mem\[v] provides:**
+
+* **Semantic graphs** linking locations, objects, and events (Section C4 → your car → Tuesday visit)
+* **Vector embeddings** for conversation retrieval ("book recommendation" surfaces relevant context)
+* **Spatial-temporal indexing** triggering location-based memories (coffee shop proximity + prior intent)
+* **Multi-session state management** maintaining continuity across days without bloating on-device storage
+
+Your wearable's LLM/VLM generates responses (or use our state-of-the-art fine-tuned models). mem\[v] ensures they're grounded in personal history.
+
+<Tip>
+  **Impact:** Users with memory-enabled smart glasses report **3.2x higher daily usage** and **67% reduction in "I forgot where I..." moments** versus stateless AR devices.
+</Tip>
+
+***
+
+### 2. Senior Safety Pendants with Relationship Context
+
+Margaret, 78, lives independently with a medical alert pendant. Her daughter Amy calls every Sunday. Her son Tom lives in Boston. Her neighbor Linda checks in Tuesdays and Thursdays. Her doctor, Dr. Martinez, manages her heart medication.
+
+Standard pendant: Emergency button. If pressed, connects to generic operator who knows nothing about Margaret.
+
+mem\[v]-powered pendant: Knows Margaret's routine, relationships, and medical context.
+
+**Scenario**: Margaret falls Tuesday afternoon.
+
+The pendant alert includes:
+
+* "Margaret typically has neighbor Linda visit Tuesday afternoons - Linda may be nearby"
+* "Emergency contact priority: Daughter Amy (local), Son Tom (Boston)"
+* "Medical context: Heart condition, takes Metoprolol 25mg twice daily, Dr. Martinez at City Cardiology"
+* "Usual Tuesday routine: Garden work 2-4 PM - incident occurred during typical activity"
+
+Emergency responders arrive with full context, not cold.
+
+**Memory infrastructure mem\[v] provides:**
+
+* **Knowledge graphs** mapping family relationships, contact patterns, and proximity (Amy→daughter→local→Sunday calls)
+* **Key-value stores** for rapid medical data retrieval (medication schedules, doctor info, conditions)
+* **Temporal pattern recognition** identifying routine deviations (Tuesday garden time + fall = contextual alert)
+* **Relationship-aware ranking** surfacing most relevant contacts based on time, location, and history
+
+Your pendant's alert system triggers. mem\[v] enriches it with the context that saves critical response time.
+
+<Tip>
+  **Impact:** Memory-aware medical alert systems reduce **emergency response time by 40%** and **false alarm rates by 55%** through context-aware triage.
+</Tip>
+
+***
+
+### 3. Work Glasses That Learn Project Context
+
+David is a field service technician wearing smart AR glasses. He services HVAC systems across 47 buildings. Building 12's chiller has a recurring compressor issue - he's been there 4 times in 3 months. Building 31's facility manager, Rodriguez, prefers text updates over calls. Building 8 requires hard-hat check-in at the south entrance.
+
+Standard AR glasses: Show him the current work order, maybe a manual, no historical context.
+
+mem\[v]-powered glasses: When he arrives at Building 12, they surface:
+
+* "4th visit for Chiller 2B - prior fixes: refrigerant top-off (Jan 12), sensor replacement (Jan 28), compressor relay (Feb 15)"
+* "Pattern analysis: Issue recurs 18-21 days post-service. Consider full compressor replacement."
+* Parts inventory: "Compressor unit 47-XK in your van, purchased after last visit"
+
+At Building 31: "Facility contact: Rodriguez - prefers SMS updates to 555-0147"
+
+At Building 8: "Enter via south entrance, hard-hat required, sign-in with Janet at security desk"
+
+**Memory infrastructure mem\[v] provides:**
+
+* **Location-indexed event logs** with semantic search (Building 12 + compressor → 4 prior visits + 18-21 day pattern)
+* **Entity-relationship mapping** for contacts and preferences (Rodriguez → facility manager → prefers SMS)
+* **Site-specific knowledge bases** with rule retrieval (Building 8 → south entrance + hard-hat protocol)
+* **Pattern analysis engines** detecting failure signatures across locations and time
+
+Your AR system renders the work order. mem\[v] surfaces the history that prevents repeat visits.
+
+<Tip>
+  **Impact:** Field technicians with memory-enabled AR glasses complete **22% more service calls daily** and report **first-time fix rates 35% higher** versus standard AR systems.
+</Tip>
+
+***
+
+### 4. AI Pendants for Children with Autism
+
+Liam, age 8, has autism and wears an AI pendant. His triggers include sudden loud noises, crowded spaces, and transitions without warning. His calming strategies: counting to 10, deep breathing, holding his weighted stuffed animal. His safe people: Mom, Dad, teacher Ms. Chen, therapist Dr. Patel.
+
+Standard wearable: Generic voice assistant that can answer questions.
+
+mem\[v]-powered pendant: Learns Liam's specific patterns and needs over months.
+
+**Scenario**: Liam's family is at a grocery store. The pendant detects:
+
+* Audio environment: Noise level rising (potential trigger)
+* Liam's biosignals: Heart rate increasing
+* Context: Public space, crowded (known trigger combination)
+* Memory: Last time this happened, counting exercise helped
+
+The pendant quietly prompts (through bone conduction): "Liam, let's count together. 1... 2... 3..." in the familiar voice and cadence that works for him.
+
+It also alerts Mom's phone: "Liam showing early stress signals - initiated counting exercise. Location: Produce section."
+
+**Memory infrastructure mem\[v] provides:**
+
+* **Personalized pattern databases** learning Liam's specific triggers (not population averages - his noise thresholds, his crowd tolerance)
+* **Outcome-indexed strategy logs** tracking which interventions work (counting → successful 8/10 times, deep breathing → 5/10)
+* **Multi-signal fusion** combining biosignals, audio, location, and history for predictive alerts
+* **Real-time context sharing** with parent devices including location, trigger, and intervention taken
+
+Your pendant's sensors detect distress. mem\[v] knows what's worked before and surfaces it instantly.
+
+<Tip>
+  **Impact:** Families using personalized memory-enabled wearables report **68% reduction in full crisis episodes** and **dramatic improvement in child confidence** during challenging situations.
+</Tip>
+
+***
+
+## The Multimodal Wearable Difference
+
+Wearables capture unique signal combinations unavailable to phones or computers:
+
+| Signal Type   | What mem\[v] Captures                                             |
+| ------------- | ----------------------------------------------------------------- |
+| **Visual**    | Faces, places, objects - continuous environmental awareness       |
+| **Audio**     | Conversations, ambient noise levels, voice patterns               |
+| **Spatial**   | Locations visited, routes taken, time spent where                 |
+| **Biosignal** | Heart rate patterns, movement, sleep cycles                       |
+| **Temporal**  | Daily routines, weekly patterns, seasonal changes                 |
+| **Social**    | Who you interact with, conversation topics, relationship dynamics |
+
+***
+
+## User Control & Privacy
+
+<CardGroup>
+  <Card title="Selective Memory" icon="filter">
+    Users control what gets remembered. Mark conversations, locations, or time periods as "don't store."
+  </Card>
+
+  <Card title="Local Processing First" icon="microchip">
+    Most memory operations happen on-device. Cloud sync is optional and user-initiated.
+  </Card>
+
+  <Card title="Temporal Deletion" icon="clock-rotate-left">
+    Automatic memory expiration for sensitive contexts. Medical conversations, financial discussions auto-expire per user policy.
+  </Card>
+
+  <Card title="Export & Delete" icon="file-export">
+    Users own their memory data. Full export in standard formats, complete deletion on request.
+  </Card>
+</CardGroup>
+
+***
+
+## Business Impact for Wearable Makers
+
+<CardGroup>
+  <Card title="Higher Retention" icon="user-check">
+    Users who feel "remembered" by their device show 3-4x lower churn versus generic assistants.
+  </Card>
+
+  <Card title="Premium Positioning" icon="crown">
+    Memory-aware wearables command 40-60% price premium in market testing versus stateless competitors.
+  </Card>
+
+  <Card title="Expanding Use Cases" icon="lightbulb">
+    Memory unlocks enterprise, medical, and accessibility markets closed to generic voice assistants.
+  </Card>
+</CardGroup>
+
+***
+
+## Getting Started
+
+<Steps>
+  <Step title="Device Integration Assessment">
+    Review your wearable's sensors, compute capabilities, and privacy architecture.
+  </Step>
+
+  <Step title="Memory Footprint Optimization">
+    Configure mem\[v] for your device constraints (battery, storage, compute).
+  </Step>
+
+  <Step title="User Pilot Program">
+    Deploy with privacy-conscious early adopters. Measure engagement and memory value.
+  </Step>
+
+  <Step title="Privacy Audit & Compliance">
+    Validate data handling, user controls, and regulatory compliance for target markets.
+  </Step>
+
+  <Step title="Production Integration">
+    Scale to manufacturing with proven user value and privacy guarantees.
+  </Step>
+</Steps>
+
+<Card title="Talk to Founders" icon="calendar" href="mailto:founders@memv.ai">
+  Build wearables that remember - and respect - their users.
+</Card>
+
+

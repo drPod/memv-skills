@@ -1,0 +1,11 @@
+{
+  "name": "memv-skills",
+  "version": "0.1.0",
+  "description": "Drop-in Claude Code skills + mirrored docs for building on mem[v]. 10 skills cover bootstrap, MCP-vs-SDK decisions, memories, search, spaces, files, video ingestion, knowledge graphs, MCP setup, and debugging.",
+  "author": {
+    "name": "drPod"
+  },
+  "homepage": "https://github.com/drPod/memv-skills",
+  "repository": "https://github.com/drPod/memv-skills",
+  "keywords": ["mem[v]", "memv", "memory", "knowledge-graph", "agents", "claude-code", "skills"]
+}

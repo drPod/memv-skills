@@ -1,0 +1,40 @@
+# <YOUR PROJECT NAME>
+
+Built **on top of mem[v]** (https://memv.ai). Every feature, type, and data flow ultimately touches the mem[v] platform.
+
+## mem[v] tooling
+
+This project uses the [`memv-skills`](https://github.com/drPod/memv-skills) Claude Code plugin. It ships 10 skills that auto-fire on relevant tasks plus a mirrored copy of the mem[v] docs.
+
+- **Routing for any mem[v] question:** read `docs/memv/README.md` (catalog with summaries + when-to-consult per file). Then `Read` only the targeted file(s) it points to.
+- **Skills:** `memv-bootstrap`, `memv-mcp-vs-sdk`, `memv-add-memory`, `memv-search`, `memv-spaces`, `memv-files`, `memv-video-ingest`, `memv-graph`, `memv-mcp-setup`, `memv-debug`. Trust them over re-deriving the workflow.
+- **Single-blob fallback:** `docs/memv/llms-full.txt` (~160KB) if you need every doc in one read.
+
+## Standing rules (hard requirements)
+
+1. **Spaces are isolation boundaries.** Every memory write needs `space_id`. No global writes exist.
+2. **MCP says `workspaceId`. SDK says `space_id`. Same concept — translate when bridging.**
+3. **Use SDK types directly.** Import from `memvai`. Don't invent wrappers for Memory / Space / Entity / Relationship.
+4. **No hand-rolled HTTP** for mem[v]. SDK only. Escape hatches in `docs/memv/sdk/advanced.md`.
+5. **Multimodal-first.** Push raw text/files/video to the SDK. Don't pre-process.
+6. **Read `docs/memv/sdk/error-handling.md` BEFORE wrapping any mem[v] call** in try/except. Don't swallow.
+7. **MCP `mcp__memv__*` tools are dev-time inspection only — never call from app code.** See skill `memv-mcp-vs-sdk` for full rules.
+8. **Never guess SDK shapes.** If `docs/memv/` doesn't show it, it doesn't exist (or docs are stale → flag, don't invent).
+
+## First time touching SDK code?
+
+Run skill `memv-bootstrap` first. Handles language detection (Python / TS), `pip install memvai` or `npm install memvai`, `MEMV_API_KEY` env var, and smoke-tests.
+
+## Refreshing docs
+
+mem[v] ships updates. Refresh local mirror:
+
+```bash
+./scripts/sync-memv-docs.sh
+```
+
+---
+
+## <YOUR PROJECT-SPECIFIC SECTIONS BELOW>
+
+Add anything specific to your project here — build commands, conventions, layout, etc.

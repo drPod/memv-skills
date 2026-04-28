@@ -5,11 +5,11 @@ description: This skill should be used when the user asks to 'install memv', 'se
 
 # memv-bootstrap
 
-First-touch setup for the `memvai` SDK. Run this BEFORE any other memv skill that writes code.
+First-touch SDK setup. Run BEFORE any other memv skill that writes code.
 
 ## Step 1 — Detect language
 
-Check what's already in the repo:
+Check repo:
 
 ```bash
 ls pyproject.toml requirements.txt setup.py package.json 2>/dev/null
@@ -20,21 +20,21 @@ ls pyproject.toml requirements.txt setup.py package.json 2>/dev/null
 | `pyproject.toml` / `requirements.txt` / `setup.py` | Python |
 | `package.json` | TypeScript / JavaScript |
 | Both | Both — install both. |
-| Neither | **Ask the user** which language before installing. Don't guess. |
+| Neither | **Ask user** before installing. Don't guess. |
 
 ## Step 2 — Install
 
 ### Python
 
 ```bash
-# if no venv yet:
+# no venv yet:
 python3 -m venv .venv
 source .venv/bin/activate
 pip install memvai
 pip freeze | grep memvai >> requirements.txt
 ```
 
-If `pyproject.toml` exists (Poetry / uv / hatch), use the matching tool instead:
+`pyproject.toml` present → use matching tool:
 - Poetry: `poetry add memvai`
 - uv: `uv add memvai`
 
@@ -42,59 +42,59 @@ If `pyproject.toml` exists (Poetry / uv / hatch), use the matching tool instead:
 
 ```bash
 npm install memvai
-# or pnpm add memvai / yarn add memvai / bun add memvai depending on lockfile present
+# pnpm add memvai / yarn add memvai / bun add memvai per lockfile
 ```
 
-## Step 3 — Environment variable
+## Step 3 — Env var
 
-`memvai` reads `MEMV_API_KEY`. Verify it's set:
+`memvai` reads `MEMV_API_KEY`. Verify:
 
 ```bash
 [ -n "$MEMV_API_KEY" ] && echo "set" || echo "MISSING"
 ```
 
-If missing:
-- Add to `.env` (project) — and `.env.example` with placeholder
-- Ensure `.env` is in `.gitignore`
-- For local dev shells, instruct user to `export MEMV_API_KEY=...` in their rc file or use a tool like `direnv`
+Missing:
+- Add to `.env` + `.env.example` placeholder
+- `.env` in `.gitignore`
+- Local dev shells: `export MEMV_API_KEY=...` in rc file, or use `direnv`
 
-API keys come from the user's mem[v] dashboard. Do NOT put one in source control. If the user doesn't have one, point them at `docs/memv/sdk/installation.md`.
+Keys from user's mem[v] dashboard. NEVER commit. No key → point user at `docs/memv/sdk/installation.md`.
 
 ## Step 4 — Smoke-test auth (no SDK needed)
 
-The mem[v] MCP server uses OAuth (separate from the SDK's API key). If wired into your client, confirm it works:
+mem[v] MCP server uses OAuth (separate from SDK API key). If wired into client:
 
 ```
 mcp__memv__whoami()
 ```
 
-If that returns a user → MCP path works (dev-time inspection available).
-If the SDK env var also resolves → app code path works too.
+Returns user → MCP path works.
+SDK env var resolves → app code path works.
 
-These are independent — see skill `memv-mcp-vs-sdk`.
+Independent paths — see skill `memv-mcp-vs-sdk`.
 
-## Step 5 — Smoke-test the SDK
+## Step 5 — Smoke-test SDK
 
-After install, sanity-check the import resolves:
+After install, check import:
 
 ```bash
 # Python
 python -c "from memvai import Memv; print(Memv.__module__)"
 
-# TypeScript (if tsx installed)
+# TypeScript (tsx)
 npx tsx -e "import Memv from 'memvai'; console.log(typeof Memv)"
 ```
 
-If that fails with ImportError / ModuleNotFoundError → Step 2 didn't take effect. Check venv activation, lockfile, working directory.
+ImportError / ModuleNotFoundError → Step 2 didn't take. Check venv activation, lockfile, cwd.
 
 ## Done
 
-Once steps 1–5 pass:
-- Skills `memv-add-memory`, `memv-search`, `memv-spaces`, `memv-files`, `memv-video-ingest`, `memv-graph` are safe to fire.
-- Reference `docs/memv/sdk/installation.md` for any odd-platform details (proxies, custom CA, alternate Python versions).
+After 1–5:
+- Skills `memv-add-memory`, `memv-search`, `memv-spaces`, `memv-files`, `memv-video-ingest`, `memv-graph` safe to fire.
+- Odd-platform details (proxies, custom CA, alt Python): `docs/memv/sdk/installation.md`.
 
 ## Don't
 
-- Don't `pip install memvai` outside a venv on macOS/Linux — system Python install will refuse or break.
-- Don't commit `.env` with a real key.
-- Don't pre-install both languages without asking. Lockfile sprawl is harder to undo than to skip.
+- No `pip install memvai` outside venv on macOS/Linux — system Python refuses or breaks.
+- No `.env` commit with real key.
+- No pre-install both languages without asking. Lockfile sprawl harder to undo than skip.

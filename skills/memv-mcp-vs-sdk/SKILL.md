@@ -5,52 +5,60 @@ description: This skill should be used when the user is deciding between mcp__me
 
 # memv-mcp-vs-sdk
 
-mem[v] is reachable two ways. Pick the right one — they are NOT interchangeable.
+mem[v] reachable two ways. NOT interchangeable.
 
-## The two surfaces
+## Two surfaces
 
 | Surface | Lives in | Auth | Surface size |
 |---------|----------|------|--------------|
-| `mcp__memv__*` tools | The **agent's** harness | OAuth (live user) | 4 tools |
-| `memvai` SDK | The **app's** code | API key | Full platform |
+| `mcp__memv__*` tools | Agent harness | OAuth (live user) | 4 tools |
+| `memvai` SDK | App code | API key | Full platform |
 
-## The 4 MCP tools (everything else needs SDK)
+## 4 MCP tools (everything else needs SDK)
 
 - `mcp__memv__whoami` — verify auth
 - `mcp__memv__list_workspaces` — get `workspaceId`s
 - `mcp__memv__add_memory(workspaceId, memories[])` — text only, no metadata
 - `mcp__memv__search_memory(query, workspaceId?, maxResults?)` — text search
 
+## SDK surface (verified against `docs/memv/sdk/`)
+
+- `client.memories.add` / `.search` (no `update`, no `delete`)
+- `client.spaces.create` / `.list` / `.retrieve` / `.update` / `.delete`
+- `client.upload.batch.create` / `.get_status` (files + video, async)
+- `client.files.list` / `client.videos.list`
+- `client.graph.retrieve_triplets`
+- Escape hatches in `docs/memv/sdk/advanced.md`
+
 ## Decision rules
 
 **Use `mcp__memv__*` (agent inspecting live data) when:**
-- Finding a real `workspaceId` to wire into config or a seed
-- Verifying a write actually landed after running the app
-- Quick scratch search ("is there anything about X already?")
-- Sanity-checking auth setup (`whoami`)
-- Any one-off NL query against the user's KG during dev
+- Finding real `workspaceId` to wire into config or seed
+- Verifying write landed after running app
+- Quick scratch search ("anything about X already?")
+- Sanity-check auth (`whoami`)
+- One-off NL query against KG during dev
 
-**Use SDK code when:**
-- The operation runs in production / ships in the app
-- It needs ANYTHING beyond the 4 MCP tools: file upload, video ingestion, space CRUD, graph traversal, advanced retrieval, batch ops, transactions, custom embeddings, raw HTTP fallback
-- It needs metadata, structured payloads, or anything beyond `{content, name?}`
-- It needs `update_memory` / `delete_memory` (not in MCP)
-- It needs error handling for retryable vs terminal failures
+**Use SDK when:**
+- Op runs in production / ships in app
+- Needs ANYTHING beyond 4 MCP tools: file/video upload (`upload.batch.create`), space CRUD, graph triplets, advanced retrieval, batch, custom embeddings, raw HTTP
+- Needs metadata / structured payloads beyond `{content, name?}`
+- Needs error handling for retryable vs terminal failures
 
-**Never:** import `mcp__memv__*` from app code. They live in the harness, not the runtime.
+**Never:** import `mcp__memv__*` from app code. Lives in harness, not runtime.
 
-## Terminology mismatch — translate
+## Terminology — translate
 
-- MCP says `workspaceId` (string)
-- SDK says `space_id` (string)
-- **Same concept.** Pass the same value either way. Doc references in `docs/memv/core-concepts/spaces.md` and `docs/memv/sdk/spaces.md` use the SDK term.
+- MCP: `workspaceId` (string)
+- SDK: `space_id` (string)
+- **Same concept.** Same value. Doc references in `docs/memv/core-concepts/spaces.md` and `docs/memv/sdk/spaces.md` use SDK term.
 
 ## Steps
 
-1. Classify the task: dev-time inspection vs app code path.
-2. If MCP-eligible AND the 4 tools cover it → call `mcp__memv__<tool>`.
-3. Otherwise → SDK. Read `docs/memv/sdk/overview.md` to find the right method, then the specific page.
-4. If unsure, default to SDK — it always works; MCP is a convenience.
+1. Classify task: dev-time inspection vs app code path.
+2. MCP-eligible AND 4 tools cover it → `mcp__memv__<tool>`.
+3. Otherwise → SDK. `docs/memv/sdk/overview.md` for method, then specific page.
+4. Unsure → default SDK. Always works; MCP convenience only.
 
 ## See also
 

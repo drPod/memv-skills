@@ -2,6 +2,23 @@
 
 All notable changes to `memv-skills` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning follows [SemVer](https://semver.org/).
 
+## [0.1.1] — 2026-04-28
+
+### Fixed
+- **Phantom SDK methods removed.** Skills + docs previously referenced `client.files.upload`, `client.videos.upload`, `client.memories.update`, `client.memories.delete`, `client.graph.list_entities`, `client.graph.list_relationships` — none of which exist in the real `memvai` SDK. Replaced with verified canonical methods:
+  - File / video upload → `client.upload.batch.create(space_id, files=[...])` + `client.upload.batch.get_status(batch_id)` (async batch pattern)
+  - Graph queries → `client.graph.retrieve_triplets(memory_id)` (per-memory triplets, no list/walk API)
+  - Memory mutation: SDK exposes only `client.memories.add` and `client.memories.search` — to "change" a memory, add a new one and let the graph reconcile, or use `client.spaces.delete` to drop everything in a space.
+- Affected skills: `memv-add-memory`, `memv-files`, `memv-video-ingest`, `memv-graph`, `memv-mcp-vs-sdk`.
+- Affected docs: README.md (this file), CHANGELOG.md (this file).
+
+### Changed
+- Skill bodies rewritten in caveman style (drop articles / filler / hedging, fragments OK, code blocks unchanged, descriptions unchanged). Tighter, same technical content.
+- Each skill now has a "SDK surface (verified against `docs/memv/sdk/<x>.md`)" section explicitly listing real method signatures so future audits can check against canonical.
+
+### Note for installers of 0.1.0
+If you installed 0.1.0 and started writing code from the skill skeletons, your code will fail on import — the methods don't exist. Bump to 0.1.1 (`/plugin update memv-skills@memv-skills`) and re-read affected skill files.
+
 ## [0.1.0] — 2026-04-28
 
 ### Added
@@ -9,7 +26,7 @@ All notable changes to `memv-skills` are documented here. Format follows [Keep a
 - 10 skills covering the mem[v] platform surface:
   - `memv-bootstrap` — first-touch SDK install + auth setup
   - `memv-mcp-vs-sdk` — when to use MCP tools vs SDK code
-  - `memv-add-memory` — create/update/delete memories
+  - `memv-add-memory` — write memories via `client.memories.add` (SDK has no update/delete)
   - `memv-search` — semantic + graph-aware retrieval
   - `memv-spaces` — tenancy, isolation, CRUD
   - `memv-files` — file (PDF/doc/image/audio) ingestion

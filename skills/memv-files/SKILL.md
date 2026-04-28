@@ -1,41 +1,55 @@
 ---
 name: memv-files
-description: This skill should be used when the user asks to 'upload a PDF to memv', 'ingest a document', 'add an image to memv', 'process audio with memv', or when calling client.files.upload. Covers multimodal-first ingestion and when to use files.upload vs videos.upload vs memories.add. For video specifically, use memv-video-ingest instead.
+description: This skill should be used when the user asks to 'upload a PDF to memv', 'ingest a document', 'add an image to memv', 'process audio with memv', or when calling client.upload.batch.create. Covers multimodal-first ingestion and when to use upload.batch.create vs memories.add. For video specifically, use memv-video-ingest instead.
 ---
 
 # memv-files
 
 ## Required reading
 
-1. `docs/memv/sdk/files.md` — upload API.
+1. `docs/memv/sdk/files.md` — upload API (`client.upload.batch.create`).
 2. `docs/memv/sdk/error-handling.md` — upload-failure modes.
-3. `docs/memv/sdk/videos.md` — for video specifically, use that skill instead.
+3. `docs/memv/sdk/videos.md` — video specifically → use that skill instead (same `upload.batch.create` path, video skill has format guidance).
+
+## SDK surface (verified against `docs/memv/sdk/files.md`)
+
+- `client.upload.batch.create(space_id, files=[...], ...)` — upload PDF / doc / image / audio
+- `client.upload.batch.get_status(batch_id)` — poll for processing completion (sync wrapper) / TS: `getStatus`
+- `client.files.list(space_id)` — enumerate files in a space
 
 ## Hard rules
 
-- Push raw files. Don't OCR / parse / chunk before upload — mem[v] handles extraction.
+- Push raw files. No OCR / parse / chunk before upload — mem[v] handles extraction.
 - `space_id` mandatory.
-- One file per call. Batch via `asyncio.gather` if you need parallelism, with backoff per `sdk/error-handling.md`.
+- `upload.batch.create` is **async**. Returns `batch_id`. Poll `get_status(batch_id)` until done before assuming memories are searchable.
+- Parallelize via `asyncio.gather` with backoff per `sdk/error-handling.md`.
 
 ## Skeleton (Python)
 
 ```python
 with open(file_path, "rb") as f:
-    response = client.files.upload(
+    response = client.upload.batch.create(
         space_id=space_id,
-        file=f,
+        files=[f],
         metadata={"source": "user_upload", "filename": file_path.name},
     )
-file_id = response.file_id
+batch_id = response.batch_id
+
+# poll until processing completes
+while True:
+    status = client.upload.batch.get_status(batch_id=batch_id)
+    if status.state in ("completed", "failed"):
+        break
 ```
 
-## Choose the right method
+## Choose right method
 
-- Video → `client.videos.upload` (use skill `memv-video-ingest`)
-- PDF, doc, image, audio → `client.files.upload` (this skill)
-- Plain text already in memory → `client.memories.add(content=...)` (use skill `memv-add-memory`)
+- Video → `client.upload.batch.create` (skill `memv-video-ingest` for format guidance)
+- PDF, doc, image, audio → `client.upload.batch.create` (this skill)
+- Plain text already in memory → `client.memories.add(content=...)` (skill `memv-add-memory`)
 
 ## Don't
 
-- Don't `client.memories.add(content=open(pdf).read())` — that stuffs raw bytes as text. Use `files.upload`.
-- Don't pre-OCR. mem[v] extracts on its side.
+- No `client.memories.add(content=open(pdf).read())` — stuffs raw bytes as text. Use `upload.batch.create`.
+- No pre-OCR. mem[v] extracts on its side.
+- No assuming write is searchable immediately after `create()` returns. Poll `get_status` first.

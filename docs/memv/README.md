@@ -9,11 +9,11 @@
 
 These rules apply to every line of code that touches mem[v]. Violations = bugs.
 
-1. **Spaces are isolation boundaries.** Every `client.memories.add/update/delete` MUST pass `space_id`. There is no global write.
+1. **Spaces are isolation boundaries.** Every `client.memories.add` MUST pass `space_id`. There is no global write. (SDK has no `update_memory` / `delete_memory` — to change a memory, add a new one; to drop everything, `client.spaces.delete`.)
 2. **MCP terminology mismatch:** the `mcp__memv__*` tools say `workspaceId`. The SDK says `space_id`. **Same concept.** When jumping between MCP and SDK, translate.
 3. **Use SDK types directly.** `from memvai import Memv`. Do not invent wrapper types for Memory, Space, Entity, Relationship. If a shape isn't in the SDK, check `sdk/advanced.md` before inventing.
 4. **No hand-rolled HTTP.** Always use the SDK. Escape hatches in `sdk/advanced.md`.
-5. **Multimodal-first.** mem[v] handles text/files/video natively. Don't pre-process — push raw content via `client.memories.add` / `client.files.upload` / `client.videos.upload`.
+5. **Multimodal-first.** mem[v] handles text/files/video natively. Don't pre-process — push raw content via `client.memories.add` (text) or `client.upload.batch.create` (files + video, async batch).
 6. **Follow SDK error patterns.** Read `sdk/error-handling.md` BEFORE wrapping any mem[v] call in try/except. Don't swallow.
 7. **MCP is for dev-time inspection, NOT runtime.** See MCP-vs-SDK rules below.
 
@@ -98,7 +98,7 @@ Top-level client shape. What's on `client.memories`, `client.spaces`, `client.fi
 ### `sdk/memories.md` (11.7KB · **HOT PATH**)
 The most-touched file. `add`, `search`, `update`, `delete`. Text + file + conversation + preference patterns.
 **When:** writing or editing ANY code that creates/queries memories.
-**Key APIs:** `client.memories.add`, `client.memories.search`, `client.memories.update`.
+**Key APIs:** `client.memories.add`, `client.memories.search`. (No `update` / `delete` in SDK.)
 **Related:** `core-concepts/memories.md`, `sdk/error-handling.md`, `sdk/spaces.md`.
 
 ### `sdk/spaces.md` (8.6KB)
@@ -109,13 +109,13 @@ Space CRUD. Create, list, delete. Plus listing memories within a space.
 ### `sdk/files.md` (6.0KB)
 File-backed memories. Upload PDFs/docs/images, mem[v] extracts memories from them.
 **When:** ingesting documents, building file-aware features.
-**Key APIs:** `client.files.upload`.
+**Key APIs:** `client.upload.batch.create` (file upload, async — returns `batch_id`), `client.upload.batch.get_status`, `client.files.list`.
 **Related:** `sdk/videos.md` (sibling for video).
 
 ### `sdk/videos.md` (5.4KB · **likely hot path for this project**)
 Video memories. mem[v]'s headline capability — multimodal extraction from video (audio, visual, text, temporal).
 **When:** ingesting any video content, building video-search features.
-**Key APIs:** `client.videos.upload`.
+**Key APIs:** `client.upload.batch.create` (same path as files — mem[v] detects MIME), `client.upload.batch.get_status`, `client.videos.list`.
 **Related:** `sdk/files.md`, `index.md` ("video is the superset").
 
 ### `sdk/graph.md` (4.4KB)

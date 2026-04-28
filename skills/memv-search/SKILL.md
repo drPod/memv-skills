@@ -7,15 +7,15 @@ description: This skill should be used when the user asks to 'search memv memori
 
 ## Required reading
 
-1. `docs/memv/core-concepts/search.md` — explains WHY queries return what they return (vector + graph traversal). Read this BEFORE the SDK page or the API will surprise you.
+1. `docs/memv/core-concepts/search.md` — explains WHY queries return what they return (vector + graph traversal). Read BEFORE SDK page or API surprises.
 2. `docs/memv/sdk/memories.md` (search section) — exact call shape.
-3. `docs/memv/core-concepts/knowledge-graphs.md` — only if you need entity/relationship-aware queries beyond plain semantic search.
+3. `docs/memv/core-concepts/knowledge-graphs.md` — only if needing entity/relationship-aware queries beyond plain semantic.
 
 ## Hard rules
 
-- Search is **graph-aware**, not pure vector. Returned memories may include neighbors of the best embedding match. This is a feature.
-- `space_id` scopes the search. Omit only if intentionally cross-space.
-- Don't post-filter results in Python when the SDK can do it server-side (`metadata` filters, `space_id`, etc.).
+- Search is **graph-aware**, not pure vector. Returned memories may include neighbors of best embedding match. Feature, not bug.
+- `space_id` scopes search. Omit only if intentionally cross-space.
+- No post-filtering in Python when SDK does it server-side (`metadata` filters, `space_id`).
 
 ## Skeleton (Python)
 
@@ -29,13 +29,13 @@ for memory in results:
     print(memory.content, memory.score)
 ```
 
-## Choose the right tool
+## Choose right tool
 
 - **Plain semantic search** → `client.memories.search` (this skill)
-- **Entity / relationship traversal** → `client.graph.*` → see skill `memv-graph` and `docs/memv/sdk/graph.md`
-- **Quick dev-time exploratory search** → `mcp__memv__search_memory` (no SDK, no app code) → see skill `memv-mcp-vs-sdk`
+- **Entity / relationship traversal** → `client.graph.*` → skill `memv-graph` + `docs/memv/sdk/graph.md`
+- **Quick dev-time exploratory search** → `mcp__memv__search_memory` (no SDK, no app code) → skill `memv-mcp-vs-sdk`
 
 ## Don't
 
-- Don't expect lexical match. mem[v] returns what's semantically close, which may not contain the query terms verbatim.
-- Don't tune by inflating `limit` to "see more results" — re-frame the query first.
+- No expecting lexical match. mem[v] returns semantic neighbors; query terms may not appear verbatim.
+- No tuning by inflating `limit` to "see more results" — re-frame query first.

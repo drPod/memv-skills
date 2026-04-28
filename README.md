@@ -13,7 +13,7 @@ For the design rationale and research citations behind every choice, see [DESIGN
 skills/                        10 skills, each <100 lines
   memv-bootstrap/              first-time SDK install + auth setup
   memv-mcp-vs-sdk/             when to use MCP tools vs SDK code
-  memv-add-memory/             create/update/delete memories
+  memv-add-memory/             write memories (add only — SDK has no update/delete)
   memv-search/                 semantic + graph-aware retrieval
   memv-spaces/                 tenancy, isolation, CRUD
   memv-files/                  file (PDF/doc/image/audio) ingestion

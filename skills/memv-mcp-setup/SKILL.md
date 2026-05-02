@@ -10,7 +10,7 @@ description: This skill should be used when the user asks to 'install memv MCP',
 1. **mem[v]'s hosted MCP server** (https://mcp.memv.ai/mcp) — exposes 4 tools: `whoami`, `list_workspaces`, `add_memory`, `search_memory`. Skill `memv-mcp-vs-sdk` for agent-vs-app rules.
 2. **Your app's own MCP server** — wire it yourself if exposing app data to AI clients.
 
-This skill covers BOTH. Use right section.
+Skill covers BOTH. Use right section.
 
 ## Required reading
 
@@ -32,7 +32,7 @@ OAuth prompt fires on first tool use. No API keys.
 ## Exposing your app's data via MCP
 
 Follow mem[v]'s patterns from `mcp/setup.md`:
-- `https://<your-domain>/mcp` over HTTP transport (not SSE — Cursor's `/sse` is exception)
+- `https://<your-domain>/mcp` over HTTP transport (not SSE — Cursor's `/sse` exception)
 - OAuth via user's existing auth provider, NOT API keys
 - Tool surface mirrors their style: small high-leverage set, NL-friendly names, clear param descriptions
 

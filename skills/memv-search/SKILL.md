@@ -9,11 +9,11 @@ description: This skill should be used when the user asks to 'search memv memori
 
 1. `docs/memv/core-concepts/search.md` — explains WHY queries return what they return (vector + graph traversal). Read BEFORE SDK page or API surprises.
 2. `docs/memv/sdk/memories.md` (search section) — exact call shape.
-3. `docs/memv/core-concepts/knowledge-graphs.md` — only if needing entity/relationship-aware queries beyond plain semantic.
+3. `docs/memv/core-concepts/knowledge-graphs.md` — only if need entity/relationship-aware queries beyond plain semantic.
 
 ## Hard rules
 
-- Search is **graph-aware**, not pure vector. Returned memories may include neighbors of best embedding match. Feature, not bug.
+- Search **graph-aware**, not pure vector. Returned memories may include neighbors of best embedding match. Feature, not bug.
 - `space_id` scopes search. Omit only if intentionally cross-space.
 - No post-filtering in Python when SDK does it server-side (`metadata` filters, `space_id`).
 

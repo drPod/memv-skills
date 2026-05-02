@@ -9,19 +9,19 @@ description: This skill should be used when the user asks to 'upload a PDF to me
 
 1. `docs/memv/sdk/files.md` — upload API (`client.upload.batch.create`).
 2. `docs/memv/sdk/error-handling.md` — upload-failure modes.
-3. `docs/memv/sdk/videos.md` — video specifically → use that skill instead (same `upload.batch.create` path, video skill has format guidance).
+3. `docs/memv/sdk/videos.md` — video → use that skill instead (same `upload.batch.create` path, video skill has format guidance).
 
 ## SDK surface (verified against `docs/memv/sdk/files.md`)
 
 - `client.upload.batch.create(space_id, files=[...], ...)` — upload PDF / doc / image / audio
-- `client.upload.batch.get_status(batch_id)` — poll for processing completion (sync wrapper) / TS: `getStatus`
-- `client.files.list(space_id)` — enumerate files in a space
+- `client.upload.batch.get_status(batch_id)` — poll for processing done (sync wrapper) / TS: `getStatus`
+- `client.files.list(space_id)` — enumerate files in space
 
 ## Hard rules
 
 - Push raw files. No OCR / parse / chunk before upload — mem[v] handles extraction.
 - `space_id` mandatory.
-- `upload.batch.create` is **async**. Returns `batch_id`. Poll `get_status(batch_id)` until done before assuming memories are searchable.
+- `upload.batch.create` **async**. Returns `batch_id`. Poll `get_status(batch_id)` until done before assuming memories searchable.
 - Parallelize via `asyncio.gather` with backoff per `sdk/error-handling.md`.
 
 ## Skeleton (Python)
@@ -52,4 +52,4 @@ while True:
 
 - No `client.memories.add(content=open(pdf).read())` — stuffs raw bytes as text. Use `upload.batch.create`.
 - No pre-OCR. mem[v] extracts on its side.
-- No assuming write is searchable immediately after `create()` returns. Poll `get_status` first.
+- No assuming write searchable immediately after `create()` returns. Poll `get_status` first.

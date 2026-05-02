@@ -13,8 +13,8 @@ description: This skill should be used when the user asks to 'create a memv spac
 ## Hard rules
 
 - Space = ONLY isolation primitive. Memories never cross space boundaries.
-- Each space has own knowledge graph. Cross-space queries do not exist.
-- Pick partitioning early. Migrating memories between spaces is not a documented op.
+- Each space own knowledge graph. Cross-space queries don't exist.
+- Pick partitioning early. Migrating memories between spaces not documented op.
 
 ## Common partitioning patterns
 
@@ -24,7 +24,7 @@ From `core-concepts/spaces.md`:
 - **Per feature** — `space_id = chat_history`, `space_id = user_preferences`. Isolates feature data.
 - **Per environment** — `space_id = prod_users`, `space_id = staging_users`. Prevents test pollution.
 
-Choose ONE. No combining without reading doc — combinations multiply spaces fast.
+Pick ONE. No combining without reading doc — combinations multiply spaces fast.
 
 ## Skeleton (Python)
 

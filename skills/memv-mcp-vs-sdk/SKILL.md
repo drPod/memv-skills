@@ -33,8 +33,8 @@ mem[v] reachable two ways. NOT interchangeable.
 ## Decision rules
 
 **Use `mcp__memv__*` (agent inspecting live data) when:**
-- Finding real `workspaceId` to wire into config or seed
-- Verifying write landed after running app
+- Find real `workspaceId` to wire into config or seed
+- Verify write landed after running app
 - Quick scratch search ("anything about X already?")
 - Sanity-check auth (`whoami`)
 - One-off NL query against KG during dev
@@ -51,13 +51,13 @@ mem[v] reachable two ways. NOT interchangeable.
 
 - MCP: `workspaceId` (string)
 - SDK: `space_id` (string)
-- **Same concept.** Same value. Doc references in `docs/memv/core-concepts/spaces.md` and `docs/memv/sdk/spaces.md` use SDK term.
+- **Same concept.** Same value. Doc refs in `docs/memv/core-concepts/spaces.md` and `docs/memv/sdk/spaces.md` use SDK term.
 
 ## Steps
 
 1. Classify task: dev-time inspection vs app code path.
 2. MCP-eligible AND 4 tools cover it → `mcp__memv__<tool>`.
-3. Otherwise → SDK. `docs/memv/sdk/overview.md` for method, then specific page.
+3. Else → SDK. `docs/memv/sdk/overview.md` for method, then specific page.
 4. Unsure → default SDK. Always works; MCP convenience only.
 
 ## See also

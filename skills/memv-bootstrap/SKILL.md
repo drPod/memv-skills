@@ -75,7 +75,7 @@ Independent paths — see skill `memv-mcp-vs-sdk`.
 
 ## Step 5 — Smoke-test SDK
 
-After install, check import:
+Post-install, check import:
 
 ```bash
 # Python
@@ -85,7 +85,7 @@ python -c "from memvai import Memv; print(Memv.__module__)"
 npx tsx -e "import Memv from 'memvai'; console.log(typeof Memv)"
 ```
 
-ImportError / ModuleNotFoundError → Step 2 didn't take. Check venv activation, lockfile, cwd.
+ImportError / ModuleNotFoundError → Step 2 failed. Check venv activation, lockfile, cwd.
 
 ## Done
 
@@ -97,4 +97,4 @@ After 1–5:
 
 - No `pip install memvai` outside venv on macOS/Linux — system Python refuses or breaks.
 - No `.env` commit with real key.
-- No pre-install both languages without asking. Lockfile sprawl harder to undo than skip.
+- No pre-install both languages without ask. Lockfile sprawl harder to undo than skip.

@@ -2,6 +2,12 @@
 
 All notable changes to `memv-skills` are documented here. Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/). Versioning follows [SemVer](https://semver.org/).
 
+## [0.1.2] — 2026-05-02
+
+### Fixed
+- **Caveman audit reverts.** Re-ran `/caveman:compress` on all 10 skill bodies, then audited diffs change-by-change. Reverted 15 grammar mutations (subject-verb breaks like `mem[v] do`/`SDK fail`/`Doc tell`/`MCP see…app search don't`/`Lose visual`, floating participles like `agent inspect`/`after run app`, ambiguous drops like `wire yourself`) and 1 semantic loss (`Plain text in memory` → restored `Plain text already in memory` to disambiguate from RAM). Kept ~30 clean caveman edits (article drops, gerund-to-imperative bullets, predicate-adjective drops, synonym swaps).
+- Affected skills: `memv-add-memory`, `memv-debug`, `memv-files`, `memv-mcp-setup`, `memv-mcp-vs-sdk`, `memv-video-ingest`.
+
 ## [0.1.1] — 2026-04-28
 
 ### Fixed

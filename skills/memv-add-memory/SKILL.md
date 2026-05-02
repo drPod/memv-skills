@@ -7,16 +7,16 @@ description: This skill should be used when the user asks to 'add a memory', 'wr
 
 ## Required reading (in order)
 
-1. `docs/memv/sdk/memories.md` — full method signatures + patterns. **Hot path. Read in full.**
+1. `docs/memv/sdk/memories.md` — full method signatures + patterns. **Hot path. Read full.**
 2. `docs/memv/core-concepts/memories.md` — lifecycle (create → enrich → link → retrieve → decay), what counts as one memory.
 3. `docs/memv/core-concepts/spaces.md` — every write needs `space_id`. Confirm caller has one.
 4. `docs/memv/sdk/error-handling.md` — exception types to catch.
 
 ## Hard rules
 
-- `space_id` **mandatory**. No global writes exist.
-- Use SDK types (`memvai`) directly. Don't define wrapper `class Memory`.
-- Push raw content. Don't pre-summarize text or pre-extract entities — mem[v] does that.
+- `space_id` **mandatory**. No global writes.
+- Use SDK types (`memvai`) directly. No wrapper `class Memory`.
+- Push raw content. No pre-summarize text, no pre-extract entities — mem[v] does that.
 - Non-text (PDF, image, audio, video) → `client.upload.batch.create(...)` (skill `memv-files` / `memv-video-ingest`), NOT `client.memories.add` with stringified blob.
 - Wrap try/except per `sdk/error-handling.md`. No bare-except.
 
@@ -25,7 +25,7 @@ description: This skill should be used when the user asks to 'add a memory', 'wr
 - `client.memories.add(space_id, content, metadata?)` — write text memory
 - `client.memories.search(space_id, query, limit?)` — retrieve
 
-**No `update_memory` / `delete_memory` exist in the SDK.** To change a memory, add a new one and let mem[v]'s graph reconcile, OR use `client.spaces.delete(space_id=...)` to drop a whole space.
+**No `update_memory` / `delete_memory` in SDK.** Change memory → add new one, let mem[v] graph reconcile. Or `client.spaces.delete(space_id=...)` to drop whole space.
 
 ## Skeleton (Python)
 
@@ -54,7 +54,7 @@ mcp__memv__search_memory(query="<excerpt>", workspaceId=space_id, maxResults=3)
 
 ## Don't
 
-- No reusing `space_id` across logical tenants (per-user/feature/env separation — `core-concepts/spaces.md`).
-- No looping `add()` thousands of times without backoff. Batch patterns in `sdk/advanced.md`.
-- No storing rendered HTML / markup. Push raw source.
-- No assuming `update`/`delete` exist on `client.memories`. They don't.
+- No reuse `space_id` across logical tenants (per-user/feature/env separation — `core-concepts/spaces.md`).
+- No loop `add()` thousands of times without backoff. Batch patterns in `sdk/advanced.md`.
+- No store rendered HTML / markup. Push raw source.
+- No assume `update`/`delete` on `client.memories`. Don't exist.

@@ -22,14 +22,14 @@ mem[v] = "memory + video". Pitch (`docs/memv/index.md`): "If you solve memory fo
 - `client.upload.batch.get_status(batch_id)` — poll until done
 - `client.videos.list(space_id)` — enumerate videos in space
 
-Same `upload.batch.create` path as files. mem[v] detects MIME and routes internally.
+Same `upload.batch.create` path as files. mem[v] detects MIME, routes internally.
 
 ## Hard rules
 
-- Push raw video. NO pre-extracting audio, transcribing, or sampling frames before upload — mem[v] does it better than ad-hoc pipelines.
+- Push raw video. NO pre-extract audio, transcribe, or sample frames before upload — mem[v] does it better than ad-hoc pipelines.
 - `space_id` mandatory.
 - Video uploads slow / large. Wrap with explicit timeout + retry per `sdk/error-handling.md`.
-- `upload.batch.create` is **async**. Poll `get_status(batch_id)` until done before assuming memories are searchable.
+- `upload.batch.create` is **async**. Poll `get_status(batch_id)` until done before assuming memories searchable.
 - Big or batch uploads → check `sdk/advanced.md` before rolling own queue.
 
 ## Skeleton (Python)
@@ -62,5 +62,5 @@ All become searchable memories in same space.
 ## Don't
 
 - No pushing pre-transcribed text instead of video. Loses visual + temporal info.
-- No sharding video file before upload. Send whole asset.
-- No assuming write is searchable immediately after `create()` returns. Poll `get_status` first.
+- No shard video file before upload. Send whole asset.
+- No assume write searchable immediately after `create()` returns. Poll `get_status` first.

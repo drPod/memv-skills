@@ -10,7 +10,7 @@
       "name": "memv-skills",
       "source": "./",
       "description": "Drop-in Claude Code skills + mirrored docs for building on mem[v]. 10 skills cover bootstrap, MCP-vs-SDK decisions, memories, search, spaces, files, video ingestion, knowledge graphs, MCP setup, and debugging.",
-      "version": "0.1.1"
+      "version": "0.1.2"
     }
   ]
 }
